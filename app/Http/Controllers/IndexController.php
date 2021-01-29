@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Support\Facades\Cookie;
 
 class IndexController extends Controller
 {
-
 
     public function index()
     {

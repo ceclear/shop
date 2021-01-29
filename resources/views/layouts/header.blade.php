@@ -240,12 +240,12 @@
                                 <ul>
                                     <li>
                                         <a href="index.html">Home <i class="fa fa-angle-down"></i></a>
-                                        <ul class="dropdown dropdown-width">
-                                            <li><a href="index.html">Home Version 1</a></li>
-                                            <li><a href="index-2.html">Home Version 2</a></li>
-                                            <li><a href="index-3.html">Home Version 3</a></li>
-                                            <li><a href="index-4.html">Home Version 4</a></li>
-                                        </ul>
+{{--                                        <ul class="dropdown dropdown-width">--}}
+{{--                                            <li><a href="index.html">Home Version 1</a></li>--}}
+{{--                                            <li><a href="index-2.html">Home Version 2</a></li>--}}
+{{--                                            <li><a href="index-3.html">Home Version 3</a></li>--}}
+{{--                                            <li><a href="index-4.html">Home Version 4</a></li>--}}
+{{--                                        </ul>--}}
                                     </li>
                                     <li>
                                         <a href="shop.html">Shop <i class="fa fa-angle-down"></i></a>

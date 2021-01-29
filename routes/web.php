@@ -29,3 +29,4 @@ Route::group(['prefix' => 'level1'], function () {
     Route::post('submit', 'SchoolController@submit');
     Route::get('success', 'SchoolController@success');
 });
+
