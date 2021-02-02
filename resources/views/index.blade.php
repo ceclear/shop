@@ -49,8 +49,8 @@
                             <div class="single-shipping">
                                 <div class="block-wrapper">
                                     <div class="shipping-content">
-                                        <h5 class="ship-title">Free Delivery</h5>
-                                        <p>Free shipping on all order</p>
+                                        <h5 class="ship-title">免费送货</h5>
+                                        <p>所有订单免运费</p>
                                     </div>
                                 </div>
                             </div>
@@ -59,8 +59,8 @@
                             <div class="single-shipping">
                                 <div class="block-wrapper2">
                                     <div class="shipping-content">
-                                        <h5 class="ship-title">Online Support 24/7</h5>
-                                        <p>Free shipping on all order</p>
+                                        <h5 class="ship-title">7*24小时在线</h5>
+                                        <p>7*24小时人工在线</p>
                                     </div>
                                 </div>
                             </div>
@@ -69,8 +69,8 @@
                             <div class="single-shipping single-shipping-last">
                                 <div class="block-wrapper3">
                                     <div class="shipping-content">
-                                        <h5 class="ship-title">Money Return</h5>
-                                        <p>Free shipping on all order</p>
+                                        <h5 class="ship-title">退款</h5>
+                                        <p>无理由退款</p>
                                     </div>
                                 </div>
                             </div>

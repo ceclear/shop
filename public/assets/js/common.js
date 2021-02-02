@@ -7,16 +7,12 @@ function ajax(options) {
         dataType: "text",
         status: null,
         success: function (res) {
-            Qmsg.success(res.msg)
-            console.log(res.data.go_url)
-            setTimeout(function (){
-                window.location.href = res.data.go_url
-            }, 2000)
+            cocoMessage.success(res.message)
         },
         complete: function () {
         },
         error: function (res) {
-            Qmsg.error(res.msg)
+            cocoMessage.error(res.message)
         }
     }
 
@@ -124,16 +120,18 @@ function formToJson(obj) {
 
 function validateRequire(obj) {
     let data = $(obj); //先进行序列化数组操作
+    let success = true;
     $.each(data, function (n, v) {
         let re = $(v).attr('required');
         let val = $(v).val();
         let tip = $(v).data('tip');
         if (re === 'required' && val === '') {
-            Qmsg.error(tip + " required");
+            cocoMessage.error('请填写' + tip);
             $(v).focus();
+            success = false;
             return false;
         }
-        // console.log();
     });
-    return true;
+    return success;
 }
+

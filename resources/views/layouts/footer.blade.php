@@ -37,12 +37,14 @@
                 <div class="col-lg-4">
                     <div class="footer-single-widget">
                         <div class="footer-logo mb-40">
-                            <a href="index.html"><img src="/assets/images/logo/pos-circle-logo.jpg" alt=""></a>
+                            <a href="/"><img src="/assets/images/logo/logo.png" alt=""></a>
                         </div>
                         <div class="widget-body">
-                            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram.</p>
+                            <p>
+                                这是一个钓鱼经验分享网站
+                            </p>
                             <div class="widget-address mt-30 mb-20">
-                                <p><strong>Address:</strong> 123 Main Street, Anytown, CA 12345 USA.</p>
+                                <p><strong>Address:</strong> 九龙坡区谢家湾正街56号</p>
                                 <p><strong>Number Phone:</strong> (800) 123 456 - (800) 123 456.</p>
                                 <p><strong>Address Email:</strong> support@circleshop.com</p>
                             </div>
@@ -201,6 +203,7 @@
 
 <!-- Main JS -->
 <script src="/assets/js/main.js"></script>
+
 <script src="/assets/js/common.js"></script>
 <script type="text/javascript">
     $(function (){

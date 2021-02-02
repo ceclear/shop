@@ -28,5 +28,6 @@ Route::group(['prefix' => 'level1'], function () {
     Route::get('show/{sub_id?}', 'SchoolController@show');
     Route::post('submit', 'SchoolController@submit');
     Route::get('success', 'SchoolController@success');
+    Route::post('check_user', 'SchoolController@checkUser');
 });
 

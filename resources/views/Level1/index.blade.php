@@ -50,35 +50,64 @@
 </head>
 <body>
 <form method="post" action="{{url('level1/submit')}}">
-    <div style="margin: auto;width: 900px">
-        <table class="gridtable">
-            <tr>
-                <th>题目</th>
-                <th>答案</th>
-                <th>题目</th>
-                <th>答案</th>
-            </tr>
-            @if(!empty($list))
-                @foreach($list as $item)
-                    <tr>
-                        @foreach($item as $value)
+    <div id="form_div" style="display: none">
+        <div style="margin: auto;width: 900px;">
+            <table class="gridtable">
+                <tr>
+                    <th>题目</th>
+                    <th>答案</th>
+                    <th>题目</th>
+                    <th>答案</th>
+                </tr>
+                @if(!empty($list))
+                    @foreach($list as $item)
+                        <tr>
+                            @foreach($item as $value)
 
-                            <td>{{$value['key_str']}}</td>
-                            <td><input type="text" autocomplete="off" name="val_{{$value['key_str']}}"
-                                       value=""
-                                       class="answer-input"><input type="hidden" name="hi_{{$value['key_str']}}" value="{{$value['val']}}"></td>
+                                <td>{{$value['key_str']}}</td>
+                                <td><input type="text" autocomplete="off" name="val_{{$value['key_str']}}"
+                                           value=""
+                                           class="answer-input"><input type="hidden" name="hi_{{$value['key_str']}}"
+                                                                       value="{{$value['val']}}"></td>
 
-                        @endforeach
-                    </tr>
-                @endforeach
-            @endif
+                            @endforeach
+                        </tr>
+                    @endforeach
+                @endif
 
-        </table>
-    </div>
-    <div style="margin:20px auto;width: 400px;text-align: center">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="submit" value="提交" style="font-size: 18px;font-weight: bold;width: 160px">
+            </table>
+        </div>
+        <div style="margin:20px auto;width: 400px;text-align: center">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" id="start_time" name="start_time" value="{{ $start_time }}">
+            <input type="submit" value="提交" style="font-size: 18px;font-weight: bold;width: 160px">
+        </div>
     </div>
 </form>
+<script src="assets/js/jQuery-2.1.4.min.js"></script>
+<script src="assets/js/layer.js"></script>
+<script src="assets/js/coco-message.js"></script>
+<script src="assets/js/common.js"></script>
+<script>
+
+    layer.prompt({
+        title: '请输入姓名',
+    }, function (value, index, elem) {
+        $('#start_time').val(Date.parse(new Date()) / 1000);
+        layer.close(index);
+        //请求
+        let load = layer.load();
+        $.post('/level1/check_user', {'name': value, '_token': "{{csrf_token()}}"}, function (data) {
+            layer.close(load);
+            if(data.code==1){
+                cocoMessage.error(data.message,window.location.reload());
+                // window.location.reload();
+                return;
+            }
+            $('#form_div').css('display', '');
+        })
+
+    });
+</script>
 </body>
 </html>

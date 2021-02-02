@@ -5,15 +5,15 @@
             <div class="row">
                 <div class="col-lg-4 col-12">
                     <div class="header-top-left">
-                        <p><span>Customer Service: </span> (800) 123 456 789</p>
+                        <p><span>7*24在线: </span> (800) 123 456 789</p>
                     </div>
                 </div>
                 <div class="col-lg-8 col-12">
                     <div class="box-right">
                         <ul>
-                            <li class="settings">
-                                <a href="#">Compare (2)</a>
-                            </li>
+{{--                            <li class="settings">--}}
+{{--                                <a href="#">Compare (2)</a>--}}
+{{--                            </li>--}}
                             <li class="settings">
                                 <a href="#" class="drop-toggle">
                                     <span>RMB ￥</span>
@@ -44,13 +44,13 @@
                             </li>
                             <li class="settings">
                                 <a href="#" class="drop-toggle">
-                                    My Account
+                                    个人中心
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="box-dropdown drop-dropdown">
-                                    <li><a href="#">My Account</a></li>
-                                    <li><a href="#">Checkout</a></li>
-                                    <li><a href="login.html">Sign In</a></li>
+                                    <li><a href="#">个人中心</a></li>
+                                    <li><a href="#">结算</a></li>
+                                    <li><a href="/member/login.html">登录</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -66,7 +66,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-6">
                     <div class="logo">
-                        <a href="index.html"><img src="/assets/images/logo/pos-circle-logo.jpg" alt="" class="img-fluid"></a>
+                        <a href="/"><img src="/assets/images/logo/logo.png" alt="" class="img-fluid"></a>
                     </div>
                 </div>
                 <div class="col-lg-9 col-6">
@@ -76,7 +76,7 @@
                                 <div class="top-cat">
                                     <select class="select-option" name="select" id="category2">
                                         {{--                                        <option value="1">All categories22</option>--}}
-                                        <option value="">All categories</option>
+                                        <option value="">所有分类</option>
                                         @if(!empty($categoryList))
                                             @foreach($categoryList as $item)
 
@@ -105,15 +105,15 @@
                                     </select>
                                 </div>
                                 <div class="search_box">
-                                    <input class="header-search" placeholder="Enter your search key ..." type="text">
-                                    <button class="header-search-button" type="submit">Search</button>
+                                    <input class="header-search" placeholder="请输入关键字" type="text">
+                                    <button class="header-search-button" type="submit">搜索</button>
                                 </div>
                             </form>
                         </div>
                         <div class="blockcart">
                             <a href="#" class="drop-toggle">
                                 <img src="/assets/images/cart/cart.png" alt="" class="img-fluid">
-                                <span class="my-cart">My Cart</span>
+                                <span class="my-cart">购物车</span>
                                 <span class="count">2</span>
                                 <span class="total-item">$200.00</span>
                             </a>
@@ -232,21 +232,18 @@
                     <!-- Main Menu Start -->
                     <div class="header-menu add-sticky">
                         <div class="sticky-container">
-                            <div class="logo">
-                                <a href="index.html"><img src="/assets/images/logo/pos-circle-logo.jpg" alt=""
-                                                          class="img-fluid"></a>
-                            </div>
+
                             <nav class="main-menu">
                                 <ul>
-                                    <li>
-                                        <a href="index.html">Home <i class="fa fa-angle-down"></i></a>
+{{--                                    <li>--}}
+{{--                                        <a href="index.html">首页 <i class="fa fa-angle-down"></i></a>--}}
 {{--                                        <ul class="dropdown dropdown-width">--}}
 {{--                                            <li><a href="index.html">Home Version 1</a></li>--}}
 {{--                                            <li><a href="index-2.html">Home Version 2</a></li>--}}
 {{--                                            <li><a href="index-3.html">Home Version 3</a></li>--}}
 {{--                                            <li><a href="index-4.html">Home Version 4</a></li>--}}
 {{--                                        </ul>--}}
-                                    </li>
+{{--                                    </li>--}}
                                     <li>
                                         <a href="shop.html">Shop <i class="fa fa-angle-down"></i></a>
                                         <div class="mega-menu dropdown">

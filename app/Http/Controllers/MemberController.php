@@ -29,10 +29,6 @@ class MemberController extends Controller
 
     public function register()
     {
-        if (Cookie::get('reg_pre_url')) {
-            return view('member.register');
-        }
-        Cookie::queue('reg_pre_url', url()->previous(), 10);
         return view('member.register');
     }
 
@@ -40,8 +36,7 @@ class MemberController extends Controller
     {
         $param = $registerMember->validated();
         $this->memberService->createOne($param);
-        $data['go_url'] = Cookie::get('reg_pre_url') ?? 'login.html';
-        return $this->responseJson(0, '注册成功', $data);
+        return $this->responseJson(0, '注册成功');
     }
 
     public function loginSubmit(LoginMember $loginMember)

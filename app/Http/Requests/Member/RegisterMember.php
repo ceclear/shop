@@ -25,8 +25,7 @@ class RegisterMember extends FormRequest
     {
         return [
             //
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'name' => 'required',
             'email' => 'required|unique:members,email|email:rfc,dns',
             'password' => 'required|confirmed',
             'password_confirmation' => 'required',
@@ -36,8 +35,7 @@ class RegisterMember extends FormRequest
     public function messages()
     {
         return [
-            'first_name.required' => 'first name不能为空',
-            'last_name.required' => 'last name不能为空',
+            'name.required' => '昵称不能为空',
             'email.required' => 'email不能为空',
             'email.email' => 'email格式不对',
             'email.unique' => 'email已经使用了',

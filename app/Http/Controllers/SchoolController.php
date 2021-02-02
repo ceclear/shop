@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Members;
 use App\Models\SubtractDetail;
 use Illuminate\Support\Facades\DB;
 
@@ -18,24 +19,24 @@ class SchoolController extends Controller
     //首页
     public function index()
     {
-        $max = request('max', 20);
-        $num = 0;
+        $max   = request('max', 20);
+        $num   = 0;
         $every = 10;
         $count = request('count', 20);
-        $arr = [];
+        $arr   = [];
         do {
-            $first = rand(1, $max);
-            $second = rand(1, $max);
-            $third = rand($second, $max);
-            $four = rand(1, $max);
-            $five = rand(1, $max);
-            $six = rand($five, $max);
-            $rel1 = $first + $second - $third;
-            $rel2 = $five - $four + $six;
+            $first   = rand(1, $max);
+            $second  = rand(1, $max);
+            $third   = rand($second, $max);
+            $four    = rand(1, $max);
+            $five    = rand(1, $max);
+            $six     = rand($five, $max);
+            $rel1    = $first + $second - $third;
+            $rel2    = $five - $four + $six;
             $strVal1 = $first + $second - $third;
             $strVal2 = $five - $four + $six;
-            $str1 = $first . "+" . $second . "-" . $third . '=' . $strVal1;
-            $str2 = $five . "-" . $four . "+" . $six . '=' . $strVal2;
+            $str1    = $first . "+" . $second . "-" . $third . '=' . $strVal1;
+            $str2    = $five . "-" . $four . "+" . $six . '=' . $strVal2;
             if (($rel1 >= 0 && ($first + $second) <= $max) && !in_array($str1, $arr) && count($arr) < $count) {
                 $arr[] = $str1;
                 $num++;
@@ -49,21 +50,21 @@ class SchoolController extends Controller
         } while ($num < $count);
         shuffle($arr);
         for ($i = 0; $i < $every; $i++) {
-            $a = explode('=', $arr[$i * 2]);
-            $b = explode('=', $arr[$i * 2 + 1]);
+            $a          = explode('=', $arr[$i * 2]);
+            $b          = explode('=', $arr[$i * 2 + 1]);
             $list[$i][] = ['key_str' => $a[0], 'val' => $a[1]];
             $list[$i][] = ['key_str' => $b[0], 'val' => $b[1]];
         }
-//        dd($list);
-        return view('Level1.index', compact("list"));
+        $start_time = time();
+        return view('Level1.index', compact("list", "start_time"));
     }
 
     public function show()
     {
         $subId = request('sub_id');
-        $num = 10;
-        $list = SubtractDetail::where('sub_id', $subId)->get()->toArray();
-        $arr = [];
+        $num   = 10;
+        $list  = SubtractDetail::where('sub_id', $subId)->get()->toArray();
+        $arr   = [];
         if ($list) {
             for ($i = 0; $i < $num; $i++) {
                 $arr[$i][] = $list[$i * 2];
@@ -79,11 +80,10 @@ class SchoolController extends Controller
 
         unset($param['_token']);
         DB::beginTransaction();
-        $flag = true;
-        $msg = "-_- 好棒,你做完了今天的作业,点击下方查看成绩";
+        $flag   = true;
+        $msg    = "-_- 好棒,你做完了今天的作业,点击下方查看成绩";
         $insert = [];
-        $maxSub = SubtractDetail::max('sub_id');
-        $subId = $maxSub ? $maxSub + 1 : 1;
+        $subId  = DB::table('subtracts')->insertGetId(['start_time' => request('start_time'), 'created_at' => time(), 'updated_at' => time()]);
         $keyArr = [];
         foreach ($param as $key => $item) {
             $kk = explode('_', $key)[1];
@@ -93,16 +93,16 @@ class SchoolController extends Controller
             $keyArr[] = $kk;
             if ($item == '') {
                 $flag = false;
-                $msg = "你有作业没有做完哦,点击下方继续做完";
+                $msg  = "你有作业没有做完哦,点击下方继续做完";
                 break;
             }
         }
         SubtractDetail::insert($insert);
-        $data['msg'] = $msg;
-        $data['code'] = 0;
+        $data['msg']    = $msg;
+        $data['code']   = 0;
         $data['sub_id'] = $subId;
         if (!$flag) {
-            $data['msg'] = $msg;
+            $data['msg']  = $msg;
             $data['code'] = 1;
             DB::rollBack();
             return redirect('level1/success')->with($data);
@@ -115,5 +115,13 @@ class SchoolController extends Controller
     {
         $data = ['msg' => session('msg'), 'code' => session('code'), 'sub_id' => session('sub_id')];
         return view('Level1.success', compact("data"));
+    }
+
+    public function checkUser()
+    {
+        if (Members::where('nickname', request('name'))->first()) {
+            return response()->json(['code' => 0, 'message' => '操作成功']);
+        }
+        return response()->json(['code' => 1, 'message' => '没有找到此用户']);
     }
 }

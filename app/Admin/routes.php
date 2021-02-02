@@ -13,5 +13,6 @@ Route::group([
 
     $router->get('/', 'HomeController@index')->name('home');
 
+    $router->get('school-subtract-detail','SchoolController@subtractDetail');
     $router->resource('school', SchoolController::class);//作业
 });
