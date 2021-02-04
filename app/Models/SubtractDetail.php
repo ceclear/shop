@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 
-class SubtractDetail extends Model
+class SubtractDetail extends Orm
 {
 
     public function Subtract()

@@ -3,8 +3,8 @@
 namespace App\Models;
 
 
-
-class Subtract extends Orm
+class AdPosition extends Orm
 {
+
 
 }

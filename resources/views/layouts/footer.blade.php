@@ -1,6 +1,6 @@
 <footer class="mt-30">
     <!-- Newslatter area start -->
-    <div class="newsletter-group">
+    <div style="display: none" class="newsletter-group">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12">

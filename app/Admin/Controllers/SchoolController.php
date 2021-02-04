@@ -17,7 +17,6 @@ use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 use Encore\Admin\Widgets\Table;
 
-date_default_timezone_set('Asia/Shanghai');
 
 class SchoolController extends AdminController
 {

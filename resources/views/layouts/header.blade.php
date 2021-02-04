@@ -244,132 +244,133 @@
 {{--                                            <li><a href="index-4.html">Home Version 4</a></li>--}}
 {{--                                        </ul>--}}
 {{--                                    </li>--}}
-                                    <li>
-                                        <a href="shop.html">Shop <i class="fa fa-angle-down"></i></a>
-                                        <div class="mega-menu dropdown">
-                                            <ul class="mega-menu-inner d-flex">
-                                                <li>
-                                                    <a href="">Shop Layouts</a>
-                                                    <ul>
-                                                        <li><a href="shop.html">Shop</a></li>
-                                                        <li><a href="shop-fullwidth.html">Full Width</a></li>
-                                                        <li><a href="shop-fullwidth-list.html">Full Width list</a></li>
-                                                        <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>
-                                                        <li><a href="shop-right-sidebar-list.html"> Right Sidebar
-                                                                list</a></li>
-                                                        <li><a href="shop-list.html">List View</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="">Other Pages</a>
-                                                    <ul>
-                                                        <li><a href="shopping-cart.html">Cart</a></li>
-                                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                                        <li><a href="checkout.html">Checkout</a></li>
-                                                        <li><a href="my-account.html">My Account</a></li>
-                                                        <li><a href="faq.html">FAQs</a></li>
-                                                        <li><a href="404.html">Error 404</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="">Product Types</a>
-                                                    <ul>
-                                                        <li><a href="product-details.html">Product details</a></li>
-                                                        <li><a href="product-details-external.html">Product external</a>
-                                                        </li>
-                                                        <li><a href="product-details-grouped.html">Product grouped</a>
-                                                        </li>
-                                                        <li><a href="product-details-variable.html">Product variable</a>
-                                                        </li>
-                                                        <li><a href="product-details-bottomtab.html">Tab style - 1</a>
-                                                        </li>
-                                                        <li><a href="product-details-lefttab.html">Tab style - 2</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <a href="">Other Product Types</a>
-                                                    <ul>
-                                                        <li><a href="product-details-righttab.html">Tab style - 3</a>
-                                                        </li>
-                                                        <li><a href="product-details-stickyleft.html">Product sticky
-                                                                left</a></li>
-                                                        <li><a href="product-details-stickyright.html">Product sticky
-                                                                right</a></li>
-                                                        <li><a href="product-details-galleryleft.html">Product leftside
-                                                                Gallery</a></li>
-                                                        <li><a href="product-details-galleryright.html">Product
-                                                                rightside Gallery</a></li>
-                                                        <li><a href="product-details-sliderbox.html">Product
-                                                                Sliderbox</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                            <div class="mega-menu-banner mt-30">
-                                                <a href="shop.html"><img src="/assets/images/bg/custom_banner.jpg"
-                                                                         alt=""></a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <a href="#">Blog <i class="fa fa-angle-down"></i></a>
-                                        <ul class="dropdown dropdown-width">
-                                            <li>
-                                                <a href="blog-grid-right-sidebar.html">Blog Grid<i
-                                                        class="fa fa-angle-right float-right"></i></a>
-                                                <ul class="sub-dropdown dropdown dropdown-width">
-                                                    <li><a href="blog-grid-right-sidebar.html">Right Sidebar</a></li>
-                                                    <li><a href="blog-grid-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a href="blog-grid-fullwidth.html">Full Width</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="blog-list-right-sidebar.html">Blog List<i
-                                                        class="fa fa-angle-right float-right"></i></a>
-                                                <ul class="sub-dropdown dropdown dropdown-width">
-                                                    <li><a href="blog-list-right-sidebar.html">Right Sidebar</a></li>
-                                                    <li><a href="blog-list-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a href="blog-list-fullwidth.html">Full Width</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="blog-details-right-sidebar.html">Blog Single Post<i
-                                                        class="fa fa-angle-right float-right"></i></a>
-                                                <ul class="sub-dropdown dropdown dropdown-width">
-                                                    <li><a href="blog-details.html">Right Sidebar</a></li>
-                                                    <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a href="blog-details-fullwidth.html">Full Width</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="blog-right-sidebar.html">Standard Blog<i
-                                                        class="fa fa-angle-right float-right"></i></a>
-                                                <ul class="sub-dropdown dropdown dropdown-width">
-                                                    <li><a href="blog-right-sidebar.html">Right Sidebar</a></li>
-                                                    <li><a href="blog-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a href="blog-fullwidth.html">Full Width</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#">Pages <i class="fa fa-angle-down"></i></a>
-                                        <ul class="dropdown dropdown-width">
-                                            <li><a href="about">About Us</a></li>
-                                            <li><a href="shop.html">Shop</a></li>
-                                            <li><a href="product-details.html">Product</a></li>
-                                            <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                            <li><a href="checkout.html">Checkout</a></li>
-                                            <li><a href="compare.html">Compare</a></li>
-                                            <li><a href="contact.html">Contact Us</a></li>
-                                            <li><a href="faq.html">Frequently Question</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="404.html">404 Error</a></li>
-                                        </ul>
-                                    </li>
+{{--                                    <li>--}}
+{{--                                        <a href="shop.html">Shop <i class="fa fa-angle-down"></i></a>--}}
+{{--                                        <div class="mega-menu dropdown">--}}
+{{--                                            <ul class="mega-menu-inner d-flex">--}}
+{{--                                                <li>--}}
+{{--                                                    <a href="">Shop Layouts</a>--}}
+{{--                                                    <ul>--}}
+{{--                                                        <li><a href="shop.html">Shop</a></li>--}}
+{{--                                                        <li><a href="shop-fullwidth.html">Full Width</a></li>--}}
+{{--                                                        <li><a href="shop-fullwidth-list.html">Full Width list</a></li>--}}
+{{--                                                        <li><a href="shop-right-sidebar.html">Right Sidebar </a></li>--}}
+{{--                                                        <li><a href="shop-right-sidebar-list.html"> Right Sidebar--}}
+{{--                                                                list</a></li>--}}
+{{--                                                        <li><a href="shop-list.html">List View</a></li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </li>--}}
+{{--                                                <li>--}}
+{{--                                                    <a href="">Other Pages</a>--}}
+{{--                                                    <ul>--}}
+{{--                                                        <li><a href="shopping-cart.html">Cart</a></li>--}}
+{{--                                                        <li><a href="wishlist.html">Wishlist</a></li>--}}
+{{--                                                        <li><a href="checkout.html">Checkout</a></li>--}}
+{{--                                                        <li><a href="my-account.html">My Account</a></li>--}}
+{{--                                                        <li><a href="faq.html">FAQs</a></li>--}}
+{{--                                                        <li><a href="404.html">Error 404</a></li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </li>--}}
+{{--                                                <li>--}}
+{{--                                                    <a href="">Product Types</a>--}}
+{{--                                                    <ul>--}}
+{{--                                                        <li><a href="product-details.html">Product details</a></li>--}}
+{{--                                                        <li><a href="product-details-external.html">Product external</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a href="product-details-grouped.html">Product grouped</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a href="product-details-variable.html">Product variable</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a href="product-details-bottomtab.html">Tab style - 1</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a href="product-details-lefttab.html">Tab style - 2</a>--}}
+{{--                                                        </li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </li>--}}
+{{--                                                <li>--}}
+{{--                                                    <a href="">Other Product Types</a>--}}
+{{--                                                    <ul>--}}
+{{--                                                        <li><a href="product-details-righttab.html">Tab style - 3</a>--}}
+{{--                                                        </li>--}}
+{{--                                                        <li><a href="product-details-stickyleft.html">Product sticky--}}
+{{--                                                                left</a></li>--}}
+{{--                                                        <li><a href="product-details-stickyright.html">Product sticky--}}
+{{--                                                                right</a></li>--}}
+{{--                                                        <li><a href="product-details-galleryleft.html">Product leftside--}}
+{{--                                                                Gallery</a></li>--}}
+{{--                                                        <li><a href="product-details-galleryright.html">Product--}}
+{{--                                                                rightside Gallery</a></li>--}}
+{{--                                                        <li><a href="product-details-sliderbox.html">Product--}}
+{{--                                                                Sliderbox</a></li>--}}
+{{--                                                    </ul>--}}
+{{--                                                </li>--}}
+{{--                                            </ul>--}}
+{{--                                            <div class="mega-menu-banner mt-30">--}}
+{{--                                                <a href="shop.html"><img src="/assets/images/bg/custom_banner.jpg"--}}
+{{--                                                                         alt=""></a>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">Blog <i class="fa fa-angle-down"></i></a>--}}
+{{--                                        <ul class="dropdown dropdown-width">--}}
+{{--                                            <li>--}}
+{{--                                                <a href="blog-grid-right-sidebar.html">Blog Grid<i--}}
+{{--                                                        class="fa fa-angle-right float-right"></i></a>--}}
+{{--                                                <ul class="sub-dropdown dropdown dropdown-width">--}}
+{{--                                                    <li><a href="blog-grid-right-sidebar.html">Right Sidebar</a></li>--}}
+{{--                                                    <li><a href="blog-grid-left-sidebar.html">Left Sidebar</a></li>--}}
+{{--                                                    <li><a href="blog-grid-fullwidth.html">Full Width</a></li>--}}
+{{--                                                </ul>--}}
+{{--                                            </li>--}}
+{{--                                            <li>--}}
+{{--                                                <a href="blog-list-right-sidebar.html">Blog List<i--}}
+{{--                                                        class="fa fa-angle-right float-right"></i></a>--}}
+{{--                                                <ul class="sub-dropdown dropdown dropdown-width">--}}
+{{--                                                    <li><a href="blog-list-right-sidebar.html">Right Sidebar</a></li>--}}
+{{--                                                    <li><a href="blog-list-left-sidebar.html">Left Sidebar</a></li>--}}
+{{--                                                    <li><a href="blog-list-fullwidth.html">Full Width</a></li>--}}
+{{--                                                </ul>--}}
+{{--                                            </li>--}}
+{{--                                            <li>--}}
+{{--                                                <a href="blog-details-right-sidebar.html">Blog Single Post<i--}}
+{{--                                                        class="fa fa-angle-right float-right"></i></a>--}}
+{{--                                                <ul class="sub-dropdown dropdown dropdown-width">--}}
+{{--                                                    <li><a href="blog-details.html">Right Sidebar</a></li>--}}
+{{--                                                    <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>--}}
+{{--                                                    <li><a href="blog-details-fullwidth.html">Full Width</a></li>--}}
+{{--                                                </ul>--}}
+{{--                                            </li>--}}
+{{--                                            <li>--}}
+{{--                                                <a href="blog-right-sidebar.html">Standard Blog<i--}}
+{{--                                                        class="fa fa-angle-right float-right"></i></a>--}}
+{{--                                                <ul class="sub-dropdown dropdown dropdown-width">--}}
+{{--                                                    <li><a href="blog-right-sidebar.html">Right Sidebar</a></li>--}}
+{{--                                                    <li><a href="blog-left-sidebar.html">Left Sidebar</a></li>--}}
+{{--                                                    <li><a href="blog-fullwidth.html">Full Width</a></li>--}}
+{{--                                                </ul>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">Pages <i class="fa fa-angle-down"></i></a>--}}
+{{--                                        <ul class="dropdown dropdown-width">--}}
+{{--                                            <li><a href="about">About Us</a></li>--}}
+{{--                                            <li><a href="shop.html">Shop</a></li>--}}
+{{--                                            <li><a href="product-details.html">Product</a></li>--}}
+{{--                                            <li><a href="shopping-cart.html">Shopping Cart</a></li>--}}
+{{--                                            <li><a href="wishlist.html">Wishlist</a></li>--}}
+{{--                                            <li><a href="checkout.html">Checkout</a></li>--}}
+{{--                                            <li><a href="compare.html">Compare</a></li>--}}
+{{--                                            <li><a href="contact.html">Contact Us</a></li>--}}
+{{--                                            <li><a href="faq.html">Frequently Question</a></li>--}}
+{{--                                            <li><a href="my-account.html">My Account</a></li>--}}
+{{--                                            <li><a href="login.html">Login</a></li>--}}
+{{--                                            <li><a href="register.html">Register</a></li>--}}
+{{--                                            <li><a href="404.html">404 Error</a></li>--}}
+{{--                                        </ul>--}}
+{{--                                    </li>--}}
+                                    <li><a href="/article/list.html">文章</a></li>
                                     <li><a href="about.html">About Us</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
                                 </ul>

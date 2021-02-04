@@ -1,5 +1,7 @@
 <?php
+
 use Illuminate\Routing\Router;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,5 +31,10 @@ Route::group(['prefix' => 'level1'], function () {
     Route::post('submit', 'SchoolController@submit');
     Route::get('success', 'SchoolController@success');
     Route::post('check_user', 'SchoolController@checkUser');
+});
+
+Route::group(['prefix' => 'article'], function () {
+    Route::get('list.html', 'ArticleController@lists');
+
 });
 

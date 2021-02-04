@@ -38,7 +38,7 @@ class SyncCategory extends Command
     {
         try {
             $start      = time();
-            $apiRequest = new DingDanXiaApiRequest('NvmIdPIv1wGTeKxx9lNnDGwphcpUHdJj');
+            $apiRequest = new DingDanXiaApiRequest(env('DDX_API_KEY'));
 
             $this->getRequestData($apiRequest, 0, 0);
             $end = time();

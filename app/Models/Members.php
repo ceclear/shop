@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 
-class Members extends Model
+class Members extends Orm
 {
     /**
      * Define table name
@@ -47,5 +46,5 @@ class Members extends Model
      */
     protected $guarded = ['id'];
 
-    protected $dateFormat = "U";
+
 }

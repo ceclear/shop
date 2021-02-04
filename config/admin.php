@@ -157,8 +157,8 @@ return [
 
         // Image and file upload path under the disk above.
         'directory' => [
-            'image' => 'images',
-            'file'  => 'files',
+            'image' => 'admin_images',
+            'file'  => 'admin_files',
         ],
     ],
 
@@ -395,6 +395,52 @@ return [
     |
     */
     'extensions' => [
+        'grid-lightbox' => [
 
+            // Set to `false` if you want to disable this extension
+            'enable' => true,
+        ],
+        'wang-editor2' => [
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+            // 编辑器的配置
+            'config' => [
+                'uploadImgFileName' => 'upload',
+                'uploadImgUrl' => '/admin/editor2-upload-image',
+                'menus' => [
+                    'source',
+                    '|',
+                    'bold',
+                    'underline',
+                    'italic',
+                    'strikethrough',
+                    'eraser',
+                    'forecolor',
+                    'bgcolor',
+                    '|',
+                    'quote',
+                    'fontfamily',
+                    'fontsize',
+                    'head',
+                    'unorderlist',
+                    'orderlist',
+                    'alignleft',
+                    'aligncenter',
+                    'alignright',
+                    '|',
+                    'link',
+                    'unlink',
+                    'table',
+                    '|',
+                    'img',
+                    'video',
+                    'insertcode',
+                    '|',
+                    'undo',
+                    'redo',
+                    'fullscreen'
+                ],
+            ]
+        ]
     ],
 ];
