@@ -11,11 +11,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Members;
 use App\Models\SubtractDetail;
+use App\Traits\ResponseJson;
 use Illuminate\Support\Facades\DB;
 
 class SchoolController extends Controller
 {
-
+    use ResponseJson;
     //首页
     public function index()
     {
@@ -120,8 +121,8 @@ class SchoolController extends Controller
     public function checkUser()
     {
         if (Members::where('nickname', request('name'))->first()) {
-            return response()->json(['code' => 0, 'message' => '操作成功']);
+            return $this->responseJson(0,'操作成功');
         }
-        return response()->json(['code' => 1, 'message' => '没有找到此用户']);
+        return $this->responseJson(1,'没有找到此用户');
     }
 }

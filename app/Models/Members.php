@@ -5,12 +5,7 @@ namespace App\Models;
 
 class Members extends Orm
 {
-    /**
-     * Define table name
-     *
-     * @var string
-     */
-    protected $table = 'Members';
+
 
     /**
      * Define a primary key
