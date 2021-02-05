@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section('title','文章详情')
+@section('title','文章详情-New')
 @section("content")
     <div class="breadcrumbs_area">
         <div class="container">
@@ -21,7 +21,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <!-- Single Blog Start -->
                     <div class="single-blog mt-50">
                         <div class="blog-image mb-30">
                             <a><img src="{{$detail['image']}}" alt="" class="img-fluid"></a>
