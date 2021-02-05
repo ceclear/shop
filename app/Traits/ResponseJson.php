@@ -32,7 +32,7 @@ trait ResponseJson
         }
         $ret = [
             "code" => $code,
-            "msg" => $msg,
+            "message" => $msg,
             "data" => $data,
         ];
         return response()->json($ret);

@@ -123,6 +123,6 @@ class SchoolController extends Controller
         if (Members::where('nickname', request('name'))->first()) {
             return $this->responseJson(0,'操作成功');
         }
-        return $this->responseJson(1,'没有找到此用户');
+        return $this->responseJson(1,'没有找到此用户,去注册？');
     }
 }

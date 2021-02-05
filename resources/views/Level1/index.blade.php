@@ -99,8 +99,14 @@
         let load = layer.load();
         $.post('/level1/check_user', {'name': value, '_token': "{{csrf_token()}}"}, function (data) {
             layer.close(load);
-            if(data.code==1){
-                cocoMessage.error(data.message,window.location.reload());
+            if (data.code == 1) {
+                cocoMessage.error(data.message);
+                setTimeout(function (){
+                    layer.load();
+                },2000)
+                setTimeout(function () {
+                    window.location.href = '{{route('member.register')}}'
+                }, 3000)
                 // window.location.reload();
                 return;
             }
