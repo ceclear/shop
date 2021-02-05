@@ -20,14 +20,28 @@ class ArticleController extends Controller
 
     public function lists()
     {
-        $lists = $this->articleService->lists();
-        return view('article.index', compact("lists"));
+        $lists        = $this->articleService->lists();
+        $recentLists  = $this->articleService->recentList();
+        $recentAuthor = $this->articleService->authorList();
+        $catLists     = $this->articleService->articleCatList();
+        return view('article.index', compact("lists", "catLists", "recentLists", "recentAuthor"));
     }
 
-    public function register()
+    public function detail()
     {
-        return view('member.register');
+        $detail = $this->articleService->detail();
+        $where  = [
+            'id'     => ['symbol' => '!=', 'val' => $detail['id']],
+//            'tag'    => ['symbol' => 'like', 'val' => $detail['tag']],
+            'status' => 1
+        ];
+        if (!empty($detail['tags'])) {
+            foreach ($detail['tags'] as $item) {
+                $where['tag'][] = ['symbol' => 'like', 'val' => $item];
+            }
+        }
+//        dd($where);
+        $release = $this->articleService->getList($where);
+        return view('article.detail', compact("detail", "release"));
     }
-
-
 }

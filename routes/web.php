@@ -26,7 +26,7 @@ Route::group(['prefix' => 'member'], function (Router $router) {
 });
 
 Route::group(['prefix' => 'level1'], function () {
-    Route::get('/', 'SchoolController@index');
+    Route::get('/', 'SchoolController@index')->name('level1');
     Route::get('show/{sub_id?}', 'SchoolController@show');
     Route::post('submit', 'SchoolController@submit');
     Route::get('success', 'SchoolController@success');
@@ -34,7 +34,7 @@ Route::group(['prefix' => 'level1'], function () {
 });
 
 Route::group(['prefix' => 'article'], function () {
-    Route::get('list.html', 'ArticleController@lists');
-
+    Route::get('list.html', 'ArticleController@lists')->name('article.list');
+    Route::get('detail.html', 'ArticleController@detail')->name('article.detail');
 });
 

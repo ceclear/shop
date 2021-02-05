@@ -6,6 +6,10 @@ namespace App\Models;
 class Article extends Orm
 {
 
+    const Tags = [
+        'Fashion', 'White', 'T-shirt', 'Laravel'
+    ];
+
     public function catInfo()
     {
         return $this->belongsTo(ArticleCat::class, 'article_cat_id');

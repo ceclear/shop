@@ -15,7 +15,8 @@
                 <div class="col-lg-6 col-12">
                     <div class="newsletter-box">
                         <form id="mc-form" class="mc-form">
-                            <input type="email" id="mc-email" class="email-box" placeholder="enter your email" name="EMAIL">
+                            <input type="email" id="mc-email" class="email-box" placeholder="enter your email"
+                                   name="EMAIL">
                             <button id="mc-submit" class="newsletter-btn" type="submit">Subscribe</button>
                         </form>
                         <!-- mailchimp-alerts Start -->
@@ -159,7 +160,7 @@
                                         <li><a href="#">Box Camera</a></li>
                                         <li><a href="#">Mini Camera</a></li>
                                         <li><a href="#">XL Camera</a></li>
-                                        <li><a href="#">Point shoot camera</a></li>
+                                        <li><a href="{{route('level1')}}">Work Entrance</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -174,14 +175,15 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-5 col-md-12 col-12">
+                <div style="max-width: 31%" class="col-lg-5 col-md-12 col-12">
                     <div class="footer-bottom-content">
                         <div class="footer-copyright">
                             <p>Copyright &copy; 2020.Company name All rights reserved.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 col-md-12 col-12">
+                <div><a href="https://beian.miit.gov.cn" style="cursor: pointer">渝ICP备2021000774号-1</a></div>
+                <div style="max-width: 51%" class="col-lg-7 col-md-12 col-12">
                     <div class="payment">
                         <a href="#">
                             <img src="/assets/images/payment/footerend.png" alt="" class="img-fluid">
@@ -206,21 +208,21 @@
 
 <script src="/assets/js/common.js"></script>
 <script type="text/javascript">
-    $(function (){
+    $(function () {
         return;
-        $.get('category',function (data){
+        $.get('category', function (data) {
             // console.log(data)
-            let option='';
-            $.each(data,function (k,v){
-                option+='<li data-value="'+v["id"]+'" class="option first_title">'+v['name']+'</li>';
-                $.each(v['child'],function (kk,vv){
+            let option = '';
+            $.each(data, function (k, v) {
+                option += '<li data-value="' + v["id"] + '" class="option first_title">' + v['name'] + '</li>';
+                $.each(v['child'], function (kk, vv) {
                     // console.log(vv['child'])
-                    if(typeof vv['child'] =='undefined'){
-                       return true;
+                    if (typeof vv['child'] == 'undefined') {
+                        return true;
                     }
-                    option+='<li data-value="'+vv["id"]+'" class="option">- -'+vv['name']+'</li>';
-                    $.each(vv['child'],function (kkk,vvv){
-                        option+='<li data-value="'+vvv["id"]+'" class="option">- - -'+vvv['name']+'</li>';
+                    option += '<li data-value="' + vv["id"] + '" class="option">- -' + vv['name'] + '</li>';
+                    $.each(vv['child'], function (kkk, vvv) {
+                        option += '<li data-value="' + vvv["id"] + '" class="option">- - -' + vvv['name'] + '</li>';
                     });
                 });
             });

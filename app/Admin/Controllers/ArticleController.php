@@ -61,6 +61,9 @@ class ArticleController extends AdminController
         $grid->column('author', '作者');
         $grid->column('praise', '点赞数量');
         $grid->column('sort', '排序');
+        $grid->column('tag', '标签')->display(function ($v) {
+            return explode(',', $v);
+        })->label();
         $grid->column('pub_time', '发布时间');
         $grid->column('status', '状态')->display(function ($v) {
             return ArticleCat::Status[$v];
@@ -112,6 +115,7 @@ class ArticleController extends AdminController
         $form->text('author', '作者');
         $form->datetime('pub_time', '发布时间');
         $form->editor2('content');
+        $form->tags('tag', '标签')->options(Article::Tags);
         $form->switch('status', '状态')->default(1);
         return $form;
     }
