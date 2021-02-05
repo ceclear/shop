@@ -1,4 +1,4 @@
-FROM composer:2.0.7 as composer
+FROM registry.cn-chengdu.aliyuncs.com/happyceclear/composer-base-image:2.0.7 as composer
 
 FROM registry.cn-chengdu.aliyuncs.com/happyceclear/php_base_image:latest
 
