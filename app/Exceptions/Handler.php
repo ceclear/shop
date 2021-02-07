@@ -62,6 +62,12 @@ class Handler extends ExceptionHandler
             }
             return response()->json(['code' => 10000, 'message' => $error]);
         }
+        if ($exception instanceof \BadMethodCallException) {
+            if (preg_match("/^api\//", $request->path()) === false) {
+                return parent::render($request, $exception);
+            }
+            return response()->json(['code' => 20000, 'message' => '方法不存在']);
+        }
         return parent::render($request, $exception);
     }
 }

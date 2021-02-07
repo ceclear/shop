@@ -20,6 +20,7 @@ class ArticleController extends Controller
 
     public function lists()
     {
+        dd(session('is_login'));
         $lists        = $this->articleService->lists();
         $recentLists  = $this->articleService->recentList();
         $recentAuthor = $this->articleService->authorList();

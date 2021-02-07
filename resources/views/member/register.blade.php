@@ -29,7 +29,7 @@
                             </div>
                             <div class="form_group col-12">
                                 <label class="form-label">昵称<span>*</span></label>
-                                <input class="input-form" data-tip="昵称" required name="name" type="text">
+                                <input class="input-form" data-tip="昵称" required name="nickname" type="text">
                             </div>
                             <div class="form_group col-12">
                                 <label class="form-label">邮箱<span>*</span></label>
@@ -111,9 +111,13 @@
                 ajax(
                     {
                         'data': formData,
-                        'url': 'register_submit',
+                        'url': "{{route('api.register')}}",
                         'type': 'post',
-                        'dataType': 'json'
+                        'dataType': 'json',
+                        'callback': 'f',
+                        'func':function (){
+                            setTimeout(function (){self.location = document.referrer;},1500)
+                        }
                     }
                 )
             }

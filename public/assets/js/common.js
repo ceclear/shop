@@ -8,6 +8,17 @@ function ajax(options) {
         status: null,
         success: function (res) {
             cocoMessage.success(res.message)
+            if (options.callback) {
+                if (options.callback == 'g') {
+                    setTimeout(function () {
+                        self.location = document.referrer;
+                    }, 2000)
+                }
+                if (options.callback == 'f') {
+                    options.func(res);
+                }
+            }
+
         },
         complete: function () {
         },
@@ -133,5 +144,13 @@ function validateRequire(obj) {
         }
     });
     return success;
+}
+
+function loadingShow(t) {
+    Dialog.init('<img src="/assets/dialog/dist/load3.gif" width="48px"/>', {
+        mask: 0,
+        addClass: 'dialog_load',
+        time: t
+    });
 }
 

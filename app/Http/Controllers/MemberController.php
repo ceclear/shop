@@ -2,18 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Http\Requests\Member\LoginMember;
-use App\Http\Requests\Member\RegisterMember;
 use App\Services\MemberService;
-use App\Traits\ResponseJson;
-use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Hash;
-
 
 class MemberController extends Controller
 {
-    use ResponseJson;
 
     protected $memberService;
 
@@ -31,26 +23,4 @@ class MemberController extends Controller
     {
         return view('member.register');
     }
-
-    public function registerSubmit(RegisterMember $registerMember)
-    {
-        $param = $registerMember->validated();
-        $this->memberService->createOne($param);
-        return $this->responseJson(0, '注册成功');
-    }
-
-    public function loginSubmit(LoginMember $loginMember)
-    {
-        $param = $loginMember->validated();
-        $info = $this->memberService->login($param);
-        if (!$info) {
-            return $this->responseJson(1, '没有找到用户');
-        }
-        if (!Hash::check($info['salt'] . $param['password'], $info['password'])) {
-            return $this->responseJson(1, '密码错误');
-        }
-        Cookie::queue('user', $info);
-        return $this->responseJson(0, '登录成功');
-    }
-
 }

@@ -21,8 +21,6 @@ Route::get('category', 'CategoryController@lists');
 Route::group(['prefix' => 'member'], function (Router $router) {
     $router->get('login.html', 'MemberController@login')->name('member.login');
     $router->get('register.html', 'MemberController@register')->name('member.register');
-    $router->post('register_submit', 'MemberController@registerSubmit');
-    $router->post('login_submit', 'MemberController@loginSubmit');
 });
 
 Route::group(['prefix' => 'level1'], function () {

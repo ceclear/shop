@@ -33,8 +33,8 @@ class LoginMember extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'email不能为空',
-            'password.required' => 'password不能为空',
+            'username.required' => '用户名不能为空',
+            'password.required' => '密码不能为空',
         ];
     }
 }

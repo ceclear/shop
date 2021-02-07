@@ -3,33 +3,40 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserLogin;
+use App\Http\Requests\Member\LoginMember;
+use App\Http\Requests\Member\RegisterMember;
+use App\Services\MemberService;
+use App\Traits\ResponseJson;
 use GenTux\Jwt\JwtToken;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+
 
 class LoginController extends Controller
 {
-    //
+    use ResponseJson;
 
-    public function login(JwtToken $jwtToken,UserLogin $userLogin)
+    protected $memberService;
+
+    public function __construct(MemberService $memberService)
     {
-//        $validator = Validator::make($request->input(),
-//            [
-//                'username' => 'required',
-//                'password' => 'required'
-//            ],
-//            [
-//                'username.required' => '用户名不能为空',
-//                'password.required' => '密码不能为空'
-//            ]);
-//        if ($validator->fails()) {
-//            return response()->json(['code' => 100001, 'message' => $validator->errors()->first()]);
-//        }
-        $payload       = ['exp' => time() + 7200, 'sub' => 'all jwt', 'iss' => 'ceclear', 'iat' => time(), 'uid' => 1, 'aud' => 'www.ceclear.com']; // expire in 2 hours
-        $data['code']  = 0;
-        $token         = $jwtToken->createToken($payload);
-        $data['token'] = $token;
-        return response()->json($data);
+        $this->memberService = $memberService;
+    }
+
+    public function login(LoginMember $loginMember, JwtToken $jwtToken)
+    {
+        $rel = $this->memberService->login($loginMember, $jwtToken);
+        if ($rel === false) {
+            return $this->responseJson(1, $this->memberService->getFirstError());
+        }
+        session(['is_login'=>123]);
+        return $this->responseJson(0, '登录成功', $rel);
+    }
+
+    public function register(RegisterMember $registerMember)
+    {
+        $rel = $this->memberService->register($registerMember);
+        if ($rel === false) {
+            return $this->responseJson(1, $this->memberService->getFirstError());
+        }
+        return $this->responseJson(0, '注册成功', $rel);
     }
 }

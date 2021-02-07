@@ -50,7 +50,7 @@
                                 <ul class="box-dropdown drop-dropdown">
                                     <li><a href="#">个人中心</a></li>
                                     <li><a href="#">结算</a></li>
-                                    <li><a href="/member/login.html">登录</a></li>
+                                    <li><a href="{{route('member.login')}}">登录</a></li>
                                 </ul>
                             </li>
                         </ul>

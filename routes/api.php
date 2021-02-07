@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 //});
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
-    $router->post('login', 'LoginController@login');
+    $router->post('login', 'LoginController@login')->name('api.login');
+    $router->post('register', 'LoginController@register')->name('api.register');
     $router->post('info', 'UserController@info')->middleware('jwt');
 });
