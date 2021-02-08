@@ -27,7 +27,7 @@ class LoginController extends Controller
         if ($rel === false) {
             return $this->responseJson(1, $this->memberService->getFirstError());
         }
-        session(['is_login'=>123]);
+        session(['users'=>2222]);
         return $this->responseJson(0, '登录成功', $rel);
     }
 

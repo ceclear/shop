@@ -80,7 +80,7 @@
             ajax(
                 {
                     'data': formData,
-                    'url': "{{route('api.login')}}",
+                    'url': "{{route('member.web_login')}}",
                     'type': 'post',
                     'dataType': 'json',
                     'callback': 'f',

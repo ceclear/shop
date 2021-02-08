@@ -3,6 +3,7 @@
 
 namespace App\Services;
 
+use App\Libs\MemberRedis;
 use App\Models\Members;
 use App\Traits\Errors;
 use GenTux\Jwt\JwtToken;
@@ -25,9 +26,11 @@ class MemberService extends BaseService
             $this->setError('password_invalid', '密码错误');
             return false;
         }
-        $payload = ['exp' => time() + 7200, 'sub' => 'all jwt', 'iss' => 'ceclear', 'iat' => time(), 'uid' => $info['id'], 'aud' => config('app.url')]; // expire in 2 hours
-
-        return $jwtToken->createToken($payload);
+        $expire  = config('constants.jwt_user_expire');
+        $payload = ['exp' => time() + $expire, 'sub' => 'all jwt', 'iss' => 'ceclear', 'iat' => time(), 'uid' => $info['id'], 'aud' => config('app.url')]; // expire in 2 hours
+        $token   = $jwtToken->createToken($payload);
+        MemberRedis::getRedisInstance()->setLogin($info, $token->token(), $expire);
+        return $token;
     }
 
     public function register($data)
@@ -41,4 +44,5 @@ class MemberService extends BaseService
         $rel                = Members::create($insert);
         return $rel ? true : false;
     }
+
 }

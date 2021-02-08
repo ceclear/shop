@@ -89,7 +89,7 @@
 {{--<script src="assets/js/layer.js"></script>--}}
 <script src="assets/js/coco-message.js"></script>
 <script src="assets/js/common.js"></script>
-<script src="/assets/dialog/dist/mDialogMin.js"></script>
+<script src="assets/dialog/dist/mDialogMin.js"></script>
 <script>
     $(function () {
         if (localStorage.getItem('token')) {
