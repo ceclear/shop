@@ -342,8 +342,6 @@
 
 <a class="dwo-home" onclick="back()" style="cursor: pointer">返回</a>
 <script>
-    setTimeout(back, 3000)
-
     function back() {
         self.location = document.referrer;
     }
