@@ -147,7 +147,7 @@ function validateRequire(obj) {
 }
 
 function loadingShow(t) {
-    Dialog.init('<img src="/assets/dialog/dist/load3.gif" width="48px"/>', {
+    Dialog.init('<img src="assets/dialog/dist/load3.gif" width="48px"/>', {
         mask: 0,
         addClass: 'dialog_load',
         time: t
