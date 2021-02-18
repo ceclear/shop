@@ -39,12 +39,12 @@ class LoginController extends Controller
         return $this->responseJson(0, '注册成功', $rel);
     }
 
-    public function miniLogin()
+    public function miniLogin(JwtToken $jwtToken)
     {
-        $rel = $this->memberService->mini_Login();
+        $rel = $this->memberService->mini_Login($jwtToken);
         if ($rel === false) {
             return $this->responseJson(1, '登录失败');
         }
-        return $this->responseJson(0, '登录成功');
+        return $this->responseJson(0, '登录成功',$rel);
     }
 }

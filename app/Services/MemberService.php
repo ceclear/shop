@@ -46,7 +46,7 @@ class MemberService extends BaseService
         return $rel ? true : false;
     }
 
-    public function mini_Login()
+    public function mini_Login(JwtToken $jwtToken)
     {
         $userInfo = request('user_info');
         if (empty($userInfo)) {
@@ -61,8 +61,11 @@ class MemberService extends BaseService
         if (!empty($wechat['errcode'])) {
             return false;
         }
-        $rel = Members::firstOrCreate(['openid' => $wechat['openid']], ['nickname' => $userInfo['nickName'], 'avatar' => $userInfo['avatarUrl'], 'sex' => $userInfo['gender']]);
-        return $rel ? true : false;
+        $rel     = Members::firstOrCreate(['openid' => $wechat['openid']], ['nickname' => $userInfo['nickName'], 'avatar' => $userInfo['avatarUrl'], 'sex' => $userInfo['gender']]);
+        $expire  = config('constants.jwt_user_expire');
+        $payload = ['exp' => time() + $expire, 'sub' => 'all jwt', 'iss' => 'ceclear', 'iat' => time(), 'uid' => $rel['id'], 'aud' => config('app.url')]; // expire in 2 hours
+        $token   = $jwtToken->createToken($payload);
+        return ['token' => $token->token(), 'user_id' => $rel['id']];
     }
 
 }
