@@ -27,7 +27,6 @@ class LoginController extends Controller
         if ($rel === false) {
             return $this->responseJson(1, $this->memberService->getFirstError());
         }
-        session(['users'=>2222]);
         return $this->responseJson(0, '登录成功', $rel);
     }
 
@@ -38,5 +37,14 @@ class LoginController extends Controller
             return $this->responseJson(1, $this->memberService->getFirstError());
         }
         return $this->responseJson(0, '注册成功', $rel);
+    }
+
+    public function miniLogin()
+    {
+        $rel = $this->memberService->mini_Login();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->memberService->getFirstError());
+        }
+        return $this->responseJson(0, '登录成功', $rel);
     }
 }

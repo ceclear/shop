@@ -22,3 +22,8 @@ Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
     $router->post('register', 'LoginController@register')->name('api.register');
     $router->post('info', 'UserController@info')->middleware('jwt');
 });
+
+Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
+    $router->post('mini_login', 'LoginController@miniLogin')->name('api.mini_login');
+});
+

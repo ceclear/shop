@@ -16,6 +16,7 @@
         "laravel-admin-ext/grid-lightbox": "^1.0",
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5",
+        "overtrue/laravel-wechat": "^5.1",
         "predis/predis": " ^1.1"
     },
     "require-dev": {
@@ -65,5 +66,11 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
     }
 }

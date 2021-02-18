@@ -6,6 +6,7 @@ namespace App\Services;
 use App\Libs\MemberRedis;
 use App\Models\Members;
 use App\Traits\Errors;
+use EasyWeChat\Factory;
 use GenTux\Jwt\JwtToken;
 use Illuminate\Support\Facades\Hash;
 
@@ -43,6 +44,22 @@ class MemberService extends BaseService
         $insert['password'] = Hash::make($salt . $data['password']);
         $rel                = Members::create($insert);
         return $rel ? true : false;
+    }
+
+    public function mini_Login()
+    {
+        $userInfo = request('user_info');
+        if (empty($userInfo)) {
+            return false;
+        }
+        $userInfo = json_decode($userInfo, true);
+        if (empty($userInfo)) {
+            return false;
+        }
+        $app = Factory::miniProgram(config('wechat.mini_program.default'));
+        $rel = $app->auth->session(request('code'));
+        dd($rel);
+
     }
 
 }
