@@ -43,8 +43,8 @@ class LoginController extends Controller
     {
         $rel = $this->memberService->mini_Login();
         if ($rel === false) {
-            return $this->responseJson(1, $this->memberService->getFirstError());
+            return $this->responseJson(1, '登录失败');
         }
-        return $this->responseJson(0, '登录成功', $rel);
+        return $this->responseJson(0, '登录成功');
     }
 }

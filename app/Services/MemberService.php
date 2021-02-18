@@ -56,10 +56,13 @@ class MemberService extends BaseService
         if (empty($userInfo)) {
             return false;
         }
-        $app = Factory::miniProgram(config('wechat.mini_program.default'));
-        $rel = $app->auth->session(request('code'));
-        dd($rel);
-
+        $app    = Factory::miniProgram(config('wechat.mini_program.default'));
+        $wechat = $app->auth->session(request('code'));
+        if (!empty($wechat['errcode'])) {
+            return false;
+        }
+        $rel = Members::firstOrCreate(['openid' => $wechat['openid']], ['nickname' => $userInfo['nickName'], 'avatar' => $userInfo['avatarUrl'], 'sex' => $userInfo['gender']]);
+        return $rel ? true : false;
     }
 
 }
