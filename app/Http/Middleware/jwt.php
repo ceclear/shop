@@ -7,7 +7,7 @@ use GenTux\Jwt\GetsJwtToken;
 
 class jwt
 {
-    use GetsJwtToken;
+    use GetsJwtToken, GetsJwtToken;
 
     public function handle($request, Closure $next)
     {
@@ -17,6 +17,11 @@ class jwt
         if (!$this->jwtToken()->validate()) {
             return response()->json(['code' => 2, 'message' => '登录状态失效']);
         }
+        $payload = $this->jwtPayload();
+        if ($payload['exp'] <= time()) {
+            return response()->json(['code' => 2, 'message' => '登录已过期']);
+        }
+        $request->uid = $payload['uid'];
         return $next($request);
     }
 }

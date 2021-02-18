@@ -46,6 +46,7 @@ class MemberService extends BaseService
         return $rel ? true : false;
     }
 
+    //小程序登录
     public function mini_Login(JwtToken $jwtToken)
     {
         $userInfo = request('user_info');
@@ -66,6 +67,14 @@ class MemberService extends BaseService
         $payload = ['exp' => time() + $expire, 'sub' => 'all jwt', 'iss' => 'ceclear', 'iat' => time(), 'uid' => $rel['id'], 'aud' => config('app.url')]; // expire in 2 hours
         $token   = $jwtToken->createToken($payload);
         return ['token' => $token->token(), 'user_id' => $rel['id']];
+    }
+
+    public function info()
+    {
+        $userId     = request()->uid;
+        $userInfo   = Members::where('id', $userId)->select(['nickname', 'avatar'])->first();
+        $orderCount = ['delivery' => rand(1, 100), 'payment' => rand(1, 100), 'received' => rand(1, 100)];
+        return compact("userInfo", "orderCount");
     }
 
 }
