@@ -20,10 +20,13 @@
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
     $router->post('login', 'LoginController@login')->name('api.login');
     $router->post('register', 'LoginController@register')->name('api.register');
-    $router->get('info', 'MemberController@info')->middleware('jwt');
+
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
     $router->post('mini_login', 'LoginController@miniLogin')->name('api.mini_login');
+    $router->get('info', 'MemberController@info')->middleware('jwt');
+    $router->get('address_list', 'AddressController@lists')->middleware('jwt');
+    $router->post('add_address', 'AddressController@add')->middleware('jwt');
 });
 

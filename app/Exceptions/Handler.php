@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use GenTux\Jwt\Exceptions\JwtException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -52,7 +53,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if($exception instanceof NotFoundHttpException){
+        if ($exception instanceof JwtException) return response()->json(['code' => 10000, 'message' => 'Jwt token不存在或出错']);
+        if ($exception instanceof NotFoundHttpException) {
             return response()->view('404');
         }
         if ($exception instanceof ValidationException) {

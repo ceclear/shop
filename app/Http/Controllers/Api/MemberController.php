@@ -19,7 +19,7 @@ class MemberController extends Controller
     }
     public function info()
     {
-        $rel=$this->memberService->info();
+        $rel = $this->memberService->info();
         return $this->responseJson(0, '', $rel);
     }
 }
