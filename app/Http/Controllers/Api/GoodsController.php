@@ -13,11 +13,25 @@ class GoodsController extends Controller
 
     public function lists()
     {
-        $page = request('page', 1);
-        //每页的条数
-        $pageSize = request('page_size', 15);
-        $offset   = ($page * $pageSize) - $pageSize;
-        $list     = Goods::where('status', 1)->limit($pageSize)->offset($offset)->get(['id', 'sku', 'title', 'category_id', 'discover', 'price', 'brand_code', 'sale'])->toArray();
+        $condition  = [
+            'status' => 1
+        ];
+        $categoryId = request('category_id') ?? 0;
+        $keyWord    = request('seach') ?? '';
+        $sortKey    = request('sortType') ?? 'id';
+        if (!empty($categoryId)) {
+            $condition['category_id'] = ['symbol' => '=', 'val' => $categoryId];
+        }
+        if (!empty($keyWord)) {
+            $condition['title'] = ['symbol' => 'like', 'val' => '%' . $keyWord . '%'];
+        }
+
+        $sort = request('sortPrice') ?? 1 ? 'asc' : 'desc';
+
+        $field = ['id', 'sku', 'title', 'category_id', 'discover', 'price', 'brand_code', 'sale'];
+        $page  = request('page') ?? 1;
+        $model = new Goods();
+        $list  = $model->getListPage($condition, $field, $page, 15, [$sortKey => $sort]);
         return $this->responseJson(0, '', $list);
     }
 }
