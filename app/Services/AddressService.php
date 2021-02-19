@@ -77,4 +77,29 @@ class AddressService extends BaseService
         return compact("detail");
     }
 
+    public function delete()
+    {
+        $userId    = request()->uid;
+        $addressId = request('address_id');
+        if (empty($addressId)) {
+            $this->setError('', '地址信息错误');
+            return false;
+        }
+        Address::where('id', $addressId)->where('user_id', $userId)->delete();
+        return true;
+    }
+
+    public function setDefault()
+    {
+        $userId    = request()->uid;
+        $addressId = request('address_id');
+        if (empty($addressId)) {
+            $this->setError('', '地址信息错误');
+            return false;
+        }
+        Address::where('user_id', $userId)->update(['is_default' => 1]);
+        Address::where('id', $addressId)->where('user_id', $userId)->update(['is_default' => 0]);
+        return true;
+    }
+
 }

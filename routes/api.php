@@ -30,5 +30,7 @@ Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
     $router->post('add_address', 'AddressController@add')->middleware('jwt');
     $router->post('edit_address', 'AddressController@edit')->middleware('jwt');
     $router->get('address_info', 'AddressController@info')->middleware('jwt');
+    $router->post('address_delete', 'AddressController@delete')->middleware('jwt');
+    $router->post('address_default', 'AddressController@setDefault')->middleware('jwt');
 });
 

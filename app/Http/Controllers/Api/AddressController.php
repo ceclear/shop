@@ -48,4 +48,22 @@ class AddressController extends Controller
         }
         return $this->responseJson(0, '', $rel);
     }
+
+    public function delete()
+    {
+        $rel = $this->addressService->delete();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->addressService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
+    public function setDefault()
+    {
+        $rel = $this->addressService->setDefault();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->addressService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
+
 }
