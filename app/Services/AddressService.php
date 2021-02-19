@@ -30,7 +30,17 @@ class AddressService extends BaseService
 
     public function add()
     {
-        Address::create(['user_id' => request()->uid, 'address' => request('address'), 'contact' => request('contact'), 'mobile' => request('mobile')]);
+        $region = explode(',', request('region'));
+        $insert = [
+            'user_id'  => request()->uid,
+            'address'  => request('address'),
+            'contact'  => request('contact'),
+            'mobile'   => request('mobile'),
+            'province' => $region[0],
+            'city'     => $region[1],
+            'district' => $region[2]
+        ];
+        Address::create($insert);
         return true;
     }
 
