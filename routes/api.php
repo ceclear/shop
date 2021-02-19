@@ -23,6 +23,11 @@ Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
 
 });
 
+Route::group(["namespace" => "Api"], function ($router) {
+    $router->get('category', 'CategoryController@lists');
+
+});
+
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
     $router->post('mini_login', 'LoginController@miniLogin')->name('api.mini_login');
     $router->get('info', 'MemberController@info')->middleware('jwt');

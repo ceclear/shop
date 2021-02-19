@@ -3,13 +3,12 @@
 namespace App\Models;
 
 
-
 class Category extends Orm
 {
     public static function getCategory()
     {
-        $field = ['id', 'parent_id', 'name', 'level'];
-        $list = self::where('status', 1)->get($field)->toArray();
+        $field = ['id', 'parent_id', 'name', 'icon', 'level'];
+        $list  = self::where('status', 1)->get($field)->toArray();
         return self::getChild($list, 0);
     }
 
