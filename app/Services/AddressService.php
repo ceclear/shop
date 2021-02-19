@@ -14,7 +14,7 @@ class AddressService extends BaseService
     {
         $where[]    = ['user_id', request()->uid];
         $where[]    = ['status', 0];
-        $field      = ['id', 'province', 'city', 'district', 'address', 'contact', 'sex', 'mobile', 'is_default'];
+        $field      = ['id', 'region', 'address', 'contact', 'sex', 'mobile', 'is_default'];
         $list       = Address::where($where)->select($field)->get()->toArray();
         $default_id = '';
         if (!empty($list)) {
@@ -28,20 +28,53 @@ class AddressService extends BaseService
         return compact("list", "default_id");
     }
 
-    public function add()
+    public function add($data)
     {
-        $region = explode(',', request('region'));
         $insert = [
-            'user_id'  => request()->uid,
-            'address'  => request('address'),
-            'contact'  => request('contact'),
-            'mobile'   => request('mobile'),
-            'province' => $region[0],
-            'city'     => $region[1],
-            'district' => $region[2]
+            'user_id' => request()->uid,
+            'address' => $data['address'],
+            'contact' => $data['contact'],
+            'mobile'  => $data['mobile'],
+            'region'  => $data['region'],
         ];
         Address::create($insert);
         return true;
+    }
+
+    public function save($data)
+    {
+        $addressId = $data['address_id'];
+        $userId    = request()->uid;
+        if (empty($addressId)) {
+            $this->setError('', '地址信息错误');
+            return false;
+        }
+        $update = [
+            'address' => $data['address'],
+            'contact' => $data['contact'],
+            'mobile'  => $data['mobile'],
+            'region'  => $data['region'],
+        ];
+        $info   = Address::where('id', $data['address_id'])->where('user_id', $userId)->first();
+        if (!$info) {
+            $this->setError('', '没有找到此地址');
+            return false;
+        }
+        $info->fill($update);
+        $info->save();
+        return true;
+    }
+
+    public function info()
+    {
+        $userId    = request()->uid;
+        $addressId = request('address_id');
+        if (empty($addressId)) {
+            $this->setError('', '地址信息错误');
+            return false;
+        }
+        $detail = Address::where('id', $addressId)->where('user_id', $userId)->first();
+        return compact("detail");
     }
 
 }

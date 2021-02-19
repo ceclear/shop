@@ -27,7 +27,25 @@ class AddressController extends Controller
 
     public function add(AddAddress $addAddress)
     {
-        $rel = $this->addressService->add();
+        $rel = $this->addressService->add($addAddress);
+        return $this->responseJson(0, '', $rel);
+    }
+
+    public function edit(AddAddress $addAddress)
+    {
+        $rel = $this->addressService->save($addAddress);
+        if ($rel === false) {
+            return $this->responseJson(1, $this->addressService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
+
+    public function info()
+    {
+        $rel = $this->addressService->info();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->addressService->getFirstError());
+        }
         return $this->responseJson(0, '', $rel);
     }
 }

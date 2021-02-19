@@ -28,5 +28,7 @@ Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
     $router->get('info', 'MemberController@info')->middleware('jwt');
     $router->get('address_list', 'AddressController@lists')->middleware('jwt');
     $router->post('add_address', 'AddressController@add')->middleware('jwt');
+    $router->post('edit_address', 'AddressController@edit')->middleware('jwt');
+    $router->get('address_info', 'AddressController@info')->middleware('jwt');
 });
 

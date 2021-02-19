@@ -28,6 +28,7 @@ class AddAddress extends FormRequest
     {
         return [
             //
+            'region'  => 'required',
             'address' => 'required',
             'contact' => 'required',
             'mobile'  => 'required',
@@ -37,6 +38,7 @@ class AddAddress extends FormRequest
     public function messages()
     {
         return [
+            'region.required'  => '省市区不能为空',
             'address.required' => '详细地址不能为空',
             'contact.required' => '联系人不能为空',
             'mobile.required'  => '手机不能为空',
