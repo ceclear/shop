@@ -23,6 +23,7 @@ Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
 });
 
 Route::group(["namespace" => "Api"], function ($router) {
+    $router->get('index', 'IndexController@index');
     $router->get('category', 'CategoryController@lists');
     $router->get('goods/lists', 'GoodsController@lists');
 
