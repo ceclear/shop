@@ -66,13 +66,21 @@ class CartRedis
 
     public function lists($userId)
     {
-        $list = $this->_redis->HGETAll($userId);
-        $arr  = [];
+        $list       = $this->_redis->HGETAll($userId);
+        $goods_list = [];
         if (!empty($list)) {
             foreach ($list as $item) {
-                $arr[] = json_decode($item, true);
+                $goods_list[] = json_decode($item, true);
             }
-            return $arr;
+            $order_total_num   = 0;
+            $order_total_price = 0;
+            foreach ($goods_list as $item) {
+                $order_total_num++;
+                $order_total_price += $item['price'] * $item['num'];
+            }
+            $order_total_price = sprintf("%.2f", $order_total_price);
+
+            return compact("goods_list", "order_total_num", "order_total_price");
         }
         return [];
     }
@@ -89,7 +97,6 @@ class CartRedis
         }
         return false;
     }
-
 
 
     public function __call($name, $arguments)
