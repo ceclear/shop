@@ -17,7 +17,7 @@ class GoodsController extends Controller
             'status' => 1
         ];
         $categoryId = request('category_id') ?? 0;
-        $keyWord    = request('seach') ?? '';
+        $keyWord    = request('search') ?? '';
         $sortKey    = request('sortType') ?? 'id';
         if (!empty($categoryId)) {
             $condition['category_id'] = ['symbol' => '=', 'val' => $categoryId];
