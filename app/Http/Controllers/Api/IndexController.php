@@ -24,7 +24,7 @@ class IndexController extends Controller
     public function index()
     {
         $field    = ['id', 'sku', 'discover', 'title', 'brand_code', 'discount', 'images', 'is_new', 'price', 'discount_price', 'star'];
-        $bestList = Goods::where('status', 1)->limit(6)->orderBy('sale', 'desc')->get($field)->toArray();
+        $bestList = Goods::where('status', 1)->limit(20)->orderBy('sale', 'desc')->get($field)->toArray();
         $newList  = Goods::where('status', 1)->where('is_new', 1)->limit(6)->orderBy(DB::raw('RAND()'))->get($field)->toArray();
         $banner   = Advert::with(["ad_position" => function ($query) {
             $query->where('symbol', 'sybanner');

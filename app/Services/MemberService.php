@@ -3,7 +3,9 @@
 
 namespace App\Services;
 
+use App\Libs\CartRedis;
 use App\Libs\MemberRedis;
+use App\Models\Goods;
 use App\Models\Members;
 use App\Traits\Errors;
 use EasyWeChat\Factory;
@@ -75,6 +77,53 @@ class MemberService extends BaseService
         $userInfo   = Members::where('id', $userId)->select(['nickname', 'avatar'])->first();
         $orderCount = ['delivery' => rand(1, 100), 'payment' => rand(1, 100), 'received' => rand(1, 100)];
         return compact("userInfo", "orderCount");
+    }
+
+    public function cartList()
+    {
+        $userId = request()->uid;
+        return CartRedis::getRedisInstance()->lists($userId);
+    }
+
+    public function cartAdd()
+    {
+        $userId  = request()->uid;
+        $goodsId = request('goods_id') ?? 0;
+        if (empty($goodsId)) {
+            $this->setError('', '请传入商品');
+            return false;
+        }
+        $goodsInfo = Goods::where('id', $goodsId)->select(['id', 'title', 'discover', 'price'])->first();
+        if (empty($goodsInfo)) {
+            $this->setError('', '没有找到商品');
+            return false;
+        }
+        $goodsInfo['num'] = request('num') ?? 1;
+        CartRedis::getRedisInstance()->add($userId, $goodsInfo);
+        return true;
+    }
+
+    public function cartInc()
+    {
+        $userId  = request()->uid;
+        $goodsId = request('goods_id') ?? 0;
+        $num     = request('num') ?? 1;
+        if (empty($goodsId)) {
+            $this->setError('', '请传入商品');
+            return false;
+        }
+        return CartRedis::getRedisInstance()->cartInc($userId, $goodsId, $num);
+    }
+
+    public function cartDelete()
+    {
+        $userId  = request()->uid;
+        $goodsId = request('goods_id') ?? 0;
+        if (empty($goodsId)) {
+            $this->setError('', '请传入商品');
+            return false;
+        }
+        return CartRedis::getRedisInstance()->hDel($userId, $goodsId);
     }
 
 }

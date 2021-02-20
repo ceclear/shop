@@ -40,3 +40,10 @@ Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
     $router->post('address_default', 'AddressController@setDefault')->middleware('jwt');
 });
 
+Route::group(["namespace" => "Api", 'prefix' => 'cart', 'middleware' => 'jwt'], function ($router) {
+    $router->get('index', 'MemberController@cartList');//购物车列表
+    $router->post('add', 'MemberController@cartAdd');//添加购物车
+    $router->post('inc', 'MemberController@cart_inc');//增加减少数量
+    $router->post('delete', 'MemberController@cartDel');//删除购物车商品
+});
+

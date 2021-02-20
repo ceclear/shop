@@ -139,7 +139,7 @@
                                     <li class="mini-cart-details mb-30">
                                         <div class="innr-crt-img">
                                             <img src="/assets/images/cart/720-degree-cameras-dual.jpg" alt="">
-                                            <span>1x</span>
+                                            <span>2x</span>
                                         </div>
                                         <div class="innr-crt-content">
                                                 <span class="product-name">
