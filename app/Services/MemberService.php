@@ -98,7 +98,8 @@ class MemberService extends BaseService
             $this->setError('', '没有找到商品');
             return false;
         }
-        $goodsInfo['num'] = request('num') ?? 1;
+        $goodsInfo['num']        = request('num') ?? 1;
+        $goodsInfo['goods_attr'] = '内存:128G; 颜色:红色';
         CartRedis::getRedisInstance()->add($userId, $goodsInfo);
         return true;
     }

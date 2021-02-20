@@ -47,3 +47,6 @@ Route::group(["namespace" => "Api", 'prefix' => 'cart', 'middleware' => 'jwt'], 
     $router->post('delete', 'MemberController@cartDel');//删除购物车商品
 });
 
+Route::group(["namespace" => "Api", 'prefix' => 'order', 'middleware' => 'jwt'], function ($router) {
+    $router->get('checkout', 'OrderController@orderCheckout');//购物车结算
+});
