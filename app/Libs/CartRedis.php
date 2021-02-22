@@ -61,7 +61,17 @@ class CartRedis
         }
         $this->_redis->hSet($userId, $info['id'], json_encode($info));
         $this->_redis->expire($userId, self::$expireTime);
-        return true;
+        $list           = $this->_redis->HGETAll($userId);
+        $cart_total_num = 0;
+        if (!empty($list)) {
+            foreach ($list as $item) {
+                $goods_list[] = json_decode($item, true);
+            }
+            foreach ($goods_list as $item) {
+                $cart_total_num += $item['num'];
+            }
+        }
+        return compact("cart_total_num");
     }
 
     public function lists($userId)
@@ -70,7 +80,6 @@ class CartRedis
         $goods_list        = [];
         $order_total_num   = 0;
         $order_total_price = 0;
-        $cart_total_num    = 0;
         if (!empty($list)) {
             foreach ($list as $item) {
                 $goods_list[] = json_decode($item, true);
@@ -78,12 +87,12 @@ class CartRedis
 
             foreach ($goods_list as $item) {
                 $order_total_num++;
-                $cart_total_num    += $item['num'];
+
                 $order_total_price += $item['price'] * $item['num'];
             }
             $order_total_price = sprintf("%.2f", $order_total_price);
         }
-        return compact("goods_list", "order_total_num", "order_total_price", "cart_total_num");
+        return compact("goods_list", "order_total_num", "order_total_price");
     }
 
     public function cartInc($userId, $goodsId, $num = 1)

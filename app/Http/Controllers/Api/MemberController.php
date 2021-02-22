@@ -36,7 +36,7 @@ class MemberController extends Controller
         if ($rel === false) {
             return $this->responseJson(1, $this->memberService->getFirstError());
         }
-        return $this->responseJson(0, '', $rel);
+        return $this->responseJson(0, '添加成功', $rel);
     }
 
     public function cart_inc()
