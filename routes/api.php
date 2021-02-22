@@ -50,3 +50,7 @@ Route::group(["namespace" => "Api", 'prefix' => 'cart', 'middleware' => 'jwt'], 
 Route::group(["namespace" => "Api", 'prefix' => 'order', 'middleware' => 'jwt'], function ($router) {
     $router->get('checkout', 'OrderController@orderCheckout');//购物车结算
 });
+
+Route::group(["namespace" => "Api", 'prefix' => 'goods'], function ($router) {
+    $router->get('detail', 'GoodsController@detail');//详情
+});

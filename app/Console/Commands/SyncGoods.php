@@ -7,7 +7,6 @@ use App\Libs\DingDanXiaApiRequest;
 use App\Models\Category;
 use App\Models\Goods;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
 
 class SyncGoods extends Command
 {
@@ -54,28 +53,33 @@ class SyncGoods extends Command
                     $this->info('没有获取到数据===返回消息==' . $array['msg']);
                     return;
                 }
-                $arr = [];
+//                $arr = [];
                 foreach ($array['data'] as $item) {
-                    $data['sku']   = $item['skuId'];
-                    $data['title'] = $item['skuName'];
+                    $info = Goods::where('sku', $item['skuId'])->first();
+                    if (!$info) {
+                        $info = new Goods();
+                    }
+                    $info->sku   = $item['skuId'];
+                    $info->title = $item['skuName'];
                     foreach ($category as $value) {
                         if ($value['name'] == $item['categoryInfo']['cid1Name'] || $value['name'] == $item['categoryInfo']['cid2Name'] || $value['name'] == $item['categoryInfo']['cid3Name']) {
-                            $data['category_id'] = $value['id'];
+                            $info->category_id = $value['id'] ?? 1;
                             break;
                         }
                     }
-                    $data['brand_code']     = $item['brandName'];
-                    $data['images']         = array_column($item['imageInfo']['imageList'], 'url');
-                    $data['discover']       = $item['imageInfo']['imageList'][0]['url'];
-                    $data['price']          = $item['priceInfo']['price'] * 100;
-                    $data['discount_price'] = $item['priceInfo']['lowestPrice'] * 100;
-                    $data['stock']          = rand(1, 1000);
-                    $data['description']    = array_column($item['imageInfo']['imageList'], 'url');
-                    $data['sale']           = $item['inOrderCount30Days'];
-                    $data['enable_at']      = time();
-                    $data['created_at']     = time();
-                    $data['updated_at']     = time();
-                    Goods::create($data);
+                    $info->brand_code       = $item['brandName'] ?? '';
+                    $info->images         = array_column($item['imageInfo']['imageList'], 'url');
+                    $info->discover       = $item['imageInfo']['imageList'][0]['url'];
+                    $info->price          = $item['priceInfo']['price'] * 100;
+                    $info->discount_price = $item['priceInfo']['lowestPrice'] * 100;
+                    $info->stock          = rand(1, 1000);
+                    $info->description    = array_column($item['imageInfo']['imageList'], 'url');
+                    $info->sale           = $item['inOrderCount30Days'];
+                    $info->enable_at      = time();
+                    $info->created_at     = time();
+                    $info->updated_at     = time();
+                    $info->save();
+//                    Goods::create($data);
 //                    $arr[]                  = $data;
                 }
 //                DB::table('goods')->insert($arr);
