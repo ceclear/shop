@@ -74,8 +74,10 @@ class CartRedis
             }
             $order_total_num   = 0;
             $order_total_price = 0;
+            $cart_total_num    = 0;
             foreach ($goods_list as $item) {
                 $order_total_num++;
+                $cart_total_num    += $item['num'];
                 $order_total_price += $item['price'] * $item['num'];
             }
             $order_total_price = sprintf("%.2f", $order_total_price);

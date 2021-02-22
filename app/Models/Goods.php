@@ -10,7 +10,7 @@ class Goods extends Orm
 
     protected $casts = [
         'images'      => 'json',
-        'description' => 'json'
+//        'description' => 'json'
     ];
 
     public function getDiscountPriceAttribute()
