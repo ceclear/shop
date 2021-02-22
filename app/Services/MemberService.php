@@ -100,8 +100,7 @@ class MemberService extends BaseService
         }
         $goodsInfo['num']        = request('num') ?? 1;
         $goodsInfo['goods_attr'] = '内存:128G; 颜色:红色';
-        CartRedis::getRedisInstance()->add($userId, $goodsInfo);
-        return true;
+        return CartRedis::getRedisInstance()->add($userId, $goodsInfo);
     }
 
     public function cartInc()
