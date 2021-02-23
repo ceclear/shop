@@ -5,11 +5,11 @@ namespace App\Models;
 
 class Category extends Orm
 {
-    public static function getCategory()
+    public static function getCategory($level=1)
     {
         $field = ['id', 'parent_id', 'name', 'icon', 'level'];
         $list  = self::where('status', 1)->get($field)->toArray();
-        return self::getChild($list, 0, 1);
+        return self::getChild($list, 0, $level);
     }
 
     public static function getChild($array, $pid, $level = 3)
