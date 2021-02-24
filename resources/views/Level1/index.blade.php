@@ -19,7 +19,8 @@
     }
 
     table.gridtable {
-        font-family: verdana, arial, sans-serif;
+        /*font-family: verdana, arial, sans-serif;*/
+        font-family:  arial, sans-serif;
         font-size: 28px;
         color: #333333;
         border-width: 1px;
@@ -85,11 +86,11 @@
         </div>
     </div>
 </form>
-<script src="assets/js/jQuery-2.1.4.min.js"></script>
+<script src="/assets/js/jQuery-2.1.4.min.js"></script>
 {{--<script src="assets/js/layer.js"></script>--}}
-<script src="assets/js/coco-message.js"></script>
-<script src="assets/js/common.js"></script>
-<script src="assets/dialog/dist/mDialogMin.js"></script>
+<script src="/assets/js/coco-message.js"></script>
+<script src="/assets/js/common.js"></script>
+<script src="/assets/dialog/dist/mDialogMin.js"></script>
 <script>
     $(function () {
         if (localStorage.getItem('token')) {

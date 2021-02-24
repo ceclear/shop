@@ -37,3 +37,9 @@ Route::group(['prefix' => 'article'], function () {
     Route::get('detail.html', 'ArticleController@detail')->name('article.detail');
 });
 
+Route::group(['prefix' => 'study'], function () {
+    Route::get('index.html', 'StudyController@index')->name('study');
+    Route::get('level_list', 'StudyController@level')->name('study.level');
+    Route::post('detail', 'StudyController@detail')->name('study.detail');
+});
+

@@ -59,7 +59,7 @@ class Handler extends ExceptionHandler
         }
         if ($exception instanceof ValidationException) {
             $error = $exception->validator->errors()->first();
-            if (preg_match("/^api\//", $request->path()) === false) {
+            if ($request->is("api/*")==false) {
                 return parent::render($request, $exception);
             }
             return response()->json(['code' => 10000, 'message' => $error]);

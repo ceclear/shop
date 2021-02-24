@@ -7,7 +7,10 @@ function ajax(options) {
         dataType: "text",
         status: null,
         success: function (res) {
-            cocoMessage.success(res.message)
+            if(options.need_alert&&options.need_alert==1){
+                cocoMessage.success(res.message)
+            }
+            // cocoMessage.success(res.message)
             if (options.callback) {
                 if (options.callback == 'g') {
                     setTimeout(function () {
