@@ -175,21 +175,28 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row align-items-center">
-                <div style="max-width: 31%" class="col-lg-5 col-md-12 col-12">
+                <div  class="col-lg-5 col-md-12 col-12">
                     <div class="footer-bottom-content">
                         <div class="footer-copyright">
                             <p>Copyright &copy; 2020.Company name All rights reserved.</p>
                         </div>
                     </div>
                 </div>
-                <div><a href="https://beian.miit.gov.cn" style="cursor: pointer">渝ICP备2021000774号-1</a></div>
-                <div style="max-width: 51%" class="col-lg-7 col-md-12 col-12">
-                    <div class="payment">
-                        <a href="#">
-                            <img src="/assets/images/payment/footerend.png" alt="" class="img-fluid">
-                        </a>
+                <div  class="col-lg-5 col-md-12 col-12">
+                    <div class="footer-bottom-content">
+                        <div class="footer-copyright">
+                            <a href="https://beian.miit.gov.cn" style="cursor: pointer">渝ICP备2021000774号-1</a>
+                        </div>
                     </div>
                 </div>
+{{--                <div><a href="https://beian.miit.gov.cn" style="cursor: pointer">渝ICP备2021000774号-1</a></div>--}}
+{{--                <div style="max-width: 51%" class="col-lg-7 col-md-12 col-12">--}}
+{{--                    <div class="payment">--}}
+{{--                        <a href="#">--}}
+{{--                            <img src="/assets/images/payment/footerend.png" alt="" class="img-fluid">--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

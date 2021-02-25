@@ -112,7 +112,7 @@
                             <div id="operation" class="tab-pane fade">
                                 <h3 class="last-title">运算符选择</h3>
                                 <div class="checkout_info form-row">
-
+                                    <label>(选择多个将会随机生成操作运算)</label>
                                     <div class="form_group col-12 position-relative ">
 
                                         <div class="op_div">
@@ -151,7 +151,7 @@
                                 <div class="checkout_info form-row">
                                     <div class="form_group col-12  col-lg-6">
                                         <label class="form-label">第一算数项最小值<span>*</span></label>
-                                        <input class="input-form" min="1" max="5" name="first_op_min"
+                                        <input class="input-form" min="1"  name="first_op_min"
                                                onchange="if(parseInt($(this).val())<=0){$(this).val(1)}" value="1"
                                                type="number">
                                     </div>
@@ -163,7 +163,7 @@
                                     </div>
                                     <div class="form_group col-12  col-lg-6">
                                         <label class="form-label">第二算数项最小值<span>*</span></label>
-                                        <input class="input-form" min="2" max="5" name="second_op_min"
+                                        <input class="input-form" min="2"  name="second_op_min"
                                                onchange="if(parseInt($(this).val())<=0){$(this).val(1)}" value="2"
                                                type="number">
                                     </div>
@@ -176,7 +176,7 @@
 
                                     <div class="form_group col-12  col-lg-6">
                                         <label class="form-label">第三算数项最小值<span>(两步运算时生效)</span></label>
-                                        <input class="input-form" min="3" max="5" name="third_op_min"
+                                        <input class="input-form" min="3"  name="third_op_min"
                                                onchange="if(parseInt($(this).val())<=0){$(this).val(1)}" value="3"
                                                type="number">
                                     </div>
