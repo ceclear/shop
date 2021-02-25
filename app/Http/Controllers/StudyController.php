@@ -45,20 +45,12 @@ class StudyController extends Controller
 
     public function detail(CreateLevel $createLevel)
     {
-        $arr = $this->studyService->createLevel();
-        if ($arr === false) {
+        $list = $this->studyService->createLevel();
+        if ($list === false) {
             return view('Study.index')->withErrors($this->studyService->getFirstError());
         }
-        $every = 10;
-        shuffle($arr);
-        for ($i = 0; $i < $every; $i++) {
-            $a          = explode('=', $arr[$i * 2]);
-            $b          = explode('=', $arr[$i * 2 + 1]);
-            $list[$i][] = $a[0];
-            $list[$i][] = $b[0];
-        }
-        $html2pdf   = new Html2Pdf();
-        $html       = "<style>
+        $html2pdf = new Html2Pdf();
+        $html     = "<style>
         html, body {
         background-color: #fff;
         color: #636b6f;
@@ -98,8 +90,8 @@ class StudyController extends Controller
         padding: 8px;
         }
         </style>";
-        $html       .= '<table class="gridtable">';
-        $html       .= '<tr><th>expression one</th><th>answer</th><th>expression two</th><th>answer</th></tr>';
+        $html     .= '<table class="gridtable">';
+        $html     .= '<tr><th>expression</th><th>answer</th><th>expression</th><th>answer</th></tr>';
         foreach ($list as $item) {
             $html .= '<tr>';
             foreach ($item as $value) {

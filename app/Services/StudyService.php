@@ -18,26 +18,39 @@ class StudyService extends BaseService
     public function createLevel()
     {
         try {
-            $count = request('count') ?? 1;
-//            $count   = 1;
+            $count   = request('count') ?? 1;
             $rel_min = request('rel_min') ?? 1;
             $num     = 0;
             $arr     = [];
             do {
-                $first      = rand(request('first_op_min'), request('first_op_max'));//第一算数项
-                $second     = rand(request('second_op_min'), request('second_op_max'));//第二算数项
-                $third      = rand(request('third_op_min'), request('third_op_max'));//第三算数项
-                $firstOpArr = request('op_str');
-                $firstOp    = $firstOpArr[array_rand($firstOpArr)];
-                $secondOp   = $firstOpArr[array_rand($firstOpArr)];
-                list($val, $str) = self::createStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
+                $first    = rand(request('first_op_min'), request('first_op_max'));//第一算数项
+                $second   = rand(request('second_op_min'), request('second_op_max'));//第二算数项
+                $third    = rand(request('third_op_min'), request('third_op_max'));//第三算数项
+                $OpArr    = request('op_str');
+                $firstOp  = $OpArr[array_rand($OpArr)];
+                $secondOp = $OpArr[array_rand($OpArr)];
+                switch (request('step')) {
+                    case 1:
+                        list($val, $str) = self::createOneStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
+                        break;
+                    default:
+                        list($val, $str) = self::createTwoStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
+                        break;
+                }
                 if (!empty($str) && ($val >= 0 && $val <= $rel_min) && !in_array($str, $arr) && count($arr) < $count) {
-                    $arr[] = $str;
+                    $arr[]  = $str;
+                    $data[] = $val;
                     $num++;
                 }
 
             } while ($num < $count);
-            return $arr;
+            $every = (int)($count / 2);
+            shuffle($arr);
+            for ($i = 0; $i < $every; $i++) {
+                $list[$i][] = $arr[$i * 2];
+                $list[$i][] = $arr[$i * 2 + 1];
+            }
+            return $list;
         } catch (\Exception $exception) {
             $this->setError('', '生成题目出错');
             return false;
@@ -45,11 +58,68 @@ class StudyService extends BaseService
 
     }
 
-    public static function createStr($opStr1, $opStr2, $num1, $num2, $num3, $rel_min)
+    /**
+     * 一步运算
+     * @param $opStr1 //第一个操作符
+     * @param $num1 //第一个数字
+     * @param $num2 //第二个数字
+     * @param $rel_min //最小结果值
+     * @return array
+     */
+    public static function createOneStr($opStr1, $num1, $num2, $rel_min)
     {
         $val = 0;
         $str = '';
-//        dd(self::checkValid($num1 + $num2, $rel_min));
+        switch ($opStr1) {
+            case 1:
+                $exec = self::checkValid($num1 + $num2, $rel_min, 1, 1);
+                if (!$exec) {
+                    break;
+                }
+                $val = $num1 + $num2;
+                $str = $num1 . '+' . $num2;
+                break;
+            case 2:
+                $exec = self::checkValid($num1 - $num2, $rel_min, 2, 1);
+                if (!$exec) {
+                    break;
+                }
+                $val = $num1 - $num2;
+                $str = $num1 . '-' . $num2;
+                break;
+            case 3:
+                $exec = self::checkValid($num1 * $num2, $rel_min);
+                if (!$exec) {
+                    break;
+                }
+                $val = $num1 * $num2;
+                $str = $num1 . '×' . $num2;
+                break;
+            default:
+                $exec = self::checkValid($num1 / $num2, $rel_min, 1);
+                if (!$exec) {
+                    break;
+                }
+                $val = $num1 / $num2;
+                $str = $num1 . '÷' . $num2;
+        }
+        return [$val, $str];
+    }
+
+    /**
+     * 两步运算
+     * @param $opStr1 //第一个操作符
+     * @param $opStr2 //第二个操作符
+     * @param $num1 //第一个数字
+     * @param $num2 //第二个数字
+     * @param $num3 //第三个数字
+     * @param $rel_min //最小结果值
+     * @return array
+     */
+    public static function createTwoStr($opStr1, $opStr2, $num1, $num2, $num3, $rel_min)
+    {
+        $val = 0;
+        $str = '';
         switch ($opStr1) {
             case 1:
                 $exec = self::checkValid($num1 + $num2, $rel_min, 1, 1);
@@ -76,7 +146,7 @@ class StudyService extends BaseService
                 }
                 break;
             case 2:
-                $exec = self::checkValid($num1 - $num2, $rel_min);
+                $exec = self::checkValid($num1 - $num2, $rel_min, 2, 1);
                 if (!$exec) {
                     break;
                 }
@@ -149,6 +219,7 @@ class StudyService extends BaseService
         }
         return [$val, $str];
     }
+
 
     /**
      * 比较第一个运算项与第二个运算项的结果

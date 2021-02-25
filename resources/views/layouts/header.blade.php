@@ -222,6 +222,32 @@
 
                                             </ul>
                                         </li>
+                                        <!--------dropdown-------->
+                                        <li class="menu-item-has-children"><span class="menu-expand"><i
+                                                    class="fa fa-angle-down"></i></span>
+                                            <a href="#">{{$item['name']}}</a>
+                                            <ul class="sub-menu">
+                                                @if(!empty($item['child']))
+                                                    @foreach($item['child'] as $value)
+                                                        @if(empty($value['child']))
+                                                            @continue
+                                                        @endif
+                                                        <li class="menu-item-has-children"><span class="menu-expand"><i
+                                                                    class="fa fa-angle-down"></i></span>
+                                                            <a href="#">{{$value['name']}}</a>
+                                                            @if(!empty($value['child']))
+                                                                <ul class="sub-menu">
+                                                                    @foreach($value['child'] as $vv)
+                                                                    <li><a href="shop.html">{{$vv['name']}}</a></li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            @endif
+                                                                @endforeach
+                                                            @endif
+                                                        </li>
+
+                                            </ul>
+                                        </li>
                                     @endforeach
                                 @endif
                                 <li class="category-item-parent">
@@ -375,14 +401,15 @@
                                     {{--                                        </ul>--}}
                                     {{--                                    </li>--}}
                                     <li><a href="/article/list.html">文章</a></li>
+                                    <li><a>数学<i class="fa fa-angle-down"></i></a>
+                                        <ul class="dropdown dropdown-width">
+                                            <li><a href="{{route('study')}}">一年级</a></li>
+                                            <li><a>二年级</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="about.html">About Us</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a >数学<i class="fa fa-angle-down"></i></a>
-                                    <ul class="dropdown dropdown-width">
-                                        <li><a href="{{route('study')}}">一年级</a></li>
-                                        <li><a>二年级</a></li>
-                                    </ul>
-                                    </li>
+
                                 </ul>
                             </nav>
                         </div>

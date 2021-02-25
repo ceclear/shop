@@ -95,10 +95,10 @@
                                             <input type="radio" value="2" id="two" name="step"><label
                                                 for="two">2步</label>
                                         </div>
-                                        <div class="step_div">
-                                            <input type="radio" value="3" id="three" name="step"><label
-                                                for="three">3步</label>
-                                        </div>
+{{--                                        <div class="step_div">--}}
+{{--                                            <input type="radio" value="3" id="three" name="step"><label--}}
+{{--                                                for="three">3步</label>--}}
+{{--                                        </div>--}}
                                     </div>
                                     <div class="form-row mt-20" style="margin-right: 10px;">
                                         <a href="#dashboard" data-toggle="tab" class="btn-secondary">上一步</a>
@@ -175,13 +175,13 @@
                                     </div>
 
                                     <div class="form_group col-12  col-lg-6">
-                                        <label class="form-label">第三算数项最小值<span>*</span></label>
+                                        <label class="form-label">第三算数项最小值<span>(两步运算时生效)</span></label>
                                         <input class="input-form" min="3" max="5" name="third_op_min"
                                                onchange="if(parseInt($(this).val())<=0){$(this).val(1)}" value="3"
                                                type="number">
                                     </div>
                                     <div class="form_group col-12 col-lg-6">
-                                        <label class="form-label">第三算数项最大值<span>*</span></label>
+                                        <label class="form-label">第三算数项最大值<span>(两步运算时生效)</span></label>
                                         <input class="input-form" min="2" name="third_op_max"
                                                onchange="if(parseInt($(this).val())<=0){$(this).val(20)}" value="20"
                                                type="number">
