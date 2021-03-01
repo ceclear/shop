@@ -91,7 +91,8 @@ class StudyController extends Controller
         }
         </style>";
         $html     .= '<table class="gridtable">';
-        $html     .= '<tr><th>expression</th><th>answer</th><th>expression</th><th>answer</th></tr>';
+        $html     .= '<tr><th>expression</th><th>answer</th><th>expression</th><th>answer</th><th>expression</th><th>answer</th></tr>';
+//        dd($list);
         foreach ($list as $item) {
             $html .= '<tr>';
             foreach ($item as $value) {

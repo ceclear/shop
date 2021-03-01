@@ -4,6 +4,7 @@
 namespace App\Services;
 
 use App\Traits\Errors;
+use Illuminate\Support\Facades\Redis;
 
 class StudyService extends BaseService
 {
@@ -41,14 +42,16 @@ class StudyService extends BaseService
                     $arr[]  = $str;
                     $data[] = $val;
                     $num++;
+                    Redis::lpush('level', $str);
                 }
 
             } while ($num < $count);
-            $every = (int)($count / 2);
-            shuffle($arr);
-            for ($i = 0; $i < $every; $i++) {
-                $list[$i][] = $arr[$i * 2];
-                $list[$i][] = $arr[$i * 2 + 1];
+            $column = 3;
+            $every  = (int)($count / $column);
+            for ($i = 0; $i <= $every; $i++) {
+                for ($j = 0; $j < $column; $j++) {
+                    $list[$i][] = Redis::lpop('level');
+                }
             }
             return $list;
         } catch (\Exception $exception) {
