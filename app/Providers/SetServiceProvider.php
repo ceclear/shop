@@ -28,7 +28,7 @@ class SetServiceProvider extends ServiceProvider
         //
         view()->composer('layouts.header', function ($view) {
             $categoryList = Category::getCategory(3);
-            $rateList = Rate::all()->toArray();
+            $rateList     = Rate::rows();
             $categoryShow = request()->getPathInfo() == "/";
             $view->with(compact("categoryList", "rateList", "categoryShow"));
         });
