@@ -24,16 +24,16 @@ class IndexController extends Controller
         $newList  = Cache::remember('new_list', 3600, function () use ($field) {
             return Goods::where('status', 1)->where('is_new', 1)->limit(6)->orderBy(DB::raw('RAND()'))->get($field)->toArray();
         });
-        $bestList = Cache::remember('new_list', 3600, function () use ($field) {
+        $bestList = Cache::remember('best_list', 3600, function () use ($field) {
             return Goods::where('status', 1)->limit(6)->orderBy('sale', 'desc')->get($field)->toArray();
         });
-        $recList  = Cache::remember('new_list', 3600, function () use ($field) {
+        $recList  = Cache::remember('rec_list', 3600, function () use ($field) {
             return Goods::where('status', 1)->where('is_recommend', 1)->limit(6)->orderBy(DB::raw('RAND()'))->get($field)->toArray();
         });
-        $saleOff  = Cache::remember('new_list', 3600, function () use ($field) {
+        $saleOff  = Cache::remember('sale_off', 3600, function () use ($field) {
             return Goods::where('discount', '>', 0)->where('status', 1)->orderBy('id', 'desc')->limit(2)->get($field)->toArray();
         });
-        $banner   = Cache::remember('new_list', 3600, function () use ($field) {
+        $banner   = Cache::remember('banner_list', 3600, function () use ($field) {
             return Advert::with(["ad_position" => function ($query) {
                 $query->where('symbol', 'sybanner');
             }])->where('status', 1)->get()->toArray();
