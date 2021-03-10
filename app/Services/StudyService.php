@@ -245,4 +245,43 @@ class StudyService extends BaseService
         }
         return true;
     }
+
+    public function apiCreateMath()
+    {
+        try {
+            $count   = request('count') ?? 3;
+            $rel_min = request('rel_min') ?? 20;
+            $opStr   = request('op_str_val') ?? '1,2';
+            $num     = 0;
+            $arr     = [];
+            do {
+                $first    = rand(request('first_op_min') ?? 10, request('first_op_max') ?? 20);//第一算数项
+                $second   = rand(request('second_op_min') ?? 10, request('second_op_max') ?? 20);//第二算数项
+                $third    = rand(request('third_op_min') ?? 10, request('third_op_max') ?? 20);//第三算数项
+                $OpArr    = explode(',', $opStr);
+                $firstOp  = $OpArr[array_rand($OpArr)];
+                $secondOp = $OpArr[array_rand($OpArr)];
+                switch (request('step_val') ?? 2) {
+                    case 1:
+                        list($val, $str) = self::createOneStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
+                        break;
+                    default:
+                        list($val, $str) = self::createTwoStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
+                        break;
+                }
+                if (!empty($str) && ($val >= 0 && $val <= $rel_min) && !in_array($str, $arr) && count($arr) < $count) {
+                    $arr[] = $str;
+                    $rel[] = $val;
+                    $num++;
+//                    Redis::lpush('level', $str);
+                }
+
+            } while ($num < $count);
+            return compact("arr", "rel");
+        } catch (\Exception $exception) {
+            $this->setError('', '生成题目出错');
+            return false;
+        }
+
+    }
 }

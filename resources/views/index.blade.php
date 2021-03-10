@@ -1,5 +1,7 @@
 @extends("layouts.main")
-@section('title','首页')
+@section('title','钓鱼视频|钓鱼分享|钓鱼交流上97fish.cn')
+@section('keywords','钓鱼视频|钓鱼分享|钓鱼交流上97fish.cn111')
+@section('description','钓鱼视频|钓鱼分享|钓鱼交流上97fish.cn222')
 @section("content")
     <div class="slider_section mb-60">
         <div class="container">
