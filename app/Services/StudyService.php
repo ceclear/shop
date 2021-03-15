@@ -4,6 +4,7 @@
 namespace App\Services;
 
 use App\Traits\Errors;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 
 class StudyService extends BaseService
@@ -249,7 +250,7 @@ class StudyService extends BaseService
     public function apiCreateMath()
     {
         try {
-            $count   = request('count') ?? 3;
+            $count   = request('count') ?? 20;
             $rel_min = request('rel_min') ?? 20;
             $opStr   = request('op_str_val') ?? '1,2';
             $num     = 0;
@@ -283,5 +284,24 @@ class StudyService extends BaseService
             return false;
         }
 
+    }
+
+    public function createSubtract()
+    {
+        $str = request('arr_str') ?? '';
+        $arr = json_decode($str, true);
+        if (empty($arr)) {
+            $this->setError('', '没有数据可录入');
+            return false;
+        }
+        DB::transaction(function () use ($arr) {
+            $subId = DB::table('subtracts')->insertGetId(['user_id' => request()->uid, 'start_time' => request('start_time'), 'created_at' => time(), 'updated_at' => time()]);
+            foreach ($arr as $item) {
+                $insert[] = ['sub_id' => $subId, 'key_str' => $item['op_str'], 'enter_val' => $item['val'], 'val' => $item['hid_val'], 'created_at' => time()];
+            }
+            DB::table('subtract_details')->insert($insert);
+        });
+
+        return true;
     }
 }

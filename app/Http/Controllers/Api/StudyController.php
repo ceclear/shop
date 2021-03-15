@@ -28,6 +28,15 @@ class StudyController extends Controller
         $this->studyService = $studyService;
     }
 
+    public function createSubtract()
+    {
+        $rel = $this->studyService->createSubtract();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->studyService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
+
     public function createMath()
     {
         $rel = $this->studyService->apiCreateMath();
