@@ -3,7 +3,9 @@
 
 namespace App\Services;
 
+use App\Models\Subtract;
 use App\Traits\Errors;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redis;
 
@@ -33,7 +35,7 @@ class StudyService extends BaseService
                 $secondOp = $OpArr[array_rand($OpArr)];
                 switch (request('step')) {
                     case 1:
-                        list($val, $str) = self::createOneStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
+                        list($val, $str) = self::createOneStr($firstOp, $first, $second, $rel_min);
                         break;
                     default:
                         list($val, $str) = self::createTwoStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
@@ -250,7 +252,7 @@ class StudyService extends BaseService
     public function apiCreateMath()
     {
         try {
-            $count   = request('count') ?? 20;
+            $count   = request('count') ?? 2;
             $rel_min = request('rel_min') ?? 20;
             $opStr   = request('op_str_val') ?? '1,2';
             $num     = 0;
@@ -264,7 +266,7 @@ class StudyService extends BaseService
                 $secondOp = $OpArr[array_rand($OpArr)];
                 switch (request('step_val') ?? 2) {
                     case 1:
-                        list($val, $str) = self::createOneStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
+                        list($val, $str) = self::createOneStr($firstOp, $first, $second, $rel_min);
                         break;
                     default:
                         list($val, $str) = self::createTwoStr($firstOp, $secondOp, $first, $second, $third, $rel_min);
@@ -303,5 +305,22 @@ class StudyService extends BaseService
         });
 
         return true;
+    }
+
+    public function lists()
+    {
+        $userId  = request()->uid;
+        $date    = request('date') ?? Carbon::today()->toDateString();
+        $begin   = strtotime($date . ' 00:00:00');
+        $end     = strtotime($date . ' 23:59:59');
+        $page    = request('page') ?? 1;
+        $size    = request('size') ?? 20;
+        $offset  = ($page * $size) - $size;
+        $where[] = ['user_id', '=', $userId];
+        $where[] = ['subtracts.created_at', '>', $begin];
+        $where[] = ['subtracts.created_at', '<', $end];
+        $field   = ['key_str as op_str', 'enter_val as val', 'val as hid_val'];
+        return Subtract::where($where)->join('subtract_details', 'subtract_details.sub_id', '=', 'subtracts.id')
+            ->limit($size)->offset($offset)->get($field);
     }
 }
