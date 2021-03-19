@@ -257,11 +257,16 @@ class StudyService extends BaseService
             $opStr   = request('op_str_val') ?? '1,2';
             $num     = 0;
             $arr     = [];
+            $OpArr    = explode(',', $opStr);
+            if(count($OpArr)>2){
+                $this->setError('','操作符最多选2个');
+                return  false;
+            }
             do {
                 $first    = rand(request('first_op_min') ?? 10, request('first_op_max') ?? 20);//第一算数项
                 $second   = rand(request('second_op_min') ?? 10, request('second_op_max') ?? 20);//第二算数项
                 $third    = rand(request('third_op_min') ?? 10, request('third_op_max') ?? 20);//第三算数项
-                $OpArr    = explode(',', $opStr);
+
                 $firstOp  = $OpArr[array_rand($OpArr)];
                 $secondOp = $OpArr[array_rand($OpArr)];
                 switch (request('step_val') ?? 2) {
