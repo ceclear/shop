@@ -32,7 +32,7 @@ class StudyController extends Controller
     {
         $rel = $this->studyService->createSubtract();
         if ($rel === false) {
-            return $this->responseJson(1, $this->studyService->getFirstError());
+            return $this->responseJson(0);
         }
         return $this->responseJson(0, '', $rel);
     }
