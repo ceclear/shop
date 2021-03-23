@@ -7,7 +7,7 @@ use GenTux\Jwt\GetsJwtToken;
 
 class jwt
 {
-    use GetsJwtToken, GetsJwtToken;
+    use GetsJwtToken;
 
     public function handle($request, Closure $next)
     {
