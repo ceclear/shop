@@ -29,6 +29,7 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->get('study/math', 'StudyController@createMath');//数学生成
     $router->post('study/create_subtract','StudyController@createSubtract')->middleware('jwt');
     $router->get('study/subtract_list','StudyController@lists')->middleware('jwt');
+    $router->get('search_mobile','ToolController@searchMobile');
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
