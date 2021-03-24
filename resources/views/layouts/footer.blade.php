@@ -159,7 +159,7 @@
                                         <li><a href="#">Frame Camera</a></li>
                                         <li><a href="#">Box Camera</a></li>
                                         <li><a href="#">Mini Camera</a></li>
-                                        <li><a href="#">XL Camera</a></li>
+                                        <li><a href="http://www.kuaidi.com/" target="_blank">快递查询API</a></li>
                                         <li><a href="{{route('level1')}}">Work Entrance</a></li>
                                     </ul>
                                 </div>
