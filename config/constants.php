@@ -7,5 +7,6 @@
 */
 
 return [
-    'jwt_user_expire' => env('JWT_USER_EXPIRE', 31536000)//默认缓存登录信息1年
+    'jwt_user_expire' => env('JWT_USER_EXPIRE', 31536000),//默认缓存登录信息1年
+    'postage_api_key' => env('POSTAGE_DI_API_KEY')
 ];

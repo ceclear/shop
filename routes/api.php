@@ -30,6 +30,7 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->post('study/create_subtract','StudyController@createSubtract')->middleware('jwt');
     $router->get('study/subtract_list','StudyController@lists')->middleware('jwt');
     $router->get('search_mobile','ToolController@searchMobile');
+    $router->get('postage','ToolController@Postage');//快递查询
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
