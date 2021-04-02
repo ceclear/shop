@@ -214,26 +214,4 @@
 <script src="/assets/js/main.js"></script>
 
 <script src="/assets/js/common.js"></script>
-<script type="text/javascript">
-    $(function () {
-        return;
-        $.get('category', function (data) {
-            // console.log(data)
-            let option = '';
-            $.each(data, function (k, v) {
-                option += '<li data-value="' + v["id"] + '" class="option first_title">' + v['name'] + '</li>';
-                $.each(v['child'], function (kk, vv) {
-                    // console.log(vv['child'])
-                    if (typeof vv['child'] == 'undefined') {
-                        return true;
-                    }
-                    option += '<li data-value="' + vv["id"] + '" class="option">- -' + vv['name'] + '</li>';
-                    $.each(vv['child'], function (kkk, vvv) {
-                        option += '<li data-value="' + vvv["id"] + '" class="option">- - -' + vvv['name'] + '</li>';
-                    });
-                });
-            });
-            $('.list').append(option);
-        });
-    })
-</script>
+

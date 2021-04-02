@@ -238,11 +238,11 @@
                                                             @if(!empty($value['child']))
                                                                 <ul class="sub-menu">
                                                                     @foreach($value['child'] as $vv)
-                                                                    <li><a href="shop.html">{{$vv['name']}}</a></li>
+                                                                        <li><a href="shop.html">{{$vv['name']}}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             @endif
-                                                                @endforeach
+                                                            @endforeach
                                                             @endif
                                                         </li>
 
@@ -407,9 +407,10 @@
                                             <li><a>二年级</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-
+                                    <li><a href="about.html">关于我们</a></li>
+                                    <li><a href="contact.html">联系我们</a></li>
+                                    <li><a href="{{route('news.list')}}">新闻</a></li>
+                                    <li><a href="{{route('news.joke')}}">笑话大全</a></li>
                                 </ul>
                             </nav>
                         </div>

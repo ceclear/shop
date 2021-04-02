@@ -36,6 +36,11 @@ Route::group(['prefix' => 'article'], function () {
     Route::get('list.html', 'ArticleController@lists')->name('article.list');
     Route::get('detail.html', 'ArticleController@detail')->name('article.detail');
 });
+Route::group(['prefix' => 'news'], function () {
+    Route::get('list.html', 'NewsController@lists')->name('news.list');
+    Route::get('detail.html', 'NewsController@detail')->name('news.detail');
+    Route::get('joke.html', 'NewsController@joke')->name('news.joke');
+});
 
 Route::group(['prefix' => 'study'], function () {
     Route::get('index.html', 'StudyController@index')->name('study');

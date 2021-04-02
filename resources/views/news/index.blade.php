@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section('title','文章列表')
+@section('title','新闻列表')
 @section("content")
     <div class="breadcrumbs_area">
         <div class="container">
@@ -10,7 +10,7 @@
                             <li>
                                 <h1><a href="/">首页</a></h1>
                             </li>
-                            <li>文章列表</li>
+                            <li>新闻列表</li>
                         </ul>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                                     <!-- Single Blog Start -->
                                     <div class="single-blog mt-30">
                                         <div class="blog-image mb-30">
-                                            <a href="{{route('article.detail',['id'=>$item['id']])}}"><img
+                                            <a href="{{route('news.detail',['id'=>$item['id']])}}"><img
                                                     src="{{$item['image']}}"
                                                     alt="" class="img-fluid"></a>
                                         </div>
@@ -40,16 +40,16 @@
                                                 <li><i class="fa fa-user-circle"></i> Posts by : {{$item['author']}}
                                                 </li>
                                                 <li><i class="fa fa-folder-open"></i><a
-                                                        href="{{route('article.list',['cat'=>$item['catInfo']['name']])}}"> {{$item['catInfo']['name']}}</a>
+                                                        href="aaaaaa"> 数据没有</a>
                                                 </li>
                                             </ul>
                                             <h5 class="title"><a
-                                                    href="{{route('article.detail',['id'=>$item['id']])}}">{{$item['title']}}</a>
+                                                    href="{{route('news.detail',['id'=>$item['id']])}}">{{$item['title']}}</a>
                                             </h5>
-                                            <div class="desc">
-                                                <p>{!! str_limit($item['content'],100) !!}</p>
-                                            </div>
-                                            <a href="{{route('article.detail',['id'=>$item['id']])}}" class="link">Read
+{{--                                            <div class="desc">--}}
+{{--                                                <p>{!! str_limit($item['content'],100) !!}</p>--}}
+{{--                                            </div>--}}
+                                            <a href="{{route('news.detail',['id'=>$item['id']])}}" class="link">Read
                                                 More</a>
                                         </div>
                                     </div>
@@ -98,11 +98,11 @@
                                     @foreach($recentLists as $item)
                                         <div class="single-blog-thumb d-flex">
                                             <div class="blog-thumb">
-                                                <a href="{{route('article.detail',['id'=>$item['id']])}}"><img
+                                                <a href="{{route('news.detail',['id'=>$item['id']])}}"><img
                                                         src="{{$item['image']}}" width="100" height="66" alt=""></a>
                                             </div>
                                             <div class="blog-info">
-                                                <h5 class="info-title"><a href="{{route('article.detail',['id'=>$item['id']])}}"
+                                                <h5 class="info-title"><a href="{{route('news.detail',['id'=>$item['id']])}}"
                                                                           title="{{$item['title']}}">{{str_limit($item['title'],8)}}</a>
                                                 </h5>
                                                 <span>{{date("M d,Y",strtotime($item['created_at']))}}</span>
@@ -121,8 +121,8 @@
                                     @foreach($catLists as $item)
                                         <li>
                                             {{--                                            <input type="checkbox">--}}
-                                            <a href="{{route('article.list',['cat'=>$item['name']])}}"
-                                               title="{{$item['name']}}">{{$item['name']}}</a>
+                                            <a href="{{route('news.list',['cat'=>$item['category']])}}"
+                                               title="{{$item['category']}}">{{$item['category']}}</a>
                                             <span class="checkmark"></span>
                                         </li>
                                     @endforeach
@@ -138,7 +138,7 @@
                                     @if(!empty($recentAuthor))
                                         @foreach($recentAuthor as $item)
                                             <li>
-                                                <a href="{{route('article.list',['author'=>$item['author']])}}">{{$item['author']}}</a>
+                                                <a href="{{route('news.list',['author'=>$item['author']])}}">{{$item['author']}}</a>
                                             </li>
                                         @endforeach
                                     @endif
