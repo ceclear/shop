@@ -4,9 +4,9 @@ namespace App\Console\Commands;
 
 
 use App\Libs\JuHeRequest;
-use App\Models\Joke;
+use App\Models\TodayHistory;
+use App\Models\TodayHistoryDetail;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class SyncTodayHistory extends Command
@@ -23,7 +23,7 @@ class SyncTodayHistory extends Command
      *
      * @var string
      */
-    protected $description = '抓取笑话';
+    protected $description = '抓取历史今天';
 
     /**
      * Create a new command instance.
@@ -38,39 +38,55 @@ class SyncTodayHistory extends Command
 
     public function handle()
     {
-        $appKey = config('constants.ju_he_joke_key');
+        $appKey = config('constants.ju_he_today_history_key');
         try {
             $start      = time();
             $apiRequest = new JuHeRequest();
-            $apiRequest->setRequestUrl('http://v.juhe.cn/joke/content/list.php?');
-            $apiRequest->setRequestName('聚合笑话');
+            $apiRequest->setRequestUrl('http://v.juhe.cn/todayOnhistory/queryEvent.php?');
+            $apiRequest->setRequestName('聚合历史今天');
             $apiRequest->setAppKey($appKey);
-            for ($i = 1; $i <= 100; $i++) {
-                $result = $apiRequest->sendRequest(['sort' => 'desc', 'page' => $i, 'pagesize' => 20, 'time' => time()]);
+            $dateArr = date('n/j');
+            foreach ($dateArr as $value) {
+                $result = $apiRequest->sendRequest(['date' => $value]);
                 if (!$result) {
-                    Log::error('笑话抓取请求失败');
+                    Log::error('历史今天取请求失败');
                     continue;
                 }
                 if ($result['error_code'] != 0) {
-                    Log::error('笑话抓取返回错误====' . $result['error_code'] . '===' . $result['reason']);
+                    Log::error('历史今天抓取返回错误====' . $result['error_code'] . '===' . $result['reason']);
                     continue;
                 }
-                $array = $result['result']['data'];
-
-                foreach ($array as $item) {
-
-                    $info = Joke::where('hash_id', $item['hashId'])->first();
-                    if (!$info) {
-                        $info = new Joke();
-                    }
-                    $info->hash_id     = $item['hashId'];
-                    $info->content     = $item['content'];
-                    $info->update_time = $item['unixtime'];
-                    $info->created_at  = time();
-                    $info->updated_at  = time();
-                    $info->save();
+                $array = $result['result'];
+                $info  = TodayHistory::where('day', $value)->first();
+                if (!$info) {
+                    $info = new TodayHistory();
                 }
-                $this->info('当前分页=======' . $i . '=======完成');
+                $info->day        = $value;
+                $info->content    = $array;
+                $info->created_at = time();
+                $info->updated_at = time();
+                foreach ($array as $item) {
+                    $detailArr = self::syncDetail($item['e_id'], $apiRequest);
+                    if (!$detailArr) {
+                        continue;
+                    }
+                    if ($detailArr['error_code'] != 0 || $detailArr['reason'] != 'success') {
+                        continue;
+                    }
+                    foreach ($detailArr['result'] as $vv) {
+                        $model = TodayHistoryDetail::where('e_id', $vv['e_id'])->first();
+                        if (!$model) {
+                            $model = new TodayHistoryDetail();
+                        }
+                        $model->e_id    = $vv['e_id'];
+                        $model->title   = $vv['title'];
+                        $model->content = $vv['content'];
+                        $model->pic_url = $vv['picUrl'];
+                        $model->save();
+                    }
+                    $info->save();
+
+                }
             }
 
             $end = time();
@@ -79,6 +95,12 @@ class SyncTodayHistory extends Command
             $this->error("同步出错" . $exception->getMessage());
             return;
         }
+    }
+
+    public static function syncDetail($eId, $apiRequest)
+    {
+        $apiRequest->setRequestUrl('http://v.juhe.cn/todayOnhistory/queryDetail.php?');
+        return $apiRequest->sendRequest(['e_id' => $eId]);
     }
 
 }

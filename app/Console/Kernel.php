@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\SyncGoods',
         'App\Console\Commands\SyncJoke',
         'App\Console\Commands\SyncNews',
+        'App\Console\Commands\SyncTodayHistory'
     ];
 
     /**
@@ -30,6 +31,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('sync-jd')->daily();
         $schedule->command('sync:news')->daily();
         $schedule->command('sync:joke')->daily();
+        $schedule->command('sync:today:history')->daily();
     }
 
     /**

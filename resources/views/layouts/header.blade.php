@@ -400,6 +400,8 @@
                                     {{--                                            <li><a href="404.html">404 Error</a></li>--}}
                                     {{--                                        </ul>--}}
                                     {{--                                    </li>--}}
+                                    <li><a href="{{route('news.list')}}">新闻</a></li>
+                                    <li><a href="{{route('news.joke')}}">笑话大全</a></li>
                                     <li><a href="/article/list.html">文章</a></li>
                                     <li><a>数学<i class="fa fa-angle-down"></i></a>
                                         <ul class="dropdown dropdown-width">
@@ -407,10 +409,9 @@
                                             <li><a>二年级</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">关于我们</a></li>
-                                    <li><a href="contact.html">联系我们</a></li>
-                                    <li><a href="{{route('news.list')}}">新闻</a></li>
-                                    <li><a href="{{route('news.joke')}}">笑话大全</a></li>
+{{--                                    <li><a href="about.html">关于我们</a></li>--}}
+                                    <li><a href="{{route('contact')}}">联系我们</a></li>
+
                                 </ul>
                             </nav>
                         </div>

@@ -44,4 +44,9 @@ class NewsController extends Controller
         $info = Joke::inRandomOrder()->first();
         return view('news.joke', compact("info"));
     }
+
+    public function contact()
+    {
+        return view('news.contact');
+    }
 }

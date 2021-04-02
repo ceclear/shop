@@ -1,6 +1,6 @@
 <footer class="mt-30">
     <!-- Newslatter area start -->
-    <div style="display: none" class="newsletter-group">
+    <div style="display:none " class="newsletter-group">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-12">
@@ -42,34 +42,34 @@
                         </div>
                         <div class="widget-body">
                             <p>
-                                这是一个钓鱼经验分享网站
+                                这是一个垂钓经验分享网站
                             </p>
-                            <div class="widget-address mt-30 mb-20">
-                                <p><strong>Address:</strong> 九龙坡区谢家湾正街56号</p>
-                                <p><strong>Number Phone:</strong> (800) 123 456 - (800) 123 456.</p>
-                                <p><strong>Address Email:</strong> support@circleshop.com</p>
+                            <div class="widget-address  mb-20">
+                                <p><strong>地址:</strong> 九龙坡区谢家湾正街56号</p>
+                                <p><strong>QQ:</strong> 594652523</p>
+                                <p><strong>Email:</strong> 594652523@qq.com</p>
                             </div>
                         </div>
-                        <div class="footer_social">
-                            <ul class="d-flex">
-                                <li><a class="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                <li><a class="youtube" href="#"><i class="zmdi zmdi-youtube"></i></a></li>
-                                <li><a class="google" href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                <li><a class="linkedin" href="#"><i class="zmdi zmdi-linkedin"></i></a></li>
-                            </ul>
-                        </div>
+{{--                        <div class="footer_social">--}}
+{{--                            <ul class="d-flex">--}}
+{{--                                <li><a class="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a></li>--}}
+{{--                                <li><a class="twitter" href="#"><i class="zmdi zmdi-twitter"></i></a></li>--}}
+{{--                                <li><a class="youtube" href="#"><i class="zmdi zmdi-youtube"></i></a></li>--}}
+{{--                                <li><a class="google" href="#"><i class="zmdi zmdi-google-plus"></i></a></li>--}}
+{{--                                <li><a class="linkedin" href="#"><i class="zmdi zmdi-linkedin"></i></a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-6">
                             <div class="widgets_container">
-                                <h6>Information</h6>
+                                <h6>快速入口</h6>
                                 <div class="footer_menu">
                                     <ul>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html"> Contact us</a></li>
+                                        <li><a href="http://www.kuaidi.com/">快递查询API</a></li>
+                                        <li><a href="{{route('level1')}}">作业生成</a></li>
                                         <li><a href="#"> Privecy Policy</a></li>
                                         <li><a href="#">Terms & Conditions</a></li>
                                     </ul>
@@ -116,87 +116,50 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="widget-box mt-30">
-                                <div class="widget-single-box">
-                                    <p><strong>Address:</strong></p>
-                                    <ul>
-                                        <li><a href="#">Order</a></li>
-                                        <li><a href="#">Affiliate</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Sourcing</a></li>
-                                        <li><a href="#">Gadgets</a></li>
-                                        <li><a href="#">Accessories</a></li>
-                                    </ul>
-                                </div>
-                                <div class="widget-single-box">
-                                    <p><strong>Headphones:</strong></p>
-                                    <ul>
-                                        <li><a href="#">Beats</a></li>
-                                        <li><a href="#">Headphone Bose</a></li>
-                                        <li><a href="#">Headphone Nocx</a></li>
-                                        <li><a href="#">Wireless</a></li>
-                                        <li><a href="#">Headphone</a></li>
-                                        <li><a href="#">Headphone Mini</a></li>
-                                    </ul>
-                                </div>
-                                <div class="widget-single-box">
-                                    <p><strong>Computers:</strong></p>
-                                    <ul>
-                                        <li><a href="#">Mini Laptops</a></li>
-                                        <li><a href="#">Computers</a></li>
-                                        <li><a href="#">Laptop Mouse</a></li>
-                                        <li><a href="#">Laptop Pad</a></li>
-                                        <li><a href="#">GB Laptop</a></li>
-                                        <li><a href="#">XL Laptop</a></li>
-                                    </ul>
-                                </div>
-                                <div class="widget-single-box">
-                                    <p><strong>Camera:</strong></p>
-                                    <ul>
-                                        <li><a href="#">Lense Camera</a></li>
-                                        <li><a href="#">Frame Camera</a></li>
-                                        <li><a href="#">Box Camera</a></li>
-                                        <li><a href="#">Mini Camera</a></li>
-                                        <li><a href="http://www.kuaidi.com/" target="_blank">快递查询API</a></li>
-                                        <li><a href="{{route('level1')}}">Work Entrance</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-lg-12">--}}
+{{--                            <div class="widget-box mt-30">--}}
+
+{{--                                <div class="widget-single-box">--}}
+{{--                                    <p><strong>快速入口:</strong></p>--}}
+{{--                                    <ul>--}}
+{{--                                        <li><a href="http://www.kuaidi.com/" target="_blank">快递查询API</a></li>--}}
+{{--                                        <li><a href="{{route('level1')}}">作业生成</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>
     </div>
     <!-- Footer Top End -->
     <!-- Footer Bottom Start -->
-    <div class="footer-bottom">
+    <div class="footer-bottom" style="background: #408ed4">
         <div class="container">
             <div class="row align-items-center">
-                <div  class="col-lg-5 col-md-12 col-12">
+                <div style="max-width: 33%" class="col-lg-5 col-md-12 col-12">
                     <div class="footer-bottom-content">
                         <div class="footer-copyright">
                             <p>Copyright &copy; 2020.Company name All rights reserved.</p>
                         </div>
                     </div>
                 </div>
-                <div  class="col-lg-5 col-md-12 col-12">
+                <div style="max-width: 17%" class="col-lg-5 col-md-12 col-12">
                     <div class="footer-bottom-content">
                         <div class="footer-copyright">
                             <a href="https://beian.miit.gov.cn" style="cursor: pointer">渝ICP备2021000774号-1</a>
                         </div>
                     </div>
                 </div>
-{{--                <div><a href="https://beian.miit.gov.cn" style="cursor: pointer">渝ICP备2021000774号-1</a></div>--}}
-{{--                <div style="max-width: 51%" class="col-lg-7 col-md-12 col-12">--}}
-{{--                    <div class="payment">--}}
-{{--                        <a href="#">--}}
-{{--                            <img src="/assets/images/payment/footerend.png" alt="" class="img-fluid">--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                <div style="max-width: 50%" class="col-lg-5 col-md-12 col-12">
+                    <div class="footer-bottom-content">
+                        <div class="footer-copyright">
+                            本站新闻均来自第三方系统 如有侵权请联系本站 其他情况本站概不负责
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

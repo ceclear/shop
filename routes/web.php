@@ -48,3 +48,5 @@ Route::group(['prefix' => 'study'], function () {
     Route::post('detail', 'StudyController@detail')->name('study.detail');
 });
 
+Route::get('contact.html', 'NewsController@contact')->name('contact');
+
