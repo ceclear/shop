@@ -257,15 +257,15 @@ class StudyService extends BaseService
             $opStr   = request('op_str_val') ?? '1,2';
             $num     = 0;
             $arr     = [];
-            $OpArr    = explode(',', $opStr);
-            if(count($OpArr)>2){
-                $this->setError('','操作符最多选2个');
-                return  false;
+            $OpArr   = explode(',', $opStr);
+            if (count($OpArr) > 2) {
+                $this->setError('', '操作符最多选2个');
+                return false;
             }
             do {
-                $first    = rand(request('first_op_min') ?? 10, request('first_op_max') ?? 20);//第一算数项
-                $second   = rand(request('second_op_min') ?? 10, request('second_op_max') ?? 20);//第二算数项
-                $third    = rand(request('third_op_min') ?? 10, request('third_op_max') ?? 20);//第三算数项
+                $first  = rand(request('first_op_min') ?? 10, request('first_op_max') ?? 20);//第一算数项
+                $second = rand(request('second_op_min') ?? 10, request('second_op_max') ?? 20);//第二算数项
+                $third  = rand(request('third_op_min') ?? 10, request('third_op_max') ?? 20);//第三算数项
 
                 $firstOp  = $OpArr[array_rand($OpArr)];
                 $secondOp = $OpArr[array_rand($OpArr)];
@@ -302,7 +302,9 @@ class StudyService extends BaseService
             return false;
         }
         DB::transaction(function () use ($arr) {
-            $subId = DB::table('subtracts')->insertGetId(['user_id' => request()->uid, 'start_time' => request('start_time'), 'created_at' => time(), 'updated_at' => time()]);
+            $yes   = request('yes_num');
+            $no    = request('total') - $yes;
+            $subId = DB::table('subtracts')->insertGetId(['yes' => $yes, 'no' => $no, 'remind' => request('time_second'), 'rate' => request('percent'), 'user_id' => request()->uid, 'created_at' => time(), 'updated_at' => time()]);
             foreach ($arr as $item) {
                 $insert[] = ['sub_id' => $subId, 'key_str' => $item['op_str'], 'enter_val' => $item['val'], 'val' => $item['hid_val'], 'created_at' => time()];
             }

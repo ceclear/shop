@@ -9,6 +9,7 @@
 namespace App\Admin\Controllers;
 
 use App\Admin\Filters\TimestampBetween;
+use App\Models\Subtract;
 use App\Models\SubtractDetail;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -36,44 +37,40 @@ class SchoolController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new SubtractDetail());
+        $grid = new Grid(new Subtract());
         $grid->disableRowSelector();
-        $grid->model()->selectRaw("sub_id,sum(case when enter_val=val then 1 else 0 end) AS 'yes',sum(case when enter_val!=val then 1 else 0 end) AS 'no'")->groupBy("sub_id");
-        $grid->column('sub_id', '序号');
-        $grid->column('Subtract.created_at', '提交时间')->display(function ($v) {
+
+        $grid->number('序号');
+        $grid->column('created_at', '提交时间')->display(function ($v) {
             return $v;
         });
         $grid->column('yes', '正确数');
         $grid->column('no', '错误数');
-        $grid->column('remind', '用时')->display(function () {
-            $start    = $this->subtract['start_time'];
-            $end      = strtotime($this->Subtract['created_at']);
-            $timediff = $end-$start;
+        $grid->column('remind', '用时')->display(function ($v) {
             //计算小时数
-            $remain = $timediff % 86400;
+            $remain = $v % 86400;
             $hours  = intval($remain / 3600);
             //计算分钟数
             $remain = $remain % 3600;
-            $mins   = intval($remain / 60);
+            $min    = intval($remain / 60);
             //计算秒数
             $secs = $remain % 60;
-            return $hours . '时' . $mins . '分' . $secs . '秒';
+            return $hours . '时' . $min . '分' . $secs . '秒';
         });
-        $grid->column('rate', '正确率(%)')->display(function ($v) {
-            $a = sprintf("%.2f", $this->yes / ($this->yes + $this->no)) * 100;
-            return $a;
-        });
+        $grid->column('rate', '正确率(%)');
         $grid->column('aa', '查看详情')->modal('详情', function ($model) {
-            $field = ['key_str', 'enter_val', 'val'];
-            $list  = SubtractDetail::where('sub_id', $model->sub_id)->get($field);
-            $array = $list->toArray();
+            $field = ['id', 'key_str', 'enter_val', 'val'];
+            $array = SubtractDetail::where('sub_id', $model->id)->get($field)->toArray();
             if ($array) {
                 foreach ($array as &$item) {
                     $item['check'] = $item['enter_val'] == $item['val'] ? '<span class="label label-success">√</span>' : '<span class="label label-danger">×</span>';
                 }
                 unset($item);
             }
-            return new Table(['题目', '提交值', '正确答案','是否正确'], $array);
+            return new Table(['ID', '题目', '提交值', '正确答案'], $array);
+        });
+        $grid->rows(function ($row, $number) {
+            $row->column('number', $number + 1);
         });
         $grid->disableActions();
         $grid->filter(function ($filter) {
