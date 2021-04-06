@@ -7,6 +7,7 @@ use App\Libs\CartRedis;
 use App\Libs\MemberRedis;
 use App\Models\Goods;
 use App\Models\Members;
+use App\Models\Subtract;
 use App\Traits\Errors;
 use EasyWeChat\Factory;
 use GenTux\Jwt\JwtToken;
@@ -79,7 +80,10 @@ class MemberService extends BaseService
     {
         $userId     = request()->uid;
         $userInfo   = Members::where('id', $userId)->select(['nickname', 'avatar'])->first();
-        $orderCount = ['delivery' => rand(1, 100), 'payment' => rand(1, 100), 'received' => rand(1, 100)];
+        $statics    = Subtract::selectRaw("sum( CASE WHEN rate = 100 THEN 1 ELSE 0 END ) AS 'a',
+	sum( CASE WHEN rate >= 50 AND rate < 100 THEN 1 ELSE 0 END ) AS 'b',
+	sum( CASE WHEN rate < 50 THEN 1 ELSE 0 END ) AS 'c'")->first();
+        $orderCount = ['delivery' => $statics['a'], 'payment' => $statics['b'], 'received' => $statics['c']];
         return compact("userInfo", "orderCount");
     }
 
