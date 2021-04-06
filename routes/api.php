@@ -31,6 +31,7 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->get('study/subtract_list','StudyController@lists')->middleware('jwt');
     $router->get('search_mobile','ToolController@searchMobile');
     $router->get('postage','ToolController@Postage');//快递查询
+    $router->get('similar','ToolController@Similar');//近义反义词
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {

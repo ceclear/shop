@@ -5,8 +5,8 @@ namespace App\Console\Commands;
 
 use App\Libs\JuHeRequest;
 use App\Models\News;
+use App\Models\RequestLog;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class SyncNews extends Command
@@ -43,12 +43,11 @@ class SyncNews extends Command
             $start      = time();
             $apiRequest = new JuHeRequest();
             $type       = array_rand(News::TYPE_ARR);
-            $apiRequest->setRequestUrl('http://v.juhe.cn/toutiao/index?');
-            $apiRequest->setRequestName('聚合新闻');
             $apiRequest->setAppKey($appKey);
             for ($i = 1; $i <= 2; $i++) {
+                $apiRequest->setRequestUrl('http://v.juhe.cn/toutiao/index?');
+                $apiRequest->setRequestName('聚合新闻');
                 $result = $apiRequest->sendRequest(['type' => $type, 'page' => $i, 'page_size' => 5]);
-                Cache::set('news' . date('Y-m-d') . '-' . $i, serialize($result));
                 if (!$result) {
                     Log::error('新闻抓取请求失败');
                     continue;
@@ -89,6 +88,7 @@ class SyncNews extends Command
                     $info->updated_at = time();
                     $info->content    = self::syncDetail($item['uniquekey'], $apiRequest);
                     $info->save();
+                    RequestLog::create(['name' => '聚合新闻'.$apiRequest->requestUrl, 'param' => ['type' => $type, 'page' => $i, 'page_size' => 5], 'request_date' => date('Y-m-d H:i:s')]);
                 }
                 $this->info('当前分页=======' . $i . '=======完成');
             }
@@ -105,6 +105,7 @@ class SyncNews extends Command
     {
         $apiRequest->setRequestUrl('http://v.juhe.cn/toutiao/content?');
         $result = $apiRequest->sendRequest(['uniquekey' => $uniqueKey]);
+        RequestLog::create(['name' => '聚合新闻'.$apiRequest->requestUrl, 'param' => ['uniquekey' => $uniqueKey], 'request_date' => date('Y-m-d H:i:s')]);
         return $result['result']['content'];
     }
 }

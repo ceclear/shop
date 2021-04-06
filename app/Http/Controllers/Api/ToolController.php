@@ -46,4 +46,13 @@ class ToolController extends Controller
         return $this->responseJson(0, '', $rel);
     }
 
+    public function Similar()
+    {
+        $rel = $this->toolService->Similar();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->toolService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
+
 }

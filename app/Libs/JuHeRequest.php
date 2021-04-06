@@ -54,7 +54,7 @@ class JuHeRequest
     {
         //追加参数数组
         $paramArr['key'] = $this->appKey;
-        Log::info($this->requestName . '请求参数', $paramArr);
+        Log::info($this->requestName . '请求信息，地址' . $this->requestUrl . ',参数：', $paramArr);
         //组织参数
         $strParam         = http_build_query($paramArr);
         $this->requestUrl .= $strParam;
