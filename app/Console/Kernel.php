@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('sync-jd')->daily();
-        $schedule->command('sync:news')->daily();
+        $schedule->command('sync:news')->everyFiveMinutes();
         $schedule->command('sync:joke')->daily();
         $schedule->command('sync:today:history')->daily();
     }
