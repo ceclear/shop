@@ -42,10 +42,10 @@ class SyncJoke extends Command
         try {
             $start      = time();
             $apiRequest = new JuHeRequest();
-            $apiRequest->setRequestUrl('http://v.juhe.cn/joke/content/list.php?');
             $apiRequest->setRequestName('聚合笑话');
             $apiRequest->setAppKey($appKey);
             for ($i = 1; $i <= 100; $i++) {
+                $apiRequest->setRequestUrl('http://v.juhe.cn/joke/content/list.php?');
                 $result = $apiRequest->sendRequest(['sort' => 'desc', 'page' => $i, 'pagesize' => 20, 'time' => time()]);
                 if (!$result) {
                     Log::error('笑话抓取请求失败');

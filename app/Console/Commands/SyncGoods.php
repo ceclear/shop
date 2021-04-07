@@ -40,7 +40,7 @@ class SyncGoods extends Command
         try {
             $start      = time();
             $apiRequest = new DingDanXiaApiRequest(env('DDX_API_KEY'));
-            $apiRequest->setRequestUrl('http://api.tbk.dingdanxia.com/jd/material_query?');
+
             $num = 1;
             if ($this->argument('num')) {
                 $num = $this->argument('num');
@@ -48,6 +48,7 @@ class SyncGoods extends Command
             $category = Category::all()->toArray();
             for ($i = 1; $i <= $num; $i++) {
                 $pageIndex = $i;
+                $apiRequest->setRequestUrl('http://api.tbk.dingdanxia.com/jd/material_query?');
                 $array     = $apiRequest->sendRequest(['eliteId' => 4, 'pageIndex' => $pageIndex]);
                 if (empty($array['data'])) {
                     $this->info('没有获取到数据===返回消息==' . $array['msg']);
