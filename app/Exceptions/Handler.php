@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use GenTux\Jwt\Exceptions\JwtException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -70,6 +71,7 @@ class Handler extends ExceptionHandler
             }
             return response()->json(['code' => 20000, 'message' => '方法不存在']);
         }
+        Log::info('服务器内部错误，异常: 行:'.$exception->getLine().', File '.$exception->getFile().',Error '.$exception->getMessage().',IP ' . $request->ip());
         return parent::render($request, $exception);
     }
 }
