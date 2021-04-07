@@ -42,7 +42,7 @@ class SyncJoke extends Command
         try {
             $start      = time();
             $apiRequest = new JuHeRequest();
-            $apiRequest->setRequestName('聚合笑话');
+            $apiRequest->setRequestName('聚合笑话 ');
             $apiRequest->setAppKey($appKey);
             for ($i = 1; $i <= 100; $i++) {
                 $apiRequest->setRequestUrl('http://v.juhe.cn/joke/content/list.php?');
