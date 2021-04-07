@@ -49,7 +49,7 @@ class SyncNews extends Command
                 $apiRequest->setRequestName('聚合新闻');
                 $result = $apiRequest->sendRequest(['type' => $type, 'page' => $i, 'page_size' => 5]);
                 if (!$result) {
-                    Log::error('新闻抓取请求失败');
+                    Log::error('新闻抓取请求失败了');
                     continue;
                 }
                 if ($result['error_code'] != 0) {
