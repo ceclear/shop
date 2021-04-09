@@ -1,4 +1,8 @@
 function ajax(options) {
+    if(options.need_hide==1){
+        $('#loading').css('display', 'block');
+    }
+
     // 默认参数;
     let _default = {
         type: "GET",
@@ -7,15 +11,15 @@ function ajax(options) {
         dataType: "text",
         status: null,
         success: function (res) {
-            if(options.need_alert&&options.need_alert==1){
+            if (options.need_alert && options.need_alert == 1) {
                 cocoMessage.success(res.message)
             }
             // cocoMessage.success(res.message)
             if (options.callback) {
                 if (options.callback == 'g') {
-                    setTimeout(function () {
+                    // setTimeout(function () {
                         self.location = document.referrer;
-                    }, 2000)
+                    // }, 2000)
                 }
                 if (options.callback == 'f') {
                     options.func(res);
@@ -24,9 +28,17 @@ function ajax(options) {
 
         },
         complete: function () {
+            // setTimeout(function () {
+                $('#loading').css('display', 'none');
+            // }, 1500)
+
         },
         error: function (res) {
-            cocoMessage.error(res.message)
+
+            cocoMessage.warning(res.message,)
+            // $('#loading').css('display', 'none');
+
+
         }
     }
 
@@ -156,4 +168,5 @@ function loadingShow(t) {
         time: t
     });
 }
+
 

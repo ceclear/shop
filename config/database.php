@@ -171,8 +171,8 @@ return [
             'port' => env('REDIS_PORT', 6379),
             'database' => env('REDIS_USER_DB', 11),
             //用laravels加速，开启持久连接
-            'persistent' => true, // 开启持久连接
-            'read_write_timeout' => 60,
+//            'persistent' => true, // 开启持久连接
+//            'read_write_timeout' => 60,
         ],
 
     ],

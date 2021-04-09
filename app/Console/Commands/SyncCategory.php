@@ -6,6 +6,7 @@ namespace App\Console\Commands;
 use App\Libs\DingDanXiaApiRequest;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class SyncCategory extends Command
 {
@@ -49,31 +50,36 @@ class SyncCategory extends Command
         }
     }
 
-    public function getRequestData($apiRequest, $parentId = 0, $grade = 0, $selfParentId = 0)
+    public function getRequestData($apiRequest, $parentId = 0, $grade = 0)
     {
         $apiRequest->setRequestUrl('http://api.tbk.dingdanxia.com/jd/goods_category?');
         $array = $apiRequest->sendRequest(['parentId' => $parentId, 'grade' => $grade]);
         if (empty($array['data'])) {
             $this->info('没有获取到数据===JD分类ID==' . $parentId . '===grade==' . $grade . '===返回消息' . $array['msg']);
+            Log::info('没有获取到数据===JD分类ID==' . $parentId . '===grade==' . $grade . '===返回消息' . $array['msg']);
             return;
         }
-        $count = 10;
+        $count = 15;
         $arr   = [];
         foreach ($array['data'] as $item) {
-            $data['parent_id']  = $selfParentId == 0 ? $item['parentId'] : $selfParentId;
+            $data['id']         = $item['id'];
+            $data['parent_id']  = $item['parentId'];
             $data['name']       = $item['name'];
             $data['level']      = $grade + 1;
             $data['created_at'] = time();
             $data['updated_at'] = time();
-            if (count($arr) <= $count) {
-                $arr[] = $data;
-                $ppId  = DB::table('categories')->insertGetId($data);
-//                sleep(1);
-                $this->info('分类==' . $item['name'] . '===grade==' . $grade . '==完成');
-                if ($item['grade'] < 2) {
-                    $this->getRequestData($apiRequest, $item['id'], $item['grade'] + 1, $ppId);
-                }
+            $arr[]              = $data;
+            if (count($arr) == $count) {
+                $this->info('grade==' . $grade . '==完成');
+                Log::info('grade==' . $grade . '==完成');
+                break;
             }
+            if ($item['grade'] < 2) {
+                $this->getRequestData($apiRequest, $item['id'], $item['grade'] + 1);
+            }
+
         }
+
+        DB::table('categories')->insert($arr);
     }
 }

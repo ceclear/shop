@@ -86,7 +86,7 @@ class CartRedis
             }
 
             foreach ($goods_list as $item) {
-                $order_total_num++;
+                $order_total_num+=$item['num'];
 
                 $order_total_price += $item['price'] * $item['num'];
             }
@@ -101,6 +101,19 @@ class CartRedis
         if (!empty($info)) {
             $info        = json_decode($info, true);
             $info['num'] = $num;
+            $this->_redis->hSet($userId, $goodsId, json_encode($info));
+            $this->_redis->expire($userId, self::$expireTime);
+            return true;
+        }
+        return false;
+    }
+
+    public function webCartInc($userId, $goodsId, $num = 1)
+    {
+        $info = $this->_redis->hGet($userId, $goodsId);
+        if (!empty($info)) {
+            $info        = json_decode($info, true);
+            $info['num'] += $num;
             $this->_redis->hSet($userId, $goodsId, json_encode($info));
             $this->_redis->expire($userId, self::$expireTime);
             return true;

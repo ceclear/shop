@@ -12,7 +12,7 @@
                     <div class="slider_area slider-one mt-30">
                         <!-- Single Slider Start -->
                         <div class="single_slider">
-                            <img src="assets/images/slider/slider-1.jpg" alt="" class="img-fluid">
+                            <img src="/assets/images/slider/slider-1.jpg" alt="" class="img-fluid">
                             <div class="slider_content color_one">
                                 <h5>The Hottest <br> Trend</h5>
                                 <h2>Laptop <br> Tablets Outlet</h2>
@@ -25,7 +25,7 @@
                         <!-- Single Slider End -->
                         <!-- Single Slider Start -->
                         <div class="single_slider">
-                            <img src="assets/images/slider/slider-2.jpg" alt="" class="img-fluid">
+                            <img src="/assets/images/slider/slider-2.jpg" alt="" class="img-fluid">
                             <div class="slider_content color_two">
                                 <h5>The Hottest <br> Trend</h5>
                                 <h2>Cellphone <br> Smartphone Not 2</h2>
@@ -106,7 +106,7 @@
                                     @foreach($newList as $item)
                                         <div class="item-product">
                                             <div class="product-thumb">
-                                                <a href="product-details.html">
+                                                <a href="{{route('goods.detail',['id'=>$item['id']])}}">
                                                     <img src="{{$item['discover']}}" alt="" class="img-fluid">
                                                 </a>
                                                 <div class="box-label">
@@ -121,18 +121,15 @@
 
                                                 </div>
                                                 <div class="action-link">
-                                                    <a class="quick-view same-link" href="#" title="Quick view"
-                                                       data-toggle="modal" data-target="#modal_box"
-                                                       data-original-title="quick view"><i
-                                                            class="zmdi zmdi-eye zmdi-hc-fw"></i></a>
-                                                    <a class="wishlist-add same-link" href="wishlist.html"
+
+                                                    <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
                                                        title="Add to wishlist"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
                                             </div>
                                             <div class="product-caption">
                                                 <div class="product-name">
-                                                    <a href="product-details.html"
+                                                    <a href="{{route('goods.detail',['id'=>$item['id']])}}"
                                                        title="{{$item['title']}}">{{str_limit($item['title'])}}</a>
                                                 </div>
                                                 <div class="rating">
@@ -169,7 +166,7 @@
                                     @foreach($bestList as $item)
                                         <div class="item-product">
                                             <div class="product-thumb">
-                                                <a href="product-details.html">
+                                                <a href="{{route('goods.detail',['id'=>$item['id']])}}">
                                                     <img src="{{$item['discover']}}" alt="" class="img-fluid">
                                                 </a>
                                                 <div class="box-label">
@@ -186,18 +183,15 @@
 
                                                 </div>
                                                 <div class="action-link">
-                                                    <a class="quick-view same-link" href="#" title="Quick view"
-                                                       data-toggle="modal" data-target="#modal_box"
-                                                       data-original-title="quick view"><i
-                                                            class="zmdi zmdi-eye zmdi-hc-fw"></i></a>
-                                                    <a class="wishlist-add same-link" href="wishlist.html"
+
+                                                    <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
                                                        title="Add to wishlist"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
                                             </div>
                                             <div class="product-caption">
                                                 <div class="product-name">
-                                                    <a href="product-details.html"
+                                                    <a href="{{route('goods.detail',['id'=>$item['id']])}}"
                                                        title="{{$item['title']}}">{{str_limit($item['title'])}}</a>
                                                 </div>
                                                 <div class="rating">
@@ -234,7 +228,7 @@
                                     @foreach($recList as $item)
                                         <div class="item-product">
                                             <div class="product-thumb">
-                                                <a href="product-details.html">
+                                                <a href="{{route('goods.detail',['id'=>$item['id']])}}">
                                                     <img src="{{$item['discover']}}" alt="" class="img-fluid">
                                                 </a>
                                                 <div class="box-label">
@@ -251,18 +245,15 @@
 
                                                 </div>
                                                 <div class="action-link">
-                                                    <a class="quick-view same-link" href="#" title="Quick view"
-                                                       data-toggle="modal" data-target="#modal_box"
-                                                       data-original-title="quick view"><i
-                                                            class="zmdi zmdi-eye zmdi-hc-fw"></i></a>
-                                                    <a class="wishlist-add same-link" href="wishlist.html"
+
+                                                    <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
                                                        title="Add to wishlist"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
                                             </div>
                                             <div class="product-caption">
                                                 <div class="product-name">
-                                                    <a href="product-details.html"
+                                                    <a href="{{route('goods.detail',['id'=>$item['id']])}}"
                                                        title="{{$item['title']}}">{{str_limit($item['title'])}}</a>
                                                 </div>
                                                 <div class="rating">
@@ -310,7 +301,7 @@
                                     <span class="offer-bar"><img src="assets/images/product/sale-offer.png"
                                                                  alt=""></span>
                                         <div class="product-thumb">
-                                            <a href="product-details.html">
+                                            <a href="{{route('goods.detail',['id'=>$item['id']])}}">
                                                 <img src="{{$item['discover']}}" alt=""
                                                      class="img-fluid">
                                             </a>
@@ -322,7 +313,7 @@
                                         </div>
                                         <div class="product-caption">
                                             <div class="product-name mb-20">
-                                                <a href="product-details.html">
+                                                <a href="{{route('goods.detail',['id'=>$item['id']])}}">
                                                     <h6>{{$item['brand_code']}}</h6>
                                                 </a>
                                             </div>
@@ -368,1642 +359,104 @@
         </div>
     </div>
 
-    {{--    <div style="display: none" class="product-category-area">--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-lg-12">--}}
-    {{--                    <ul class="nav nav-tabs category-tabs">--}}
-    {{--                        <li class="nav-item">--}}
-    {{--                            <a class="nav-link active" id="four-tab" data-toggle="tab" href="#four">--}}
-    {{--                                <span><img src="assets/images/category/thumb-1.png" alt="" class="img-fluid"></span>--}}
-    {{--                                <span>Computer - Laptop</span>--}}
-    {{--                            </a>--}}
-    {{--                        </li>--}}
-    {{--                        <li class="nav-item">--}}
-    {{--                            <a class="nav-link" id="five-tab" data-toggle="tab" href="#five">--}}
-    {{--                                <span><img src="assets/images/category/thumb-2.png" alt="" class="img-fluid"></span>--}}
-    {{--                                <span>Electronics</span>--}}
-    {{--                            </a>--}}
-    {{--                        </li>--}}
-    {{--                        <li class="nav-item">--}}
-    {{--                            <a class="nav-link" id="six-tab" data-toggle="tab" href="#six">--}}
-    {{--                                <span><img src="assets/images/category/thumb-3.png" alt="" class="img-fluid"></span>--}}
-    {{--                                <span>Toys & Hobbies</span>--}}
-    {{--                            </a>--}}
-    {{--                        </li>--}}
-    {{--                        <li class="nav-item">--}}
-    {{--                            <a class="nav-link" id="seven-tab" data-toggle="tab" href="#seven">--}}
-    {{--                                <span><img src="assets/images/category/thumb-4.png" alt="" class="img-fluid"></span>--}}
-    {{--                                <span>Sports & Outdores</span>--}}
-    {{--                            </a>--}}
-    {{--                        </li>--}}
-    {{--                        <li class="nav-item">--}}
-    {{--                            <a class="nav-link" id="eight-tab" data-toggle="tab" href="#eight">--}}
-    {{--                                <span><img src="assets/images/category/thumb-5.png" alt="" class="img-fluid"></span>--}}
-    {{--                                <span>Smartphone & Tablets</span>--}}
-    {{--                            </a>--}}
-    {{--                        </li>--}}
-    {{--                        <li class="nav-item">--}}
-    {{--                            <a class="nav-link" id="nine-tab" data-toggle="tab" href="#nine">--}}
-    {{--                                <span><img src="assets/images/category/thumb-6.png" alt="" class="img-fluid"></span>--}}
-    {{--                                <span>Health & Beauty</span>--}}
-    {{--                            </a>--}}
-    {{--                        </li>--}}
-    {{--                    </ul>--}}
-    {{--                    <div class="tab-content">--}}
-    {{--                        <div class="product-thing-tab slick-custom-default tab-pane fade show active" id="four">--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-1.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-2.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-3.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="#">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-4.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                        <div class="label-product-discount">--}}
-    {{--                                            <span>-20%</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shoppint-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-5.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-6.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                        </div>--}}
-    {{--                        <div class="product-thing-tab slick-custom-default tab-pane fade" id="five">--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-10.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-11.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-3.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="#">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-7.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                        <div class="label-product-discount">--}}
-    {{--                                            <span>-20%</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shoppint-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-5.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-6.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                        </div>--}}
-    {{--                        <div class="product-thing-tab slick-custom-default tab-pane fade" id="six">--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-1.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-12.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-3.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="#">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-4.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                        <div class="label-product-discount">--}}
-    {{--                                            <span>-20%</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shoppint-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-10.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-6.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                        </div>--}}
-    {{--                        <div class="product-thing-tab slick-custom-default tab-pane fade" id="seven">--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-11.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-2.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-3.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="#">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-8.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                        <div class="label-product-discount">--}}
-    {{--                                            <span>-20%</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shoppint-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-5.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-6.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                        </div>--}}
-    {{--                        <div class="product-thing-tab slick-custom-default tab-pane fade" id="eight">--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-10.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-2.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-3.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="#">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-4.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                        <div class="label-product-discount">--}}
-    {{--                                            <span>-20%</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shoppint-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-9.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-6.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                        </div>--}}
-    {{--                        <div class="product-thing-tab slick-custom-default tab-pane fade" id="nine">--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-9.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-2.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$30.00</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a class="cart-plus" href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-3.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="#">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-4.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="box-label">--}}
-    {{--                                        <div class="label-product-new">--}}
-    {{--                                            <span>New</span>--}}
-    {{--                                        </div>--}}
-    {{--                                        <div class="label-product-discount">--}}
-    {{--                                            <span>-20%</span>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Natus erro at congue massa commodo sit--}}
-    {{--                                            dignissim</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shoppint-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-5.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Mirum est notare tellus eu nibh iaculis--}}
-    {{--                                            pretium</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                            <!-- Single-Product-Start -->--}}
-    {{--                            <div class="item-product">--}}
-    {{--                                <div class="product-thumb">--}}
-    {{--                                    <a href="product-details.html">--}}
-    {{--                                        <img src="assets/images/product/product-8.jpg" alt="" class="img-fluid">--}}
-    {{--                                    </a>--}}
-    {{--                                    <div class="action-link">--}}
-    {{--                                        <a class="quick-view same-link" href="#" title="Quick view" data-toggle="modal"--}}
-    {{--                                           data-target="#modal_box" data-original-title="quick view"><i--}}
-    {{--                                                class="zmdi zmdi-eye zmdi-hc-fw"></i></a>--}}
-    {{--                                        <a class="compare-add same-link" href="compare.html" title="Add to compare"><i--}}
-    {{--                                                class="zmdi zmdi-refresh-alt"></i></a>--}}
-    {{--                                        <a class="wishlist-add same-link" href="wishlist.html"--}}
-    {{--                                           title="Add to wishlist"><i class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                                <div class="product-caption">--}}
-    {{--                                    <div class="product-name">--}}
-    {{--                                        <a href="product-details.html">Porro quisquam eget feugiat pretium sodales</a>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="rating">--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                        <span class="yellow"><i class="fa fa-star"></i></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="price-box">--}}
-    {{--                                        <span class="regular-price">$50.67</span>--}}
-    {{--                                        <span class="old-price"><del>$55.50</del></span>--}}
-    {{--                                    </div>--}}
-    {{--                                    <div class="cart">--}}
-    {{--                                        <div class="add-to-cart">--}}
-    {{--                                            <a href="shopping-cart.html" title="Add to cart"><i--}}
-    {{--                                                    class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>--}}
-    {{--                                        </div>--}}
-    {{--                                    </div>--}}
-    {{--                                </div>--}}
-    {{--                            </div>--}}
-    {{--                            <!-- Single-Product-End -->--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
+    <div class="product-category-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav nav-tabs category-tabs">
+                        @if(!empty($categoryGoodList))
+                            @foreach($categoryGoodList as $key=>$item)
+                                <li class="nav-item">
+                                    <a class="nav-link @if($key==0) active @else @endif" id="show_{{$key}}-tab"
+                                       data-toggle="tab" href="#show_{{$key}}">
+                                        <span><img src="assets/images/category/thumb-{{$key+1}}.png" alt=""
+                                                   class="img-fluid"></span>
+                                        <span>{{$item['name']}}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endif
 
-    {{--    <div style="display: none" class="banner-area mt-10">--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
-    {{--                    <div class="single-banner mt-40">--}}
-    {{--                        <a href="#"><img src="assets/images/banner/banner-2.jpg" alt="" class="img-fluid"></a>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
-    {{--                    <div class="single-banner mt-40">--}}
-    {{--                        <a href="#"><img src="assets/images/banner/banner-3.jpg" alt="" class="img-fluid"></a>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
-    {{--                    <div class="single-banner mt-40">--}}
-    {{--                        <a href="#"><img src="assets/images/banner/banner-4.jpg" alt="" class="img-fluid"></a>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
+                    </ul>
+                    <div class="tab-content">
+                        @if(!empty($categoryGoodList))
+                            @foreach($categoryGoodList as $key=>$item)
+                                <div
+                                    class="product-thing-tab slick-custom-default tab-pane fade show @if($key==0) active @else @endif"
+                                    id="show_{{$key}}">
+                                    @foreach($item['goods'] as $value)
+                                        <div class="item-product">
+                                            <div class="product-thumb">
+                                                <a href="{{route('goods.detail',['id'=>$value['id']])}}">
+                                                    <img src="{{$value['discover']}}" alt=""
+                                                         class="img-fluid">
+                                                </a>
+                                                <div class="box-label">
+                                                    <div class="label-product-new">
+                                                        <span>New</span>
+                                                    </div>
+                                                </div>
+{{--                                                <div class="action-link">--}}
+{{--                                                    <a class="wishlist-add same-link" data-product="{{$value['id']}}"--}}
+{{--                                                       title="Add to wishlist"><i--}}
+{{--                                                            class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
+{{--                                                </div>--}}
+                                            </div>
+                                            <div class="product-caption">
+                                                <div class="product-name">
+                                                    <a href="{{route('goods.detail',['id'=>$value['id']])}}">{{str_limit($value['title'],20)}}</a>
+                                                </div>
+                                                <div class="rating">
+                                                    @for($i=0;$i<$value['star'];$i++)
+                                                        <span class="yellow"><i class="fa fa-star"></i></span>
+                                                    @endfor
+                                                    @for($i=0;$i<5-$value['star'];$i++)
+                                                        <span class="default-star"><i class="fa fa-star"></i></span>
+                                                    @endfor
+                                                </div>
+                                                <div class="price-box">
+                                                    <span class="regular-price">￥{{$value['price']}}</span>
+                                                </div>
+                                                <div class="cart">
+                                                    <div class="add-to-cart">
+                                                        <a class="cart-plus" href="shopping-cart.html"
+                                                           title="Add to cart"><i
+                                                                class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{--    <div style="display: none" class="banner-area mt-10">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
+{{--                    <div class="single-banner mt-40">--}}
+{{--                        <a href="#"><img src="assets/images/banner/banner-2.jpg" alt="" class="img-fluid"></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
+{{--                    <div class="single-banner mt-40">--}}
+{{--                        <a href="#"><img src="assets/images/banner/banner-3.jpg" alt="" class="img-fluid"></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
+{{--                    <div class="single-banner mt-40">--}}
+{{--                        <a href="#"><img src="assets/images/banner/banner-4.jpg" alt="" class="img-fluid"></a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="feature-category-area">
         <div class="container">
             <div class="row">
@@ -2018,7 +471,7 @@
                                 @for($i=0;$i<3;$i++)
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
-                                            <a href="product-details.html">
+                                            <a href="{{route('goods.detail',['id'=>$newList[$i]['id']])}}">
                                                 <img src="{{$newList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
                                                 @if(!empty($newList[$i]['images'][1]))
@@ -2033,7 +486,7 @@
                                         </div>
                                         <div class="product-caption">
                                             <div class="product-name">
-                                                <a href="product-details.html"
+                                                <a href="{{route('goods.detail',['id'=>$newList[$i]['id']])}}"
                                                    title="{{$newList[$i]['title']}}">{{str_limit($newList[$i]['title'],25)}}</a>
                                             </div>
                                             <div class="rating">
@@ -2056,13 +509,13 @@
                                 @for($i=3;$i<6;$i++)
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
-                                            <a href="product-details.html">
+                                            <a href="{{route('goods.detail',['id'=>$newList[$i]['id']])}}">
                                                 <img src="{{$newList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
                                                 @if(!empty($newList[$i]['images'][1]))
                                                     <img src="{{$newList[$i]['images'][1]}}" alt=""
                                                          class="img-fluid block-two">
-                                                    @else
+                                                @else
                                                     <img src="{{$newList[$i]['images'][0]}}" alt=""
                                                          class="img-fluid block-two">
                                                 @endif
@@ -2071,7 +524,7 @@
                                         </div>
                                         <div class="product-caption">
                                             <div class="product-name">
-                                                <a href="product-details.html"
+                                                <a href="{{route('goods.detail',['id'=>$newList[$i]['id']])}}"
                                                    title="{{$newList[$i]['title']}}">{{str_limit($newList[$i]['title'],25)}}</a>
                                             </div>
                                             <div class="rating">
@@ -2103,7 +556,7 @@
                                 @for($i=0;$i<3;$i++)
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
-                                            <a href="product-details.html">
+                                            <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}">
                                                 <img src="{{$bestList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
                                                 <img src="{{$bestList[$i]['images'][1]}}" alt=""
@@ -2112,7 +565,7 @@
                                         </div>
                                         <div class="product-caption">
                                             <div class="product-name">
-                                                <a href="product-details.html"
+                                                <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}"
                                                    title="{{$bestList[$i]['title']}}">{{str_limit($bestList[$i]['title'],25)}}</a>
                                             </div>
                                             <div class="rating">
@@ -2135,7 +588,7 @@
                                 @for($i=3;$i<6;$i++)
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
-                                            <a href="product-details.html">
+                                            <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}">
                                                 <img src="{{$bestList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
                                                 <img src="{{$bestList[$i]['images'][1]}}" alt=""
@@ -2144,7 +597,7 @@
                                         </div>
                                         <div class="product-caption">
                                             <div class="product-name">
-                                                <a href="product-details.html"
+                                                <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}"
                                                    title="{{$bestList[$i]['title']}}">{{str_limit($bestList[$i]['title'],25)}}</a>
                                             </div>
                                             <div class="rating">
@@ -2176,7 +629,7 @@
                                 @for($i=0;$i<3;$i++)
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
-                                            <a href="product-details.html">
+                                            <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}">
                                                 <img src="{{$recList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
                                                 <img src="{{$recList[$i]['images'][1]}}" alt=""
@@ -2185,7 +638,7 @@
                                         </div>
                                         <div class="product-caption">
                                             <div class="product-name">
-                                                <a href="product-details.html"
+                                                <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}"
                                                    title="{{$recList[$i]['title']}}">{{str_limit($recList[$i]['title'],25)}}</a>
                                             </div>
                                             <div class="rating">
@@ -2208,7 +661,7 @@
                                 @for($i=3;$i<6;$i++)
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
-                                            <a href="product-details.html">
+                                            <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}">
                                                 <img src="{{$recList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
                                                 <img src="{{$recList[$i]['images'][1]}}" alt=""
@@ -2217,7 +670,7 @@
                                         </div>
                                         <div class="product-caption">
                                             <div class="product-name">
-                                                <a href="product-details.html"
+                                                <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}"
                                                    title="{{$recList[$i]['title']}}">{{str_limit($recList[$i]['title'],25)}}</a>
                                             </div>
                                             <div class="rating">
@@ -2296,4 +749,18 @@
     {{--            </div>--}}
     {{--        </div>--}}
     {{--    </div>--}}
+    <script>
+        $('.wishlist-add').click(function () {
+            let product = $(this).data('product');
+            ajax(
+                {
+                    'data': {id: product, _token: '{{csrf_token()}}'},
+                    'url': "{{route('goods.wish_add')}}",
+                    'type': 'post',
+                    'dataType': 'json',
+                    'need_alert':1
+                }
+            )
+        })
+    </script>
 @endsection

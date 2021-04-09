@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Member\LoginMember;
 use App\Models\Members;
 use App\Services\MemberService;
 use App\Traits\ResponseJson;
-use GenTux\Jwt\JwtToken;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\URL;
 
 class MemberController extends Controller
 {
@@ -30,14 +30,17 @@ class MemberController extends Controller
         return view('member.register');
     }
 
-    public function loginSubmit(LoginMember $loginMember, JwtToken $jwtToken)
+    public function loginSubmit()
     {
-        $param   = $loginMember->validated();
+        $param = \request()->post();
+        if (empty($param['username'])) {
+            return $this->responseJson(1, '请输入用户名');
+        }
+        if (empty($param['password'])) {
+            return $this->responseJson(1, '请输入密码');
+        }
         $where[] = ['username', $param['username']];
         $where[] = ['email', '=', $param['username'], 'or'];
-        if ($param['username'] == 'ceclear') {
-            return $this->responseJson(0, '登录成功');
-        }
         $info = Members::where($where)->first();
         if (!$info) {
             return $this->responseJson(1, '没有找到用户');
@@ -47,5 +50,11 @@ class MemberController extends Controller
         }
         session(['user_info' => ['id' => $info['id'], 'nickname' => $info['nickname'], 'avatar' => $info['avatar']]]);
         return $this->responseJson(0, '登录成功');
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect(URL::previous());
     }
 }

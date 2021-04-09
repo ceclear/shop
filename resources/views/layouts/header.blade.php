@@ -11,37 +11,23 @@
                 <div class="col-lg-8 col-12">
                     <div class="box-right">
                         <ul>
+                            <li class="settings">
+                                <a href="{{route('goods.wish')}}">收藏列表</a>
+                            </li>
                             {{--                            <li class="settings">--}}
-                            {{--                                <a href="#">Compare (2)</a>--}}
+                            {{--                                <a href="#" class="drop-toggle">--}}
+                            {{--                                    <span>RMB ￥</span>--}}
+                            {{--                                    <i class="fa fa-angle-down"></i>--}}
+                            {{--                                </a>--}}
+                            {{--                                <ul class="box-dropdown drop-dropdown">--}}
+                            {{--                                    @if(!empty($rateList))--}}
+                            {{--                                        @foreach($rateList as $item)--}}
+                            {{--                                            <li><a href="#">{{$item['name']}} {{$item['symbol']}}</a></li>--}}
+                            {{--                                        @endforeach--}}
+                            {{--                                    @endif--}}
+                            {{--                                </ul>--}}
                             {{--                            </li>--}}
-                            <li class="settings">
-                                <a href="#" class="drop-toggle">
-                                    <span>RMB ￥</span>
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="box-dropdown drop-dropdown">
-                                    @if(!empty($rateList))
-                                        @foreach($rateList as $item)
-                                            <li><a href="#">{{$item['name']}} {{$item['symbol']}}</a></li>
-                                        @endforeach
-                                    @endif
-                                </ul>
-                            </li>
-                            <li class="settings">
-                                <a href="#" class="drop-toggle">
-                                    <img src="/assets/images/cuntry/1.jpg" alt="">
-                                    English
-                                    <i class="fa fa-angle-down"></i>
-                                </a>
-                                <ul class="box-dropdown drop-dropdown">
-                                    <li>
-                                        <a href="#"><img src="/assets/images/cuntry/1.jpg" alt=""> English</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="/assets/images/cuntry/2.jpg" alt=""> Francis</a>
-                                    </li>
-                                </ul>
-                            </li>
+
                             <li class="settings">
                                 <a href="#" class="drop-toggle">
                                     个人中心
@@ -52,6 +38,8 @@
                                     <li><a href="#">结算</a></li>
                                     @if(empty(session('user_info')))
                                         <li><a href="{{route('member.login')}}">登录</a></li>
+                                    @else
+                                        <li><a href="{{route('member.logout')}}">退出</a></li>
                                     @endif
                                 </ul>
                             </li>
@@ -114,56 +102,43 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="blockcart">
-                            <a href="#" class="drop-toggle">
+                        <div class="blockcart" style="width: 200px">
+                            <a href="#" class="drop-toggle" style="width: 200px">
                                 <img src="/assets/images/cart/cart.png" alt="" class="img-fluid">
                                 <span class="my-cart">购物车</span>
-                                <span class="count">2</span>
-                                <span class="total-item">$200.00</span>
+                                @if(!empty($cart)) <span class="count"> {{$cart['order_total_num']}} </span>@endif
+                                <span class="total-item">￥@if(!empty($cart)) {{$cart['order_total_price']??0.00}} @else 0.00 @endif</span>
                             </a>
                             <div class="cart-dropdown drop-dropdown">
                                 <ul>
-                                    <li class="mini-cart-details">
-                                        <div class="innr-crt-img">
-                                            <img src="/assets/images/cart/ear-headphones.jpg" alt="">
-                                            <span>1x</span>
-                                        </div>
-                                        <div class="innr-crt-content">
+                                    @if(!empty($cart['goods_list']))
+                                        @foreach($cart['goods_list'] as $item)
+                                            <li class="mini-cart-details">
+                                                <div class="innr-crt-img">
+                                                    <img src="{{$item['discover']}}" height="70px" width="70px" alt="">
+                                                    <span>{{$item['num']}}x</span>
+                                                </div>
+                                                <div class="innr-crt-content">
                                                 <span class="product-name">
-                                                <a href="#">SonicFuel Wireless Over-Ear Headphones </a>
+                                                <a title="{{$item['title']}}" href="{{route('goods.detail',['id'=>$item['id']])}}">{{str_limit($item['title'])}}</a>
                                             </span>
-                                            <span class="product-price">$32.30</span>
-                                            <span class="product-size">Size:  S</span>
-                                        </div>
-                                    </li>
-                                    <li class="mini-cart-details mb-30">
-                                        <div class="innr-crt-img">
-                                            <img src="/assets/images/cart/720-degree-cameras-dual.jpg" alt="">
-                                            <span>2x</span>
-                                        </div>
-                                        <div class="innr-crt-content">
-                                                <span class="product-name">
-                                                <a href="#">720 Degree Panoramic HD 360.. </a>
-                                            </span>
-                                            <span class="product-price">$29.00</span>
-                                            <span class="product-size">Dimension:  40cm X 60cm</span>
-                                        </div>
+                                                    <span class="product-price">￥ {{$item['price']}}</span>
+{{--                                                    <span class="product-size">Size:  S</span>--}}
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    @endif
+                                    <li>
+                                        <span class="subtotal-text">商品总价</span>
+                                        <span class="subtotal-price">￥@if(!empty($cart)) {{$cart['order_total_price']}} @else 0.00 @endif</span>
                                     </li>
                                     <li>
-                                        <span class="subtotal-text">Subtotal</span>
-                                        <span class="subtotal-price">$61.30</span>
+                                        <span class="subtotal-text">邮费</span>
+                                        <span class="subtotal-price">￥ 0.00</span>
                                     </li>
                                     <li>
-                                        <span class="subtotal-text">Shipping</span>
-                                        <span class="subtotal-price">$40.20</span>
-                                    </li>
-                                    <li>
-                                        <span class="subtotal-text">Taxes</span>
-                                        <span class="subtotal-price">$10.07</span>
-                                    </li>
-                                    <li>
-                                        <span class="subtotal-text">Total</span>
-                                        <span class="subtotal-price">$111.57</span>
+                                        <span class="subtotal-text">合计</span>
+                                        <span class="subtotal-price">￥@if(!empty($cart)) {{$cart['order_total_price']}} @else 0.00 @endif</span>
                                     </li>
                                 </ul>
                                 <div class="checkout-cart">
@@ -400,6 +375,7 @@
                                     {{--                                            <li><a href="404.html">404 Error</a></li>--}}
                                     {{--                                        </ul>--}}
                                     {{--                                    </li>--}}
+                                    <li><a href="{{route('goods.shop')}}">商品</a></li>
                                     <li><a href="{{route('news.list')}}">新闻</a></li>
                                     <li><a href="{{route('news.joke')}}">笑话大全</a></li>
                                     <li><a href="/article/list.html">文章</a></li>
@@ -409,7 +385,7 @@
                                             <li><a>二年级</a></li>
                                         </ul>
                                     </li>
-{{--                                    <li><a href="about.html">关于我们</a></li>--}}
+                                    {{--                                    <li><a href="about.html">关于我们</a></li>--}}
                                     <li><a href="{{route('contact')}}">联系我们</a></li>
 
                                 </ul>

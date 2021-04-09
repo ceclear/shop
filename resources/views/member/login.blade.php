@@ -26,16 +26,16 @@
                             <h1 class="last-title mb-30 text-center">登录你的账号</h1>
                             <div class="form_group col-12">
                                 <label class="form-label">邮箱<span>*</span></label>
-                                <input class="input-form" type="text" data-tip="username" name="username">
+                                <input class="input-form" required type="text" data-tip="邮箱或账号" name="username">
                             </div>
                             <div class="form_group col-12 position-relative">
                                 <label class="form-label">密码 <span>*</span></label>
-                                <input class="input-form input-login" data-tip="password" type="password"
+                                <input class="input-form input-login" required data-tip="密码" type="password"
                                        name="password">
-                                <a style="color: white" onclick="show_pass(1)" class="show-btn">Show</a>
+                                <a style="color: white" onclick="show_pass(1)" class="show-btn">显示</a>
                             </div>
                             <div class="form_group group_3 col-lg-3">
-                                <button class="login-register" type="button" id="login">Login</button>
+                                <button class="login-register" type="button" id="login">登录</button>
                             </div>
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             {{--                            <div class="form_group group_3 col-lg-9">--}}
@@ -76,20 +76,19 @@
 
         $("#login").click(function (e) {
             let formData = formToJson($("#login_form"));
-            validateRequire($(".input-form"));
-            ajax(
-                {
-                    'data': formData,
-                    'url': "{{route('member.web_login')}}",
-                    'type': 'post',
-                    'dataType': 'json',
-                    'callback': 'f',
-                    'func':function (data){
-                        localStorage.setItem('token',data.data)
-                        setTimeout(function (){self.location = document.referrer;},1500)
+            if(validateRequire($(".input-form"))){
+                ajax(
+                    {
+                        'data': formData,
+                        'url': "{{route('member.web_login')}}",
+                        'type': 'post',
+                        'dataType': 'json',
+                        'callback': 'g',
+
                     }
-                }
-            )
+                )
+            }
+
         });
     </script>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Libs\CartRedis;
 use App\Models\Category;
 use App\Models\Rate;
 use Illuminate\Support\ServiceProvider;
@@ -30,7 +31,9 @@ class SetServiceProvider extends ServiceProvider
             $categoryList = Category::getCategory(3);
             $rateList     = Rate::rows();
             $categoryShow = request()->getPathInfo() == "/";
-            $view->with(compact("categoryList", "rateList", "categoryShow"));
+            $userInfo     = session('user_info');
+            $cart         = CartRedis::getRedisInstance()->lists($userInfo['id'] ?? 0);
+            $view->with(compact("categoryList", "rateList", "categoryShow", "cart"));
         });
     }
 }

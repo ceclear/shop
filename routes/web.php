@@ -22,6 +22,7 @@ Route::group(['prefix' => 'member'], function (Router $router) {
     $router->get('login.html', 'MemberController@login')->name('member.login');
     $router->get('register.html', 'MemberController@register')->name('member.register');
     $router->post('login_submit', 'MemberController@loginSubmit')->name('member.web_login');
+    $router->get('logout.html', 'MemberController@logout')->name('member.logout');
 });
 
 Route::group(['prefix' => 'level1'], function () {
@@ -49,4 +50,12 @@ Route::group(['prefix' => 'study'], function () {
 });
 
 Route::get('contact.html', 'NewsController@contact')->name('contact');
+
+Route::group(['prefix' => 'product'], function () {
+    Route::get('detail.html', 'GoodsController@detail')->name('goods.detail');
+    Route::get('shop.html', 'GoodsController@shop')->name('goods.shop');
+    Route::get('wishlist.html', 'GoodsController@wishList')->name('goods.wish');
+    Route::post('wish_add.html', 'GoodsController@wishAdd')->name('goods.wish_add');//添加希望清单
+    Route::post('card_add.html', 'GoodsController@addCart')->name('goods.cart_add');//添加购物车
+});
 
