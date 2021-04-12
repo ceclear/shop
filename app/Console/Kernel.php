@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('sync-jd')->daily();
+        $schedule->command('sync-jd')->everyMinute();
         $schedule->command('sync:news')->cron('0 */2 * * *');
         $schedule->command('sync:joke')->daily();
         $schedule->command('sync:today:history')->daily();
