@@ -11,18 +11,18 @@ class NewsService extends BaseService
 {
 
 
-    public function lists($where = [], $orderBy = ['id' => 'desc'], $pageSize = 6)
+    public function lists($where = [], $orderBy = ['id' => 'desc'], $pageSize = 8)
     {
         $appends = $withParam = [];
         if ($author = request('author')) {
-            $where['author']   = $author;
+            $where['author_name']   = $author;
             $appends['author'] = $author;
         }
         if ($cat = request('cat')) {
-            $withParam['cat'] = $cat;
+            $where['category'] = $cat;
             $appends['cat']   = $cat;
         }
-        $query = News::where('status', 1)->where($where);
+        $query = News::where('status', 1)->where($where)->where($where);
         foreach ($orderBy as $key => $item) {
             $query->orderBy($key, $item);
         }

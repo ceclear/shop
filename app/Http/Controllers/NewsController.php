@@ -23,7 +23,7 @@ class NewsController extends Controller
     {
         $lists        = $this->newsService->lists();
         $recentLists  = $this->newsService->recentList();
-        $recentAuthor = $this->newsService->authorList();
+        $recentAuthor = $this->newsService->authorList(10);
         $catLists     = $this->newsService->articleCatList();
         return view('news.index', compact("lists", "catLists", "recentLists", "recentAuthor"));
     }

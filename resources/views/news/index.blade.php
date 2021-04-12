@@ -37,18 +37,19 @@
                                                 <li><i class="fa fa-calendar"></i><a
                                                     >{{date("M d,Y",strtotime($item['created_at']))}}</a>
                                                 </li>
-                                                <li><i class="fa fa-user-circle"></i> Posts by : {{$item['author']}}
+                                                <li><i class="fa fa-user-circle"></i> Posts by
+                                                    : {{$item['author_name']}}
                                                 </li>
-                                                <li><i class="fa fa-folder-open"></i><a
-                                                        href="aaaaaa"> 数据没有</a>
-                                                </li>
+                                                {{--                                                <li><i class="fa fa-folder-open"></i><a--}}
+                                                {{--                                                        href="aaaaaa"> 数据没有</a>--}}
+                                                {{--                                                </li>--}}
                                             </ul>
                                             <h5 class="title"><a
                                                     href="{{route('news.detail',['id'=>$item['id']])}}">{{$item['title']}}</a>
                                             </h5>
-{{--                                            <div class="desc">--}}
-{{--                                                <p>{!! str_limit($item['content'],100) !!}</p>--}}
-{{--                                            </div>--}}
+                                            {{--                                            <div class="desc">--}}
+                                            {{--                                                <p>{!! str_limit($item['content'],100) !!}</p>--}}
+                                            {{--                                            </div>--}}
                                             <a href="{{route('news.detail',['id'=>$item['id']])}}" class="link">Read
                                                 More</a>
                                         </div>
@@ -102,8 +103,9 @@
                                                         src="{{$item['image']}}" width="100" height="66" alt=""></a>
                                             </div>
                                             <div class="blog-info">
-                                                <h5 class="info-title"><a href="{{route('news.detail',['id'=>$item['id']])}}"
-                                                                          title="{{$item['title']}}">{{str_limit($item['title'],8)}}</a>
+                                                <h5 class="info-title"><a
+                                                        href="{{route('news.detail',['id'=>$item['id']])}}"
+                                                        title="{{$item['title']}}">{{str_limit($item['title'],8)}}</a>
                                                 </h5>
                                                 <span>{{date("M d,Y",strtotime($item['created_at']))}}</span>
                                             </div>
@@ -121,8 +123,13 @@
                                     @foreach($catLists as $item)
                                         <li>
                                             {{--                                            <input type="checkbox">--}}
-                                            <a href="{{route('news.list',['cat'=>$item['category']])}}"
-                                               title="{{$item['category']}}">{{$item['category']}}</a>
+                                            @if(empty(request()->query()))
+                                                <a href="{{route('news.list',['cat'=>$item['category']])}}"
+                                                   title="{{$item['category']}}">{{$item['category']}}</a>
+                                            @else
+                                                <a href="{{route('news.list',array_merge(request()->query(),['cat'=>$item['category']]))}}"
+                                                   title="{{$item['category']}}">{{$item['category']}}</a>
+                                            @endif
                                             <span class="checkmark"></span>
                                         </li>
                                     @endforeach
@@ -138,7 +145,11 @@
                                     @if(!empty($recentAuthor))
                                         @foreach($recentAuthor as $item)
                                             <li>
-                                                <a href="{{route('news.list',['author'=>$item['author']])}}">{{$item['author']}}</a>
+                                                @if(empty(request()->query()))
+                                                    <a href="{{route('news.list',['author'=>$item['author']])}}">{{$item['author']}}</a>
+                                                @else
+                                                    <a href="{{route('news.list',array_merge(request()->query(),['author'=>$item['author']]))}}">{{$item['author']}}</a>
+                                                @endif
                                             </li>
                                         @endforeach
                                     @endif

@@ -39,7 +39,7 @@ class SyncGoods extends Command
     {
         try {
             $start      = time();
-            $apiRequest = new DingDanXiaApiRequest(env('DDX_API_KEY'));
+            $apiRequest = new DingDanXiaApiRequest(config('constants.ding_dan_xia_api_key'));
 
             $num = 50;
             if ($this->argument('num')) {
@@ -54,7 +54,7 @@ class SyncGoods extends Command
                 $array = $apiRequest->sendRequest(['eliteId' => 4, 'pageIndex' => $pageIndex]);
                 if (empty($array['data'])) {
                     $this->info('没有获取到数据===返回消息==' . $array['msg']);
-                    Log::info('没有获取到数据===返回消息==' . $array['msg'] . '当前分页' . $i);
+                    Log::info('抓取订单侠京东商品出错,没有获取到数据===返回消息==' . $array['msg'] . '当前分页' . $i);
                     return;
                 }
                 foreach ($array['data'] as $item) {
@@ -95,10 +95,10 @@ class SyncGoods extends Command
             }
             $end = time();
             $this->info("同步完成===耗时==" . ($end - $start) . '新增' . $total . '条数据,更新' . $update . '条数据');
-            Log::info('同步完成===新增' . $total . '条数据,更新' . $update . '条数据');
+            Log::info('订单侠京东商品同步完成===新增' . $total . '条数据,更新' . $update . '条数据');
         } catch (\Exception $exception) {
             $this->error("同步出错" . $exception->getMessage());
-            Log::error("同步出错" . $exception->getMessage());
+            Log::error("订单侠京东商品同步出错" . $exception->getMessage());
             return;
         }
     }
