@@ -45,7 +45,17 @@ class SyncTodayHistory extends Command
             $apiRequest->setRequestUrl('http://v.juhe.cn/todayOnhistory/queryEvent.php?');
             $apiRequest->setRequestName('聚合历史今天');
             $apiRequest->setAppKey($appKey);
-            $dateArr = date('n/j');
+            $dateArr = [];
+            $now     = date('Y/1/1');
+            $list    = TodayHistory::all(['day'])->toArray();
+            $exist   = array_column($list, 'day');
+            for ($i = 0; $i < 365; $i++) {
+                $day = date('n/j', strtotime("+$i day", strtotime($now)));
+                if (in_array($day, $exist) || in_array($day, $dateArr)) {
+                    continue;
+                }
+                $dateArr[] = $day;
+            }
             foreach ($dateArr as $value) {
                 $result = $apiRequest->sendRequest(['date' => $value]);
                 if (!$result) {
@@ -87,12 +97,15 @@ class SyncTodayHistory extends Command
                     $info->save();
 
                 }
+                Log::info($value . '历史今天抓取成功');
             }
 
             $end = time();
             $this->info("同步完成===耗时==" . ($end - $start));
+
         } catch (\Exception $exception) {
             $this->error("同步出错" . $exception->getMessage());
+            Log::error( "历史今天抓取失败" . $exception->getMessage());
             return;
         }
     }

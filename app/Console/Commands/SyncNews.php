@@ -88,7 +88,7 @@ class SyncNews extends Command
                     $info->updated_at = time();
                     $info->content    = self::syncDetail($item['uniquekey'], $apiRequest);
                     $info->save();
-                    RequestLog::create(['name' => '聚合新闻'.$apiRequest->requestUrl, 'param' => ['type' => $type, 'page' => $i, 'page_size' => 5], 'request_date' => date('Y-m-d H:i:s')]);
+//                    RequestLog::create(['name' => '聚合新闻'.$apiRequest->requestUrl, 'param' => ['type' => $type, 'page' => $i, 'page_size' => 5], 'request_date' => date('Y-m-d H:i:s')]);
                 }
                 $this->info('当前分页=======' . $i . '=======完成');
             }
@@ -105,7 +105,7 @@ class SyncNews extends Command
     {
         $apiRequest->setRequestUrl('http://v.juhe.cn/toutiao/content?');
         $result = $apiRequest->sendRequest(['uniquekey' => $uniqueKey]);
-        RequestLog::create(['name' => '聚合新闻'.$apiRequest->requestUrl, 'param' => ['uniquekey' => $uniqueKey], 'request_date' => date('Y-m-d H:i:s')]);
+//        RequestLog::create(['name' => '聚合新闻'.$apiRequest->requestUrl, 'param' => ['uniquekey' => $uniqueKey], 'request_date' => date('Y-m-d H:i:s')]);
         return $result['result']['content'];
     }
 }
