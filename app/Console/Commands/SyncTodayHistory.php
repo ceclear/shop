@@ -42,7 +42,7 @@ class SyncTodayHistory extends Command
         try {
             $start      = time();
             $apiRequest = new JuHeRequest();
-            $apiRequest->setRequestUrl('http://v.juhe.cn/todayOnhistory/queryEvent.php?');
+
             $apiRequest->setRequestName('聚合历史今天');
             $apiRequest->setAppKey($appKey);
             $dateArr = [];
@@ -57,6 +57,7 @@ class SyncTodayHistory extends Command
                 $dateArr[] = $day;
             }
             foreach ($dateArr as $value) {
+                $apiRequest->setRequestUrl('http://v.juhe.cn/todayOnhistory/queryEvent.php?');
                 $result = $apiRequest->sendRequest(['date' => $value]);
                 if (!$result) {
                     Log::error('历史今天取请求失败');

@@ -51,7 +51,7 @@ class SyncGoods extends Command
             for ($i = 1; $i <= $num; $i++) {
                 $pageIndex = $i;
                 $apiRequest->setRequestUrl('http://api.tbk.dingdanxia.com/jd/material_query?');
-                $array = $apiRequest->sendRequest(['eliteId' => 4, 'pageIndex' => $pageIndex]);
+                $array = $apiRequest->sendRequest(['eliteId' => random_int(1,4), 'pageIndex' => $pageIndex]);
                 if (empty($array['data'])) {
                     $this->info('没有获取到数据===返回消息==' . $array['msg']);
                     Log::info('抓取订单侠京东商品出错,没有获取到数据===返回消息==' . $array['msg'] . '当前分页' . $i);

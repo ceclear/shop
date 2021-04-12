@@ -28,10 +28,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('sync-jd')->daily();
+        $schedule->command('sync-jd')->cron('0 */2 * * *');
         $schedule->command('sync:news')->cron('0 */2 * * *');
         $schedule->command('sync:joke')->daily();
-        $schedule->command('sync:today:history')->everyMinute();
+        $schedule->command('sync:today:history')->cron('0 */12 * * *');
     }
 
     /**
