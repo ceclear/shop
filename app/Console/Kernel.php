@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('sync-jd')->daily();
         $schedule->command('sync:news')->cron('0 */2 * * *');
         $schedule->command('sync:joke')->daily();
-        $schedule->command('sync:today:history')->daily();
+        $schedule->command('sync:today:history')->everyMinute();
     }
 
     /**
