@@ -65,7 +65,7 @@ class SyncTodayHistory extends Command
                 }
                 if ($result['error_code'] != 0) {
                     Log::error('历史今天抓取返回错误====' . $result['error_code'] . '===' . $result['reason']);
-                    continue;
+                    break;
                 }
                 $array = $result['result'];
                 $info  = TodayHistory::where('day', $value)->first();
