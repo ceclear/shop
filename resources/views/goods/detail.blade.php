@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section('title','商品详情-New')
+@section('title','商品详情')
 @section("content")
     <div class="breadcrumbs_area">
         <div class="container">
@@ -11,7 +11,7 @@
                                 <h1><a href="/">首页</a></h1>
                             </li>
                             <li>
-                                <h1><a href="shop.html">商品</a></h1>
+                                <h1><a href="{{route('goods.shop')}}">商品</a></h1>
                             </li>
                             <li>商品详情</li>
                         </ul>
@@ -56,11 +56,12 @@
                     <!-- Product Summery Start -->
                     <div class="product-summery position-relative">
                         <div class="product-head">
-                            <h1 title="{{$detail['title']}}" class="product-title">{{str_limit($detail['title'],25)}}</h1>
-                            <div class="product-arrows text-right">
-                                <a href="#"><i class="fa fa-long-arrow-left"></i></a>
-                                <a href="#"><i class="fa fa-long-arrow-right"></i></a>
-                            </div>
+                            <h1 title="{{$detail['title']}}"
+                                class="product-title">{{str_limit($detail['title'],25)}}</h1>
+{{--                            <div class="product-arrows text-right">--}}
+{{--                                <a href="#"><i class="fa fa-long-arrow-left"></i></a>--}}
+{{--                                <a href="#"><i class="fa fa-long-arrow-right"></i></a>--}}
+{{--                            </div>--}}
                         </div>
                         <div class="rating-meta d-flex">
                             <div class="rating">
@@ -86,14 +87,15 @@
                         <div class="price-box">
                             <span class="regular-price">￥{{$detail['price']}}</span>
                         </div>
-{{--                        <div class="product-description">--}}
-{{--                            <p>Porro first 4K UHD Camcorder, the GX10 has a compact and portable design that delivers--}}
-{{--                                outstanding video quality with remarkable detail. With a combination of incredible--}}
-{{--                                features and functionality, the GX10 is the ideal camcorder for aspiring filmmakers.</p>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="product-description">--}}
+                        {{--                            <p>Porro first 4K UHD Camcorder, the GX10 has a compact and portable design that delivers--}}
+                        {{--                                outstanding video quality with remarkable detail. With a combination of incredible--}}
+                        {{--                                features and functionality, the GX10 is the ideal camcorder for aspiring filmmakers.</p>--}}
+                        {{--                        </div>--}}
                         <div class="product-tax mb-20">
                             <ul>
-                                <li><span><strong>分类 : </strong>{{$detail['cid1_name']}} > {{$detail['cid2_name']}} > {{$detail['cid3_name']}}</span></li>
+                                <li><span><strong>分类 : </strong>{{$detail['cid1_name']}} > {{$detail['cid2_name']}} > {{$detail['cid3_name']}}</span>
+                                </li>
                                 <li><span><strong>品牌 : </strong>{{$detail['brand_code']}}</span></li>
                                 <li><span><strong>SKU : </strong>{{$detail['sku']}}</span></li>
                                 <li><span><strong>库存 : </strong>{{$detail['stock']}}</span></li>
@@ -143,7 +145,8 @@
                                    data-target="#modal_box" data-original-title="quick view"><i
                                         class="zmdi zmdi-eye zmdi-hc-fw"></i></a>
                                 <button data-product="{{$detail['id']}}" class="btn-secondary">加入购物车</button>
-                                <a class="wishlist-add same-link" href="javascript:" data-product="{{$detail['id']}}" title="Add to wishlist"><i
+                                <a class="wishlist-add same-link" href="javascript:" data-product="{{$detail['id']}}"
+                                   title="Add to wishlist"><i
                                         class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                             </div>
                         </div>
@@ -327,20 +330,11 @@
                                                         </div>
                                                     @endif
                                                 </div>
-                                                <div class="action-link">
-                                                    <a class="quick-view same-link"
-                                                       href="#" title="查看"
-                                                       data-toggle="modal" data-target="#modal_box_{{$key}}"
-                                                       data-original-title="quick view"><i
-                                                            class="zmdi zmdi-eye zmdi-hc-fw"></i></a>
-                                                    <a class="wishlist-add same-link" href="wishlist.html"
-                                                       title="加入希望清单"><i
-                                                            class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
-                                                </div>
+
                                             </div>
                                             <div class="product-caption">
                                                 <div class="product-name">
-                                                    <a href="{{route('goods.detail',['id'=>$item['id']])}}">{{$item['title']}}</a>
+                                                    <a href="{{route('goods.detail',['id'=>$item['id']])}}">{{str_limit($item['title'],25)}}</a>
                                                 </div>
                                                 <div class="rating">
                                                     @if($item['star'])
@@ -357,7 +351,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" href="javascript:" data-product="{{$detail['id']}}"
+                                                        <a class="cart-plus" href="javascript:"
+                                                           data-product="{{$detail['id']}}"
                                                            title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
@@ -390,7 +385,8 @@
                                     <div class="tab-content product-details-large">
                                         @if(!empty($detail['images']))
                                             @foreach($detail['images'] as $key=>$item)
-                                                <div class="tab-pane fade show @if($key==0) active @else @endif" id="tab{{$key}}" role="tabpanel">
+                                                <div class="tab-pane fade show @if($key==0) active @else @endif"
+                                                     id="tab{{$key}}" role="tabpanel">
                                                     <div class="modal_tab_img">
                                                         <a href="#"><img
                                                                 src="{{$item}}"
@@ -405,12 +401,14 @@
                                         <ul class="nav product_navactive" role="tablist">
                                             @if(!empty($detail['images']))
                                                 @foreach($detail['images'] as $key=>$item)
-                                            <li style="margin-top: 10px">
-                                                <a class="nav-link @if($key==0) active @else @endif" data-toggle="tab" href="#tab{{$key}}" role="tab"
-                                                   aria-controls="tab1" aria-selected="false"><img
-                                                        src="{{$item}}"
-                                                        alt="" class="img-fluid" style="width: 100px;height: 100px;"></a>
-                                            </li>
+                                                    <li style="margin-top: 10px">
+                                                        <a class="nav-link @if($key==0) active @else @endif"
+                                                           data-toggle="tab" href="#tab{{$key}}" role="tab"
+                                                           aria-controls="tab1" aria-selected="false"><img
+                                                                src="{{$item}}"
+                                                                alt="" class="img-fluid"
+                                                                style="width: 100px;height: 100px;"></a>
+                                                    </li>
                                                 @endforeach
                                             @endif
 
@@ -423,32 +421,28 @@
                                 <!-- Product Summery Start -->
                                 <div class="product-summery mt-50">
                                     <div class="product-head">
-                                        <h1 class="product-title">Porro quisquam eget feugiat pretium</h1>
+                                        <h1 class="product-title">{{$detail['title']}}</h1>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">$30.00</span>
+                                        <span class="regular-price">￥ {{$detail['price']}}</span>
                                     </div>
-                                    <div class="product-description">
-                                        <p>Porro first 4K UHD Camcorder, the GX10 has a compact and portable design that
-                                            delivers outstanding video quality with remarkable detail. With a
-                                            combination of incredible features and functionality, the GX10 is the ideal
-                                            camcorder for aspiring filmmakers.</p>
-                                    </div>
+
                                     <div class="product-tax mb-20">
                                         <ul>
-                                            <li><span><strong>Ex Tax :</strong>£60.24</span></li>
-                                            <li><span><strong>Brands :</strong>Canon</span></li>
-                                            <li><span><strong>Product Code :</strong>Digital</span></li>
-                                            <li><span><strong>Reward Points :</strong>200</span></li>
-                                            <li><span><strong>Availability :</strong>In Stock</span></li>
+                                            <li><span><strong>分类 : </strong>{{$detail['cid1_name']}} > {{$detail['cid2_name']}} > {{$detail['cid3_name']}}</span>
+                                            </li>
+                                            <li><span><strong>品牌 : </strong>{{$detail['brand_code']}}</span></li>
+                                            <li><span><strong>SKU : </strong>{{$detail['sku']}}</span></li>
+                                            <li><span><strong>库存 : </strong>{{$detail['stock']}}</span></li>
+                                            <li><span><strong>销量 : </strong>{{$detail['sale']}}</span></li>
                                         </ul>
                                     </div>
                                     <div class="product-buttons grid_list">
                                         <div class="action-link">
-                                            <a href="#" title="Add to compare"><i class="zmdi zmdi-refresh-alt"></i></a>
-                                            <button class="btn-secondary" data-product="{{$detail['id']}}">加入购物车</button>
-                                            <a href="#" title="Add to wishlist"><i
-                                                    class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
+                                            <button class="btn-secondary" data-product="{{$detail['id']}}">加入购物车
+                                            </button>
+                                            <a href="javascript:" class="wishlist-add" data-product="{{$detail['id']}}" title="加入收藏"><i
+                                                    class="zmdi zmdi-favorite-outline zmdi-hc-fw "></i></a>
                                         </div>
                                     </div>
                                     <div class="product-meta">
@@ -480,115 +474,9 @@
         </div>
     </div>
 
-{{--    相关商品查看--}}
-    @if(!empty($release))
-        @foreach($release as $kk=>$value)
-        <div class="modal fade" id="modal_box_{{$kk}}" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="zmdi zmdi-close"></i></span>
-                    </button>
-                    <div class="modal_body">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="modal_tab">
-                                        <div class="tab-content product-details-large">
-                                            @if(!empty($value['images']))
-                                                @foreach($value['images'] as $key=>$item)
-                                                    <div class="tab-pane fade show @if($key==0) active @else @endif" id="tab_{{$kk}}_{{$key}}" role="tabpanel">
-                                                        <div class="modal_tab_img">
-                                                            <a href="#"><img
-                                                                    src="{{$item}}"
-                                                                    alt="" class="img-fluid" style="height: 70%;width: 70%"></a>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                            @endif
+    {{--    相关商品查看--}}
 
-                                        </div>
-                                        <div class="modal_tab_button">
-                                            <ul class="nav product_navactive" role="tablist">
-                                                @if(!empty($value['images']))
-                                                    @foreach($value['images'] as $key=>$item)
-                                                        <li style="margin-top: 10px">
-                                                            <a class="nav-link @if($key==0) active @else @endif" data-toggle="tab" href="#tab_{{$kk}}_{{$key}}" role="tab"
-                                                               aria-controls="tab" aria-selected="false"><img
-                                                                    src="{{$item}}"
-                                                                    alt="" class="img-fluid" style="width: 100px;height: 100px;"></a>
-                                                        </li>
-                                                    @endforeach
-                                                @endif
-
-
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <!-- Product Summery Start -->
-                                    <div class="product-summery mt-50">
-                                        <div class="product-head">
-                                            <h1 class="product-title">Porro quisquam eget feugiat pretium</h1>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price">$30.00</span>
-                                        </div>
-                                        <div class="product-description">
-                                            <p>Porro first 4K UHD Camcorder, the GX10 has a compact and portable design that
-                                                delivers outstanding video quality with remarkable detail. With a
-                                                combination of incredible features and functionality, the GX10 is the ideal
-                                                camcorder for aspiring filmmakers.</p>
-                                        </div>
-                                        <div class="product-tax mb-20">
-                                            <ul>
-                                                <li><span><strong>Ex Tax :</strong>£60.24</span></li>
-                                                <li><span><strong>Brands :</strong>Canon</span></li>
-                                                <li><span><strong>Product Code :</strong>Digital</span></li>
-                                                <li><span><strong>Reward Points :</strong>200</span></li>
-                                                <li><span><strong>Availability :</strong>In Stock</span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product-buttons grid_list">
-                                            <div class="action-link">
-                                                <a href="#" title="Add to compare"><i class="zmdi zmdi-refresh-alt"></i></a>
-                                                <button class="btn-secondary">加入购物车</button>
-                                                <a href="#" title="Add to wishlist"><i
-                                                        class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="product-meta">
-                                            <div class="desc-content">
-                                                <div class="social_sharing d-flex">
-                                                    <h5>share this post:</h5>
-                                                    <ul>
-                                                        <li><a href="#" title="facebook"><i class="fa fa-facebook"></i></a>
-                                                        </li>
-                                                        <li><a href="#" title="twitter"><i class="fa fa-twitter"></i></a>
-                                                        </li>
-                                                        <li><a href="#" title="pinterest"><i
-                                                                    class="fa fa-pinterest"></i></a></li>
-                                                        <li><a href="#" title="google+"><i
-                                                                    class="fa fa-google-plus"></i></a></li>
-                                                        <li><a href="#" title="linkedin"><i class="fa fa-linkedin"></i></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Product Summery End -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    @endif
-    <link rel="stylesheet" type="text/css" href="/assets/css/normalize2.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize2.css"/>
     <script src="/assets/js/jquery.animate_from_to-1.0.js"></script>
     <script>
         $('.wishlist-add').click(function () {
@@ -599,26 +487,25 @@
                     'url': "{{route('goods.wish_add')}}",
                     'type': 'post',
                     'dataType': 'json',
-                    'need_alert':1
+                    'need_alert': 1
                 }
             )
         });
         $('.btn-secondary,.cart-plus').click(function () {
             let product = $(this).data('product');
-            let num=$('.input-qty').val();
-            $(this).animate_from_to(".my-cart");
+            let num = $('.input-qty').val();
+            let that = $(this);
             ajax(
                 {
-                    'data': {id: product,num: num,_token: '{{csrf_token()}}'},
+                    'data': {id: product, num: num, _token: '{{csrf_token()}}'},
                     'url': "{{route('goods.cart_add')}}",
                     'type': 'post',
                     'dataType': 'json',
-                    'need_alert':1,
-                    'need_hide':2,
-                    'callback':'f',
-                    'func':function (){
-
-                        setTimeout(function (){window.location.reload()},1500)
+                    'need_alert': 1,
+                    'need_hide': 2,
+                    'callback': 'f',
+                    'func': function () {
+                        that.animate_from_to(".my-cart");
                     }
                 }
             )

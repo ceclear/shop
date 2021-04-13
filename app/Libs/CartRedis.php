@@ -86,7 +86,7 @@ class CartRedis
             }
 
             foreach ($goods_list as $item) {
-                $order_total_num+=$item['num'];
+                $order_total_num += $item['num'];
 
                 $order_total_price += $item['price'] * $item['num'];
             }
@@ -119,6 +119,11 @@ class CartRedis
             return true;
         }
         return false;
+    }
+
+    public function CartDeleteGoods($userId, $goodsId)
+    {
+        return $this->_redis->hDel($userId, $goodsId);
     }
 
 

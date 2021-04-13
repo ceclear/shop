@@ -42,12 +42,16 @@ class GoodsService extends BaseService
         }
         $query = Goods::where('status', 1)->where($where);
         $count = $query->count();
+        if ($sortKey = request('sort')) {
+            $orderBy = [$sortKey => 'desc'];
+        }
         foreach ($orderBy as $key => $item) {
             $query->orderBy($key, $item);
         }
         $list = $query->paginate($pageSize);
         $list->appends($appends);
-        return compact("list", "count");
+        $sort = Goods::Sort;
+        return compact("list", "count", "sort");
     }
 
     public function wishListPage($where = [], $pageSize = 6, $orderBy = ['created_at' => 'desc'])
@@ -98,7 +102,7 @@ class GoodsService extends BaseService
         }
         $goods        = Goods::where('id', $id)->select(['id', 'discover', 'price', 'title'])->first();
         $num          = request('num') ?? 1;
-        $goods['num'] = $num;
+        $goods['num'] = intval($num);
         $cartList     = CartRedis::getRedisInstance()->lists($userInfo['id']);
         if (!empty($cartList['goods_list'])) {
             $goodIds = array_column($cartList['goods_list'], 'id');
@@ -111,6 +115,21 @@ class GoodsService extends BaseService
         }
         CartRedis::getRedisInstance()->add($userInfo['id'], $goods);
         return true;
+    }
+
+    public function cartDelete()
+    {
+        $id       = request('id');
+        $userInfo = session('user_info');
+        if (empty($id)) {
+            $this->setError('', '请选择商品');
+            return false;
+        }
+        if (empty($userInfo)) {
+            $this->setError('', '请先登录');
+            return false;
+        }
+        return CartRedis::getRedisInstance()->CartDeleteGoods($userInfo['id'], $id);
     }
 
 }

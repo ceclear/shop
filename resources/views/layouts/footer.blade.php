@@ -35,12 +35,12 @@
     <div class="footer-top mt-50 mb-40">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-4" style="margin-left: -90px">
                     <div class="footer-single-widget">
-                        <div class="footer-logo mb-40">
+                        <div class="footer-logo mb-40" style="margin-bottom: 30px">
                             <a href="/"><img src="/assets/images/logo/logo.png" alt=""></a>
                         </div>
-                        <div class="widget-body">
+                        <div class="widget-body" style="padding-left: 100px">
                             <p>
                                 这是一个垂钓经验分享网站
                             </p>

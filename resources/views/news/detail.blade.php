@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section('title','文章详情-New')
+@section('title','文章详情')
 @section("content")
     <div class="breadcrumbs_area">
         <div class="container">

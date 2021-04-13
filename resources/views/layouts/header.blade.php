@@ -12,6 +12,9 @@
                     <div class="box-right">
                         <ul>
                             <li class="settings">
+                                <a href="{{route('goods.cart')}}">购物车</a>
+                            </li>
+                            <li class="settings">
                                 <a href="{{route('goods.wish')}}">收藏列表</a>
                             </li>
                             {{--                            <li class="settings">--}}
@@ -54,7 +57,7 @@
     <div class="header-middle space-40">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-3 col-6" style="margin-left: -82px">
                     <div class="logo">
                         <a href="/"><img src="/assets/images/logo/logo.png" alt="" class="img-fluid"></a>
                     </div>
@@ -62,7 +65,7 @@
                 <div class="col-lg-9 col-6">
                     <div class="header-middle-inner">
                         <div class="search-container">
-                            <form action="#">
+                            <form action="#" style="width: 750px">
                                 <div class="top-cat">
                                     <select class="select-option" name="select" id="category2">
                                         {{--                                        <option value="1">All categories22</option>--}}
@@ -102,11 +105,11 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="blockcart" style="width: 200px">
-                            <a href="#" class="drop-toggle" style="width: 200px">
+                        <div class="blockcart" style="padding-left: 73px">
+                            <a href="#" class="drop-toggle" style="width: 246px">
                                 <img src="/assets/images/cart/cart.png" alt="" class="img-fluid">
-                                <span class="my-cart">购物车</span>
-                                @if(!empty($cart)) <span class="count"> {{$cart['order_total_num']}} </span>@endif
+                                <span class="my-cart" style="padding-left: 10px">购物车</span>
+                                @if(!empty($cart)) <span class="count" style="left: 87px"> {{$cart['order_total_num']}} </span>@endif
                                 <span class="total-item">￥@if(!empty($cart)) {{$cart['order_total_price']??0.00}} @else 0.00 @endif</span>
                             </a>
                             <div class="cart-dropdown drop-dropdown">
@@ -161,7 +164,7 @@
                     <div class="categoryes-menu-bar">
                         <div class="categoryes-menu-btn category-toggle">
                             <div class="float-left">
-                                <a href="#">所有分类</a>
+                                <a href="javascript:">所有分类</a>
                             </div>
                             <div class="float-right">
                                 <i class="fa fa-bars"></i>
@@ -173,7 +176,7 @@
                                     @foreach($categoryList as $item)
 
                                         <li class="categories-hover-right">
-                                            <a href="#">{{$item['name']}} <i
+                                            <a href="{{route('goods.shop',['cid1'=>$item['id'],'name'=>$item['name']])}}">{{$item['name']}} <i
                                                     class="fa fa-angle-right float-right"></i></a>
                                             <ul class="cat-submenu category-mega">
                                                 @if(!empty($item['child']))
@@ -182,11 +185,11 @@
                                                             @continue
                                                         @endif
                                                         <li class="cat-mega-title"><a
-                                                                href="#">{{$value['name']}}</a>
+                                                                href="{{route('goods.shop',['cid2'=>$value['id'],'name'=>$value['name']])}}">{{$value['name']}}</a>
                                                             @if(!empty($value['child']))
                                                                 <ul>
                                                                     @foreach($value['child'] as $vv)
-                                                                        <li><a href="#">{{$vv['name']}}</a></li>
+                                                                        <li><a href="{{route('goods.shop',['cid3'=>$vv['id'],'name'=>$vv['name']])}}">{{$vv['name']}}</a></li>
                                                                     @endforeach
                                                                 </ul>
 
@@ -375,7 +378,7 @@
                                     {{--                                            <li><a href="404.html">404 Error</a></li>--}}
                                     {{--                                        </ul>--}}
                                     {{--                                    </li>--}}
-                                    <li><a href="{{route('goods.shop')}}">商品</a></li>
+{{--                                    <li><a href="{{route('goods.shop')}}">商品</a></li>--}}
                                     <li><a href="{{route('news.list')}}">新闻</a></li>
                                     <li><a href="{{route('news.joke')}}">笑话大全</a></li>
                                     <li><a href="/article/list.html">文章</a></li>

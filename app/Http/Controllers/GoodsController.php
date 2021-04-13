@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Libs\CartRedis;
 use App\Services\web\GoodsService;
 use App\Traits\ResponseJson;
 
@@ -34,9 +35,21 @@ class GoodsController extends Controller
 
     public function shop()
     {
-        $where  = [
+        $cid1  = request('cid1') ?? 0;
+        $cid2  = request('cid2') ?? 0;
+        $cid3  = request('cid3') ?? 0;
+        $where = [
             'status' => 1
         ];
+        if ($cid1) {
+            $where['cid1'] = $cid1;
+        }
+        if ($cid2) {
+            $where['cid2'] = $cid2;
+        }
+        if ($cid3) {
+            $where['cid3'] = $cid3;
+        }
         $result = $this->goodsService->listPage($where, 12);
         return view('goods.shop', $result);
     }
@@ -70,6 +83,22 @@ class GoodsController extends Controller
             return $this->responseJson(1, $this->goodsService->getFirstError());
         }
         return $this->responseJson(0, '添加成功', $rel);
+    }
+
+    public function cart()
+    {
+        $userInfo = session('user_info');
+        $cart     = CartRedis::getRedisInstance()->lists($userInfo['id'] ?? 0);
+        return view('goods.cart', compact("cart"));
+    }
+
+    public function cartDelete()
+    {
+        $rel = $this->goodsService->cartDelete();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->goodsService->getFirstError());
+        }
+        return $this->responseJson(0, '删除成功', $rel);
     }
 
 }

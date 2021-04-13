@@ -14,7 +14,7 @@ use Illuminate\Routing\Router;
 */
 
 
-Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index')->name('index');
 Route::get('about.html', 'IndexController@about');
 Route::get('category', 'CategoryController@lists');
 
@@ -57,5 +57,7 @@ Route::group(['prefix' => 'product'], function () {
     Route::get('wishlist.html', 'GoodsController@wishList')->name('goods.wish');
     Route::post('wish_add.html', 'GoodsController@wishAdd')->name('goods.wish_add');//添加希望清单
     Route::post('card_add.html', 'GoodsController@addCart')->name('goods.cart_add');//添加购物车
+    Route::get('cart.html', 'GoodsController@cart')->name('goods.cart');//添加购物车
+    Route::post('cart_delete.html', 'GoodsController@cartDelete')->name('goods.cart_delete');
 });
 

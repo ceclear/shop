@@ -123,14 +123,14 @@
                                                 <div class="action-link">
 
                                                     <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
-                                                       title="Add to wishlist"><i
+                                                       title="加入收藏"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
                                             </div>
                                             <div class="product-caption">
                                                 <div class="product-name">
                                                     <a href="{{route('goods.detail',['id'=>$item['id']])}}"
-                                                       title="{{$item['title']}}">{{str_limit($item['title'])}}</a>
+                                                       title="{{$item['title']}}">{{str_limit($item['title'],25)}}</a>
                                                 </div>
                                                 <div class="rating">
                                                     @for($i=0;$i<$item['star'];$i++)
@@ -149,8 +149,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" href="shopping-cart.html"
-                                                           title="Add to cart"><i
+                                                        <a class="cart-plus" data-product="{{$item['id']}}" href="javascript:"
+                                                           title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
                                                 </div>
@@ -185,7 +185,7 @@
                                                 <div class="action-link">
 
                                                     <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
-                                                       title="Add to wishlist"><i
+                                                       title="加入收藏"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
                                             </div>
@@ -211,8 +211,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" href="shopping-cart.html"
-                                                           title="Add to cart"><i
+                                                        <a class="cart-plus" data-product="{{$item['id']}}" href="javascript:"
+                                                           title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
                                                 </div>
@@ -247,7 +247,7 @@
                                                 <div class="action-link">
 
                                                     <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
-                                                       title="Add to wishlist"><i
+                                                       title="加入收藏"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
                                             </div>
@@ -273,8 +273,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" href="shopping-cart.html"
-                                                           title="Add to cart"><i
+                                                        <a class="cart-plus" data-product="{{$item['id']}}" href="javascript:"
+                                                           title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
                                                 </div>
@@ -419,8 +419,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" href="shopping-cart.html"
-                                                           title="Add to cart"><i
+                                                        <a class="cart-plus" data-product="{{$item['id']}}" href="javascript:"
+                                                           title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
                                                 </div>
@@ -487,7 +487,7 @@
                                         <div class="product-caption">
                                             <div class="product-name">
                                                 <a href="{{route('goods.detail',['id'=>$newList[$i]['id']])}}"
-                                                   title="{{$newList[$i]['title']}}">{{str_limit($newList[$i]['title'],25)}}</a>
+                                                   title="{{$newList[$i]['title']}}">{{str_limit($newList[$i]['title'],35)}}</a>
                                             </div>
                                             <div class="rating">
                                                 @for($j=0;$j<$newList[$i]['star'];$j++)
@@ -525,7 +525,7 @@
                                         <div class="product-caption">
                                             <div class="product-name">
                                                 <a href="{{route('goods.detail',['id'=>$newList[$i]['id']])}}"
-                                                   title="{{$newList[$i]['title']}}">{{str_limit($newList[$i]['title'],25)}}</a>
+                                                   title="{{$newList[$i]['title']}}">{{str_limit($newList[$i]['title'],35)}}</a>
                                             </div>
                                             <div class="rating">
                                                 @for($j=0;$j<$newList[$i]['star'];$j++)
@@ -566,7 +566,7 @@
                                         <div class="product-caption">
                                             <div class="product-name">
                                                 <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}"
-                                                   title="{{$bestList[$i]['title']}}">{{str_limit($bestList[$i]['title'],25)}}</a>
+                                                   title="{{$bestList[$i]['title']}}">{{str_limit($bestList[$i]['title'],35)}}</a>
                                             </div>
                                             <div class="rating">
                                                 @for($j=0;$j<$bestList[$i]['star'];$j++)
@@ -598,7 +598,7 @@
                                         <div class="product-caption">
                                             <div class="product-name">
                                                 <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}"
-                                                   title="{{$bestList[$i]['title']}}">{{str_limit($bestList[$i]['title'],25)}}</a>
+                                                   title="{{$bestList[$i]['title']}}">{{str_limit($bestList[$i]['title'],35)}}</a>
                                             </div>
                                             <div class="rating">
                                                 @for($j=0;$j<$bestList[$i]['star'];$j++)
@@ -639,7 +639,7 @@
                                         <div class="product-caption">
                                             <div class="product-name">
                                                 <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}"
-                                                   title="{{$recList[$i]['title']}}">{{str_limit($recList[$i]['title'],25)}}</a>
+                                                   title="{{$recList[$i]['title']}}">{{str_limit($recList[$i]['title'],35)}}</a>
                                             </div>
                                             <div class="rating">
                                                 @for($j=0;$j<$recList[$i]['star'];$j++)
@@ -671,7 +671,7 @@
                                         <div class="product-caption">
                                             <div class="product-name">
                                                 <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}"
-                                                   title="{{$recList[$i]['title']}}">{{str_limit($recList[$i]['title'],25)}}</a>
+                                                   title="{{$recList[$i]['title']}}">{{str_limit($recList[$i]['title'],35)}}</a>
                                             </div>
                                             <div class="rating">
                                                 @for($j=0;$j<$recList[$i]['star'];$j++)
@@ -749,6 +749,8 @@
     {{--            </div>--}}
     {{--        </div>--}}
     {{--    </div>--}}
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize2.css"/>
+    <script src="/assets/js/jquery.animate_from_to-1.0.js"></script>
     <script>
         $('.wishlist-add').click(function () {
             let product = $(this).data('product');
@@ -761,6 +763,25 @@
                     'need_alert':1
                 }
             )
-        })
+        });
+        $('.cart-plus').click(function () {
+            let product = $(this).data('product');
+            let num = 1;
+            let that = $(this);
+            ajax(
+                {
+                    'data': {id: product, num: num, _token: '{{csrf_token()}}'},
+                    'url': "{{route('goods.cart_add')}}",
+                    'type': 'post',
+                    'dataType': 'json',
+                    'need_alert': 1,
+                    'need_hide': 2,
+                    'callback': 'f',
+                    'func': function () {
+                        that.animate_from_to(".my-cart");
+                    }
+                }
+            )
+        });
     </script>
 @endsection

@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section('title','商品详情-New')
+@section('title','商品列表')
 @section("content")
     <div class="breadcrumbs_area">
         <div class="container">
@@ -8,11 +8,16 @@
                     <div class="breadcrumb_content">
                         <ul>
                             <li>
-                                <h1><a href="/">首页</a></h1>
+                                <h1><a href="{{route('index')}}">首页</a></h1>
                             </li>
                             <li>
-                                <h1><a href="shop.html">商品</a></h1>
+                                <h1><a href="{{route('goods.shop')}}">商品列表</a></h1>
                             </li>
+                            @if(request('cid1')||request('cid2')||request('cid3'))
+                                <li>
+                                    <h1><a>{{request('name')}}</a></h1>
+                                </li>
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -30,20 +35,29 @@
                             <button data-role="grid_3" class="btn-grid-3"></button>
                             <button data-role="grid_list" class="btn-list"></button>
                         </div>
-                        <div class="page-amount">
-                            <p>共计 {{$count}} 商品</p>
+                        @if(request('cid1')||request('cid2')||request('cid3'))
+                            <div class="page-amount">
+                                <p>共计 {{$count}} 商品</p>
+                            </div>
+                        @endif
+                        <div>
+                            <ul class="menu">
+                                <li class="list"><a href="javascript:">@if(!empty(request('sort'))){{\App\Models\Goods::Sort[request('sort')]}} @else 排序 @endif</a>
+                                    <ul class="items">
+                                        @foreach($sort as $key=>$item)
+                                            @if(empty(request()->query()))
+                                                <li><a href="{{route('goods.shop',['sort'=>$key])}}">{{$item}}</a></li>
+                                            @else
+                                                <li>
+                                                    <a href="{{route('goods.shop',array_merge(request()->query(),['sort'=>$key]))}}">{{$item}}</a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="nice-select select-option">
-                            <select name="select">
-                                <option value="1">按名称排序</option>
-                                <option value="2">销量排序</option>
-                                <option value="3">时间排序</option>
-                                <option value="4">分类排序</option>
-                                <option value="5">价格排序</option>
-                                <option value="6">推荐排序</option>
-
-                            </select>
-                        </div>
+                        <!----------排序end------>
                     </div>
                     <!-- Shop Toolbar End -->
                     <!-- Shop Wrapper Start -->
@@ -64,8 +78,9 @@
                                                 </div>
                                             </div>
                                             <div class="action-link">
-                                                <a class="wishlist-add same-link" href="wishlist.html"
-                                                   title="Add to wishlist"><i
+                                                <a class="wishlist-add same-link" data-product="{{$item['id']}}"
+                                                   href="javascript:"
+                                                   title="加入收藏"><i
                                                         class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                             </div>
                                         </div>
@@ -91,7 +106,8 @@
                                             </div>
                                             <div class="cart">
                                                 <div class="add-to-cart">
-                                                    <a href="shopping-cart.html" title="Add to cart"><i
+                                                    <a href="javascript:" class="cart-plus"
+                                                       data-product="{{$item['id']}}" title="加入购物车"><i
                                                             class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                 </div>
                                             </div>
@@ -165,4 +181,59 @@
             </div>
         </div>
     </div>
+    <link rel="stylesheet" type="text/css" href="/assets/css/normalize2.css"/>
+    <link rel="stylesheet" type="text/css" href="/assets/css/accord.css"/>
+    <script src="/assets/js/jquery.animate_from_to-1.0.js"></script>
+    <script>
+        $('.wishlist-add').click(function () {
+            let product = $(this).data('product');
+            ajax(
+                {
+                    'data': {id: product, _token: '{{csrf_token()}}'},
+                    'url': "{{route('goods.wish_add')}}",
+                    'type': 'post',
+                    'dataType': 'json',
+                    'need_alert': 1
+                }
+            )
+        });
+        $('.cart-plus').click(function () {
+            let product = $(this).data('product');
+            let num = 1;
+            let that = $(this);
+            ajax(
+                {
+                    'data': {id: product, num: num, _token: '{{csrf_token()}}'},
+                    'url': "{{route('goods.cart_add')}}",
+                    'type': 'post',
+                    'dataType': 'json',
+                    'need_alert': 1,
+                    'need_hide': 2,
+                    'callback': 'f',
+                    'func': function () {
+                        that.animate_from_to(".my-cart");
+                    }
+                }
+            )
+        });
+        var list = document.querySelectorAll('.list');
+
+        function accordion(e) {
+            e.stopPropagation();
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+            } else if (this.parentElement.parentElement.classList.contains('active')) {
+                this.classList.add('active');
+            } else {
+                for (i = 0; i < list.length; i++) {
+                    list[i].classList.remove('active');
+                }
+                this.classList.add('active');
+            }
+        }
+
+        for (i = 0; i < list.length; i++) {
+            list[i].addEventListener('click', accordion);
+        }
+    </script>
 @endsection

@@ -1,5 +1,5 @@
 @extends("layouts.main")
-@section('title','收藏列表-New')
+@section('title','收藏列表')
 @section("content")
     <div class="breadcrumbs_area">
         <div class="container">
