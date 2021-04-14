@@ -19,7 +19,7 @@
                                 <div class="pt-des">
                                     <p><span>25%</span>Starting at <span>$340.00</span></p>
                                 </div>
-                                <a href="#">Shop Now</a>
+                                <a href="javascript:">Shop Now</a>
                             </div>
                         </div>
                         <!-- Single Slider End -->
@@ -32,7 +32,7 @@
                                 <div class="pt-des">
                                     <p><span>35%</span>Starting at <span>$120.00</span></p>
                                 </div>
-                                <a href="#">Shop Now</a>
+                                <a href="javascript:">Shop Now</a>
                             </div>
                         </div>
                     </div>
@@ -352,7 +352,7 @@
                 </div>
                 <div class="col-lg-3 col-12 text-center">
                     <div class="single-banner mt-40">
-                        <a href="#"><img src="assets/images/banner/banner-1.jpg" alt="" class="img-fluid"></a>
+                        <a href="javascript:"><img src="assets/images/banner/banner-1.jpg" alt="" class="img-fluid"></a>
                     </div>
                 </div>
             </div>
@@ -404,7 +404,7 @@
                                             </div>
                                             <div class="product-caption">
                                                 <div class="product-name">
-                                                    <a href="{{route('goods.detail',['id'=>$value['id']])}}">{{str_limit($value['title'],20)}}</a>
+                                                    <a href="{{route('goods.detail',['id'=>$value['id']])}}">{{str_limit($value['title'],25)}}</a>
                                                 </div>
                                                 <div class="rating">
                                                     @for($i=0;$i<$value['star'];$i++)

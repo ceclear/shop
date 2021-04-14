@@ -12,6 +12,7 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('home');
+    $router->get('chart', 'HomeController@chartData');
     $router->post('editor2-upload-image', 'UploadController@editorUploadImage');//editor2上传图片
     $router->get('school-subtract-detail', 'SchoolController@subtractDetail');
     $router->resource('school', SchoolController::class);//作业

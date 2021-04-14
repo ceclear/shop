@@ -17,7 +17,8 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\SyncGoods',
         'App\Console\Commands\SyncJoke',
         'App\Console\Commands\SyncNews',
-        'App\Console\Commands\SyncTodayHistory'
+        'App\Console\Commands\SyncTodayHistory',
+        'App\Console\Commands\SyncBingPic'
     ];
 
     /**
@@ -31,6 +32,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('sync-jd')->cron('0 */2 * * *');
         $schedule->command('sync:news')->cron('0 */2 * * *');
         $schedule->command('sync:joke')->daily();
+        $schedule->command('sync:bing')->daily();
         $schedule->command('sync:today:history')->cron('0 */12 * * *');
     }
 

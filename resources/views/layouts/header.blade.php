@@ -66,51 +66,21 @@
                     <div class="header-middle-inner">
                         <div class="search-container">
                             <form action="#" style="width: 750px">
-                                <div class="top-cat">
-                                    <select class="select-option" name="select" id="category2">
-                                        {{--                                        <option value="1">All categories22</option>--}}
-                                        <option value="">所有分类</option>
-                                        @if(!empty($categoryList))
-                                            @foreach($categoryList as $item)
 
-                                                <option value="{{$item['id']}}">- -{{$item['name']}}</option>
-
-                                                @if(!empty($item['child']))
-                                                    @foreach($item['child'] as $value)
-                                                        @if(empty($value['child']))
-                                                            @continue
-                                                        @endif
-                                                        <option value="{{$value['id']}}">- -
-                                                            -{{$value['name']}}</option>
-                                                        @if(!empty($value['child']))
-
-                                                            @foreach($value['child'] as $vv)
-                                                                <option value="{{$vv['id']}}">- - -
-                                                                    -{{$vv['name']}}</option>
-                                                            @endforeach
-
-
-                                                        @endif
-
-                                                    @endforeach
-                                                @endif
-                                            @endforeach
-                                        @endif
-
-                                    </select>
-                                </div>
                                 <div class="search_box">
-                                    <input class="header-search" placeholder="请输入关键字" type="text">
+                                    <input class="header-search" style="width: 665px;border-radius: 23px" placeholder="请输入关键字" type="text">
                                     <button class="header-search-button" type="submit">搜索</button>
                                 </div>
                             </form>
                         </div>
                         <div class="blockcart" style="padding-left: 73px">
-                            <a href="#" class="drop-toggle" style="width: 246px">
+                            <a href="javascript:" class="drop-toggle" style="width: 246px">
                                 <img src="/assets/images/cart/cart.png" alt="" class="img-fluid">
                                 <span class="my-cart" style="padding-left: 10px">购物车</span>
-                                @if(!empty($cart)) <span class="count" style="left: 87px"> {{$cart['order_total_num']}} </span>@endif
-                                <span class="total-item">￥@if(!empty($cart)) {{$cart['order_total_price']??0.00}} @else 0.00 @endif</span>
+                                @if(!empty($cart)) <span class="count"
+                                                         style="left: 87px"> {{$cart['order_total_num']}} </span>@endif
+                                <span
+                                    class="total-item">￥@if(!empty($cart)) {{number_format($cart['order_total_price']??0,2)}}  @endif</span>
                             </a>
                             <div class="cart-dropdown drop-dropdown">
                                 <ul>
@@ -123,17 +93,20 @@
                                                 </div>
                                                 <div class="innr-crt-content">
                                                 <span class="product-name">
-                                                <a title="{{$item['title']}}" href="{{route('goods.detail',['id'=>$item['id']])}}">{{str_limit($item['title'])}}</a>
+                                                <a title="{{$item['title']}}"
+                                                   href="{{route('goods.detail',['id'=>$item['id']])}}">{{str_limit($item['title'])}}</a>
                                             </span>
                                                     <span class="product-price">￥ {{$item['price']}}</span>
-{{--                                                    <span class="product-size">Size:  S</span>--}}
+                                                    {{--                                                    <span class="product-size">Size:  S</span>--}}
                                                 </div>
                                             </li>
                                         @endforeach
                                     @endif
                                     <li>
                                         <span class="subtotal-text">商品总价</span>
-                                        <span class="subtotal-price">￥@if(!empty($cart)) {{$cart['order_total_price']}} @else 0.00 @endif</span>
+                                        <span
+                                            class="subtotal-price">￥@if(!empty($cart)) {{$cart['order_total_price']}} @else
+                                                0.00 @endif</span>
                                     </li>
                                     <li>
                                         <span class="subtotal-text">邮费</span>
@@ -141,7 +114,9 @@
                                     </li>
                                     <li>
                                         <span class="subtotal-text">合计</span>
-                                        <span class="subtotal-price">￥@if(!empty($cart)) {{$cart['order_total_price']}} @else 0.00 @endif</span>
+                                        <span
+                                            class="subtotal-price">￥@if(!empty($cart)) {{$cart['order_total_price']}} @else
+                                                0.00 @endif</span>
                                     </li>
                                 </ul>
                                 <div class="checkout-cart">
@@ -176,7 +151,8 @@
                                     @foreach($categoryList as $item)
 
                                         <li class="categories-hover-right">
-                                            <a href="{{route('goods.shop',['cid1'=>$item['id'],'name'=>$item['name']])}}">{{$item['name']}} <i
+                                            <a href="{{route('goods.shop',['cid1'=>$item['id'],'name'=>$item['name']])}}">{{$item['name']}}
+                                                <i
                                                     class="fa fa-angle-right float-right"></i></a>
                                             <ul class="cat-submenu category-mega">
                                                 @if(!empty($item['child']))
@@ -189,7 +165,9 @@
                                                             @if(!empty($value['child']))
                                                                 <ul>
                                                                     @foreach($value['child'] as $vv)
-                                                                        <li><a href="{{route('goods.shop',['cid3'=>$vv['id'],'name'=>$vv['name']])}}">{{$vv['name']}}</a></li>
+                                                                        <li>
+                                                                            <a href="{{route('goods.shop',['cid3'=>$vv['id'],'name'=>$vv['name']])}}">{{$vv['name']}}</a>
+                                                                        </li>
                                                                     @endforeach
                                                                 </ul>
 
@@ -203,7 +181,7 @@
                                         <!--------dropdown-------->
                                         <li class="menu-item-has-children"><span class="menu-expand"><i
                                                     class="fa fa-angle-down"></i></span>
-                                            <a href="#">{{$item['name']}}</a>
+                                            <a href="javascript:">{{$item['name']}}</a>
                                             <ul class="sub-menu">
                                                 @if(!empty($item['child']))
                                                     @foreach($item['child'] as $value)
@@ -212,11 +190,11 @@
                                                         @endif
                                                         <li class="menu-item-has-children"><span class="menu-expand"><i
                                                                     class="fa fa-angle-down"></i></span>
-                                                            <a href="#">{{$value['name']}}</a>
+                                                            <a href="javascript:">{{$value['name']}}</a>
                                                             @if(!empty($value['child']))
                                                                 <ul class="sub-menu">
                                                                     @foreach($value['child'] as $vv)
-                                                                        <li><a href="shop.html">{{$vv['name']}}</a></li>
+                                                                        <li><a href="javascript:">{{$vv['name']}}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             @endif
@@ -229,7 +207,7 @@
                                     @endforeach
                                 @endif
                                 <li class="category-item-parent">
-                                    <a href="#" class="more-btn">More Category</a>
+                                    <a href="javascript:" class="more-btn">More Category</a>
                                 </li>
                             </ul>
                         </nav>
@@ -378,7 +356,7 @@
                                     {{--                                            <li><a href="404.html">404 Error</a></li>--}}
                                     {{--                                        </ul>--}}
                                     {{--                                    </li>--}}
-{{--                                    <li><a href="{{route('goods.shop')}}">商品</a></li>--}}
+                                    {{--                                    <li><a href="{{route('goods.shop')}}">商品</a></li>--}}
                                     <li><a href="{{route('news.list')}}">新闻</a></li>
                                     <li><a href="{{route('news.joke')}}">笑话大全</a></li>
                                     <li><a href="/article/list.html">文章</a></li>

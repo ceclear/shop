@@ -75,8 +75,10 @@ class SyncJoke extends Command
 
             $end = time();
             $this->info("同步完成===耗时==" . ($end - $start));
+            Log::info("joke同步完成===耗时==" . ($end - $start));
         } catch (\Exception $exception) {
             $this->error("同步出错" . $exception->getMessage());
+            Log::error("joke同步出错" . $exception->getMessage());
             return;
         }
     }
