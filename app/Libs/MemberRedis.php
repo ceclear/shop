@@ -57,6 +57,7 @@ class MemberRedis
 
     public function setLogin($user, $token, $expireTime)
     {
+        dd($this->_redis);
         if (!$this->_redis) {
             return false;
         }

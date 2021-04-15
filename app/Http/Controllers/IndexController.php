@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 
-use App\Libs\CartRedis;
+use App\Libs\MemberRedis;
 use App\Models\Advert;
 use App\Models\Category;
 use App\Models\Goods;
+use App\Models\Members;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
@@ -53,7 +54,13 @@ class IndexController extends Controller
 
     public function about()
     {
-
         return view('about');
+    }
+
+    public function test()
+    {
+        $info = Members::find(1);
+        MemberRedis::getRedisInstance()->setLogin($info, 'asdasda', 3600);
+        echo 'success';
     }
 }

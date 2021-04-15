@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Log;
 class ApiRequest
 {
     public $requestName;
-    public $readTimeout = 10;
-    public $connectTimeout = 10;
+    public $readTimeout = 60;
+    public $connectTimeout = 20;
     public $version = "2.0";
     public $format = 'json';
     public $requestUrl;
