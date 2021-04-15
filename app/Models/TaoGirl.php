@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-class Bing extends Orm
+class TaoGirl extends Orm
 {
 
     protected $guarded = ['id'];
