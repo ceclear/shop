@@ -17,8 +17,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\SyncGoods',
         'App\Console\Commands\SyncJoke',
         'App\Console\Commands\SyncNews',
-        'App\Console\Commands\SyncTodayHistory',
-        'App\Console\Commands\SyncBingPic'
+        'App\Console\Commands\SyncTodayHistory'
     ];
 
     /**

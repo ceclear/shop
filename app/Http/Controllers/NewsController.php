@@ -30,7 +30,7 @@ class NewsController extends Controller
 
     public function detail()
     {
-        echo $c; 
+        echo $c;
         $detail  = $this->newsService->detail();
         $where   = [
             'id'     => ['symbol' => '!=', 'val' => $detail['id']],
