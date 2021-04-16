@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Libs\CartRedis;
 use App\Models\Category;
 use App\Models\Rate;
+use App\Models\TaoGirl;
 use Illuminate\Support\ServiceProvider;
 
 class SetServiceProvider extends ServiceProvider
@@ -33,7 +34,8 @@ class SetServiceProvider extends ServiceProvider
             $categoryShow = request()->getPathInfo() == "/";
             $userInfo     = session('user_info');
             $cart         = CartRedis::getRedisInstance()->lists($userInfo['id'] ?? 0);
-            $view->with(compact("categoryList", "rateList", "categoryShow", "cart"));
+            $taoCategory  = TaoGirl::getCategory();
+            $view->with(compact("categoryList", "rateList", "categoryShow", "cart", "taoCategory"));
         });
     }
 }

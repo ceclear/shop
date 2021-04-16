@@ -10,7 +10,9 @@ class Goods extends Orm
 
     protected $casts = [
         'images'      => 'json',
-        'description' => 'json'
+        'description' => 'json',
+        'created_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 
     const Sort = [

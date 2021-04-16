@@ -60,5 +60,9 @@ Route::group(['prefix' => 'product'], function () {
     Route::post('card_add.html', 'GoodsController@addCart')->name('goods.cart_add');//添加购物车
     Route::get('cart.html', 'GoodsController@cart')->name('goods.cart');//添加购物车
     Route::post('cart_delete.html', 'GoodsController@cartDelete')->name('goods.cart_delete');
+    Route::get('tao-girl.html', 'GoodsController@taoGirl')->name('goods.tao_girl');
+    Route::get('tao-girl-detail.html', 'GoodsController@taoDetail')->name('goods.tao_girl_detail');
+    Route::get('tao-girl-detail-data.html', 'GoodsController@taoDetailAjax')->name('goods.tao_girl_detail_ajax');
+    Route::get('tao-iframe.html', 'GoodsController@iframe')->name('goods.iframe');
 });
 

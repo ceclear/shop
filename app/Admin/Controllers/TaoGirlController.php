@@ -5,6 +5,8 @@ namespace App\Admin\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\AdPosition;
 use App\Models\Advert;
+use App\Models\Goods;
+use App\Models\TaoGirl;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -13,7 +15,7 @@ use Encore\Admin\Show;
 use Illuminate\Http\Request;
 
 
-class AdvertController extends Controller
+class TaoGirlController extends Controller
 {
     use HasResourceActions;
 
@@ -26,7 +28,7 @@ class AdvertController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('广告设置')
+            ->header('列表')
             ->description(trans('admin.description'))
             ->body($this->grid());
     }
@@ -82,29 +84,21 @@ class AdvertController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Advert());
+        $grid = new Grid(new TaoGirl());
         $grid->disableRowSelector();
         $grid->id('ID');
-        $grid->skip_type('跳转类型')->display(function ($type) {
-            switch ($type) {
-                case 1:
-                    return '跳转活动页';
-                    break;
-                case 2:
-                    return '点击跳转';
-                    break;
-                default:
-                    return 'app内跳转';
-                    break;
-            }
-        });
-        $grid->product_id('数据ID');
-        $grid->name(__('name'));
-        $grid->column('ad_position.name', '广告位置');
-        $grid->column('img_url', '图片')->lightbox();
-        $grid->url('跳转链接');
-        $grid->sort('排序');
-        $grid->status('状态')->switch();
+        $grid->column('avatarUrl', '头像')->lightbox(['width' => 50, 'height' => 50]);
+        $grid->column('cardUrl', '封面')->lightbox(['width' => 50, 'height' => 50]);
+        $grid->city('城市');
+        $grid->height('身高');
+        $grid->weight('体重');
+        $grid->column('imgList', '图片列表')->lightbox(['width' => 50, 'height' => 50]);
+        $grid->realName('真实姓名');
+        $grid->totalFanNum('粉丝数');
+        $grid->totalFavorNum('总粉丝');
+        $grid->userId('UserID');
+        $grid->column('link', '链接')->link();
+        $grid->column('type', '分类');
         $grid->created_at(trans('admin.created_at'));
         $grid->updated_at(trans('admin.updated_at'));
         $grid->actions(function ($actions) {
@@ -113,12 +107,7 @@ class AdvertController extends Controller
         });
         $grid->disableFilter();
         $grid->disableExport();
-        if (\Illuminate\Support\Facades\Request::has('type')) {
-            $grid->model()->where('pos_id', \Illuminate\Support\Facades\Request::input('type'));
-        }
-        $grid->tools(function (Grid\Tools $tools) {
-            $tools->append('<a href="/admin/ad-position" class="btn btn-sm btn-info">返回广告位管理</a>');
-        });
+
         return $grid;
     }
 
@@ -148,15 +137,13 @@ class AdvertController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Advert());
+        $form = new Form(new Goods());
 
         $form->display('id', 'ID');
         $form->select('skip_type', '跳转类型')->options(Advert::SKIP_TYPE)->required();
         $form->text('product_id', '数据ID')->attribute('placeholder="只有APP内部跳转才填"');
         $form->text('name', 'name')->attribute('placeholder="可不填"');
-        $form->select('pos_id', '位置')->options(
-            AdPosition::all()->pluck('name', 'id')
-        )->required();
+
         $form->image('img_url', '图片')->required();
         $form->url('url', '跳转链接')->required();
         $form->number('sort', '排序')->default(1)->min(1);

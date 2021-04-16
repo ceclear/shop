@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Libs\CartRedis;
+use App\Models\TaoGirl;
 use App\Services\web\GoodsService;
 use App\Traits\ResponseJson;
 
@@ -101,4 +102,32 @@ class GoodsController extends Controller
         return $this->responseJson(0, '删除成功', $rel);
     }
 
+    public function taoGirl()
+    {
+        $result = $this->goodsService->taoGirlListPage([], 12);
+        return view('goods.tao', $result);
+    }
+
+    public function taoDetail()
+    {
+        $id   = request('id') ?? 0;
+//        $info = TaoGirl::find($id);
+//        return view('goods.tao_detail', compact("info"));
+        return view('goods.tao_detail',compact("id"));
+    }
+
+    public function taoDetailAjax()
+    {
+        $id  = request('id') ?? 0;
+        $rel = TaoGirl::find($id);
+        if ($rel === false) {
+            return $this->responseJson(1, '没有找到资源');
+        }
+        return $this->responseJson(0, '查询成功', $rel);
+    }
+
+    public function iframe(){
+        $id=request('id');
+        return view('goods.iframe',compact("id"));
+    }
 }

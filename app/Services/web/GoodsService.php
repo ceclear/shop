@@ -5,6 +5,7 @@ namespace App\Services\web;
 
 use App\Libs\CartRedis;
 use App\Models\Goods;
+use App\Models\TaoGirl;
 use App\Models\Wish;
 use App\Services\BaseService;
 use App\Traits\Errors;
@@ -130,6 +131,31 @@ class GoodsService extends BaseService
             return false;
         }
         return CartRedis::getRedisInstance()->CartDeleteGoods($userInfo['id'], $id);
+    }
+
+    public function taoGirlListPage($where = [], $pageSize = 6, $orderBy = ['id' => 'desc'])
+    {
+        $appends = $withParam = [];
+        if ($author = request('type')) {
+            $where['type']   = $author;
+            $appends['type'] = $author;
+        }
+
+        $query = TaoGirl::where('status', 1);
+        if (!empty($where)) {
+            $query = $query->where($where);
+        }
+        $count = $query->count();
+        if ($sortKey = request('sort')) {
+            $orderBy = [$sortKey => 'desc'];
+        }
+        foreach ($orderBy as $key => $item) {
+            $query->orderBy($key, $item);
+        }
+        $list = $query->paginate($pageSize);
+        $list->appends($appends);
+        $sort = TaoGirl::Sort;
+        return compact("list", "count", "sort");
     }
 
 }
