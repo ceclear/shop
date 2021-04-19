@@ -16,6 +16,7 @@ class IndexController extends Controller
 
     public function index()
     {
+        echo $b;
         $field            = ['id', 'sku', 'discover', 'title', 'brand_code', 'discount', 'images', 'is_new', 'price', 'discount_price', 'star'];
         $newList          = Cache::remember('new_list', 3600, function () use ($field) {
             return Goods::where('status', 1)->where('is_new', 1)->limit(6)->orderBy(DB::raw('RAND()'))->get($field)->toArray();
