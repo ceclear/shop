@@ -63,6 +63,6 @@ Route::group(['prefix' => 'product'], function () {
     Route::get('tao-girl.html', 'GoodsController@taoGirl')->name('goods.tao_girl');
     Route::get('tao-girl-detail.html', 'GoodsController@taoDetail')->name('goods.tao_girl_detail');
     Route::get('tao-girl-detail-data.html', 'GoodsController@taoDetailAjax')->name('goods.tao_girl_detail_ajax');
-    Route::get('tao-iframe.html', 'GoodsController@iframe')->name('goods.iframe');
+    Route::get('tao-iframe.html', 'GoodsController@iframe')->name('goods.iframe');//详情
 });
 
