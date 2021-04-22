@@ -60,7 +60,7 @@ class Handler extends ExceptionHandler
         }
         if ($exception instanceof ValidationException) {
             $error = $exception->validator->errors()->first();
-            if ($request->is("api/*")==false) {
+            if ($request->is("api/*") == false) {
                 return parent::render($request, $exception);
             }
             return response()->json(['code' => 10000, 'message' => $error]);
@@ -71,7 +71,7 @@ class Handler extends ExceptionHandler
             }
             return response()->json(['code' => 20000, 'message' => '方法不存在']);
         }
-        Log::error('服务器内部错误，异常: 行:'.$exception->getLine().', File '.$exception->getFile().',Error '.$exception->getMessage().',IP ' . $request->ip());
+        Log::error('服务器内部错误，异常: 行:' . $exception->getLine() . ',URL:' . $request->getPathInfo() . ' File ' . $exception->getFile() . ',Error ' . $exception->getMessage() . ',IP ' . $request->ip());
         return parent::render($request, $exception);
     }
 }

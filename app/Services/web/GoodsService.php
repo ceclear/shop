@@ -133,7 +133,7 @@ class GoodsService extends BaseService
         return CartRedis::getRedisInstance()->CartDeleteGoods($userInfo['id'], $id);
     }
 
-    public function taoGirlListPage($where = [], $pageSize = 6, $orderBy = ['id' => 'desc'])
+    public function taoGirlListPage($where = [], $pageSize = 6, $orderBy = ['created_at' => 'asc'])
     {
         $appends = $withParam = [];
         if ($author = request('type')) {
