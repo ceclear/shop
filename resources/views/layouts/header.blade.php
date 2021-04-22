@@ -228,7 +228,7 @@
                                             @if(!empty($taoCategory))
                                                 @foreach($taoCategory as $item)
                                                     <li>
-                                                        <a href="{{route('goods.tao_girl',['type'=>$item])}}">{{$item}}</a>
+                                                        <a href="{{url('goods.tao_girl',['type'=>$item])}}">{{$item}}</a>
                                                     </li>
                                                 @endforeach
                                             @endif
