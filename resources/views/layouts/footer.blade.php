@@ -177,4 +177,7 @@
 <script src="/assets/js/main.js"></script>
 
 <script src="/assets/js/common.js"></script>
-
+<div style="display: none">
+    <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1279870067&web_id=1279870067"></script>
+    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279870067'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279870067' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
