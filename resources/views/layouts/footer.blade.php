@@ -50,15 +50,15 @@
                                 <p><strong>Email:</strong> 594652523@qq.com</p>
                             </div>
                         </div>
-{{--                        <div class="footer_social">--}}
-{{--                            <ul class="d-flex">--}}
-{{--                                <li><a class="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a></li>--}}
-{{--                                <li><a class="twitter" href="#"><i class="zmdi zmdi-twitter"></i></a></li>--}}
-{{--                                <li><a class="youtube" href="#"><i class="zmdi zmdi-youtube"></i></a></li>--}}
-{{--                                <li><a class="google" href="#"><i class="zmdi zmdi-google-plus"></i></a></li>--}}
-{{--                                <li><a class="linkedin" href="#"><i class="zmdi zmdi-linkedin"></i></a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="footer_social">--}}
+                        {{--                            <ul class="d-flex">--}}
+                        {{--                                <li><a class="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a></li>--}}
+                        {{--                                <li><a class="twitter" href="#"><i class="zmdi zmdi-twitter"></i></a></li>--}}
+                        {{--                                <li><a class="youtube" href="#"><i class="zmdi zmdi-youtube"></i></a></li>--}}
+                        {{--                                <li><a class="google" href="#"><i class="zmdi zmdi-google-plus"></i></a></li>--}}
+                        {{--                                <li><a class="linkedin" href="#"><i class="zmdi zmdi-linkedin"></i></a></li>--}}
+                        {{--                            </ul>--}}
+                        {{--                        </div>--}}
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -116,20 +116,20 @@
                             </div>
                         </div>
                     </div>
-{{--                    <div class="row">--}}
-{{--                        <div class="col-lg-12">--}}
-{{--                            <div class="widget-box mt-30">--}}
+                    {{--                    <div class="row">--}}
+                    {{--                        <div class="col-lg-12">--}}
+                    {{--                            <div class="widget-box mt-30">--}}
 
-{{--                                <div class="widget-single-box">--}}
-{{--                                    <p><strong>快速入口:</strong></p>--}}
-{{--                                    <ul>--}}
-{{--                                        <li><a href="http://www.kuaidi.com/" target="_blank">快递查询API</a></li>--}}
-{{--                                        <li><a href="{{route('level1')}}">作业生成</a></li>--}}
-{{--                                    </ul>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    {{--                                <div class="widget-single-box">--}}
+                    {{--                                    <p><strong>快速入口:</strong></p>--}}
+                    {{--                                    <ul>--}}
+                    {{--                                        <li><a href="http://www.kuaidi.com/" target="_blank">快递查询API</a></li>--}}
+                    {{--                                        <li><a href="{{route('level1')}}">作业生成</a></li>--}}
+                    {{--                                    </ul>--}}
+                    {{--                                </div>--}}
+                    {{--                            </div>--}}
+                    {{--                        </div>--}}
+                    {{--                    </div>--}}
                 </div>
             </div>
         </div>
@@ -177,7 +177,11 @@
 <script src="/assets/js/main.js"></script>
 
 <script src="/assets/js/common.js"></script>
-<div style="display: none">
-    <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1279870067&web_id=1279870067"></script>
-    <script type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279870067'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279870067' type='text/javascript'%3E%3C/script%3E"));</script>
-</div>
+@if(config('app.env') =='production')
+    <div style="display: none">
+        <script type="text/javascript" src="https://s9.cnzz.com/z_stat.php?id=1279870067&web_id=1279870067"></script>
+        <script
+            type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279870067'%3E%3C/span%3E%3Cscript src='https://s9.cnzz.com/z_stat.php%3Fid%3D1279870067' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+@endif
+
