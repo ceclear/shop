@@ -3,6 +3,8 @@
 namespace App\Models;
 
 
+
+
 class TodayHistoryDetail extends Orm
 {
 
@@ -11,5 +13,7 @@ class TodayHistoryDetail extends Orm
     protected $casts = [
         'pic_url' => 'json'
     ];
+
+
 
 }

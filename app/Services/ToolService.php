@@ -121,6 +121,11 @@ class ToolService extends BaseService
         $date = request('date') ?? date('n/j');
         $info = TodayHistory::where('day', $date)->first();
         if (!$info) {
+            $rel = TodayHistory::syncToday([$date]);
+            if ($rel) {
+                $info = TodayHistory::where('day', $date)->first();
+                return $info;
+            }
             $this->setError('', '暂无记录');
             return false;
         }
