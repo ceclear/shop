@@ -28,7 +28,7 @@ class GoodsController extends Controller
         $keyWord    = request('search') ?? '';
         $sortKey    = request('sortType') ?? 'id';
         if (!empty($categoryId)) {
-            $condition['category_id'] = ['symbol' => '=', 'val' => $categoryId];
+            $condition['cid1'] = ['symbol' => '=', 'val' => $categoryId];
         }
         if (!empty($keyWord)) {
             $condition['title'] = ['symbol' => 'like', 'val' => '%' . $keyWord . '%'];
@@ -36,7 +36,7 @@ class GoodsController extends Controller
 
         $sort = request('sortPrice') ?? 1 ? 'asc' : 'desc';
 
-        $field = ['id', 'sku', 'title', 'category_id', 'discover', 'price', 'brand_code', 'sale'];
+        $field = ['id', 'sku', 'title', 'cid1', 'discover', 'price', 'brand_code', 'sale'];
         $page  = request('page') ?? 1;
         $model = new Goods();
         $list  = $model->getListPage($condition, $field, $page, 15, [$sortKey => $sort]);

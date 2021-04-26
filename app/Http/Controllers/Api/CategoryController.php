@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $pageSize     = request('page_size', 15);
         $offset       = ($page * $pageSize) - $pageSize;
         $categoryList = Category::getCategory();
-        $goodsList    = Goods::where('status', 1)->limit($pageSize)->offset($offset)->get(['id', 'sku', 'title', 'category_id', 'discover', 'price', 'sale'])->toArray();
+        $goodsList    = Goods::where('status', 1)->limit($pageSize)->offset($offset)->get(['id', 'sku', 'title', 'cid1', 'discover', 'price', 'sale'])->toArray();
         return $this->responseJson(0, '', compact("categoryList", "goodsList"));
     }
 }
