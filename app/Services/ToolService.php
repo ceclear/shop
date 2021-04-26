@@ -6,6 +6,8 @@ namespace App\Services;
 use App\Libs\ApiRequest;
 use App\Libs\JuHeRequest;
 use App\Models\Similar;
+use App\Models\TodayHistory;
+use App\Models\TodayHistoryDetail;
 use App\Traits\Errors;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -104,12 +106,34 @@ class ToolService extends BaseService
                         $arr[] = $words;
                         Cache::set('similar', json_encode($arr));
                     }
-                }else{
+                } else {
                     Cache::set('similar', json_encode([$words]));
                 }
                 return false;
             }
             $info = Similar::create(['words' => $words, 'similar' => $similarList, 'antonym' => $antonymList]);
+        }
+        return $info;
+    }
+
+    public function today()
+    {
+        $date = request('date') ?? date('n/j');
+        $info = TodayHistory::where('day', $date)->first();
+        if (!$info) {
+            $this->setError('', '暂无记录');
+            return false;
+        }
+        return $info;
+    }
+
+    public function todayDetail()
+    {
+        $etId = request('id');
+        $info = TodayHistoryDetail::where('e_id', $etId)->first();
+        if (!$info) {
+            $this->setError('', '暂无记录');
+            return false;
         }
         return $info;
     }

@@ -32,6 +32,8 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->get('search_mobile','ToolController@searchMobile');
     $router->get('postage','ToolController@Postage');//快递查询
     $router->get('similar','ToolController@Similar');//近义反义词
+    $router->get('today','ToolController@TodayList');//历史今天
+    $router->get('today_detail','ToolController@TodayDetail');//历史今天详情
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {

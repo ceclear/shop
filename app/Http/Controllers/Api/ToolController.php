@@ -55,4 +55,22 @@ class ToolController extends Controller
         return $this->responseJson(0, '', $rel);
     }
 
+    public function TodayList()
+    {
+        $rel = $this->toolService->today();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->toolService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
+
+    public function TodayDetail()
+    {
+        $rel = $this->toolService->todayDetail();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->toolService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
+
 }
