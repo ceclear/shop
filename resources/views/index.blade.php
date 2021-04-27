@@ -12,7 +12,7 @@
                     <div class="slider_area slider-one mt-30">
                         <!-- Single Slider Start -->
                         <div class="single_slider">
-                            <img src="/assets/images/slider/slider-1.jpg" alt="" class="img-fluid">
+                            <img data-src="/assets/images/slider/slider-1.jpg" alt="" class="img-fluid">
                             <div class="slider_content color_one">
                                 <h5>The Hottest <br> Trend</h5>
                                 <h2>Laptop <br> Tablets Outlet</h2>
@@ -25,7 +25,7 @@
                         <!-- Single Slider End -->
                         <!-- Single Slider Start -->
                         <div class="single_slider">
-                            <img src="/assets/images/slider/slider-2.jpg" alt="" class="img-fluid">
+                            <img data-src="/assets/images/slider/slider-2.jpg" alt="" class="img-fluid">
                             <div class="slider_content color_two">
                                 <h5>The Hottest <br> Trend</h5>
                                 <h2>Cellphone <br> Smartphone Not 2</h2>
@@ -107,7 +107,7 @@
                                         <div class="item-product">
                                             <div class="product-thumb">
                                                 <a href="{{route('goods.detail',['id'=>$item['id']])}}">
-                                                    <img src="{{$item['discover']}}" alt="" class="img-fluid">
+                                                    <img data-src="{{$item['discover']}}" alt="" class="img-fluid">
                                                 </a>
                                                 <div class="box-label">
                                                     <div class="label-product-new">
@@ -167,7 +167,7 @@
                                         <div class="item-product">
                                             <div class="product-thumb">
                                                 <a href="{{route('goods.detail',['id'=>$item['id']])}}">
-                                                    <img src="{{$item['discover']}}" alt="" class="img-fluid">
+                                                    <img data-src="{{$item['discover']}}" alt="" class="img-fluid">
                                                 </a>
                                                 <div class="box-label">
                                                     @if($item['is_new']==1)
@@ -229,7 +229,7 @@
                                         <div class="item-product">
                                             <div class="product-thumb">
                                                 <a href="{{route('goods.detail',['id'=>$item['id']])}}">
-                                                    <img src="{{$item['discover']}}" alt="" class="img-fluid">
+                                                    <img data-src="{{$item['discover']}}" alt="" class="img-fluid">
                                                 </a>
                                                 <div class="box-label">
                                                     @if($item['is_new']==1)
@@ -298,11 +298,11 @@
                             @foreach($saleOff as $item)
                                 <div class="flash-single-item">
                                     <div class="product-item">
-                                    <span class="offer-bar"><img src="assets/images/product/sale-offer.png"
+                                    <span class="offer-bar"><img data-src="assets/images/product/sale-offer.png"
                                                                  alt=""></span>
                                         <div class="product-thumb">
                                             <a href="{{route('goods.detail',['id'=>$item['id']])}}">
-                                                <img src="{{$item['discover']}}" alt=""
+                                                <img data-src="{{$item['discover']}}" alt=""
                                                      class="img-fluid">
                                             </a>
                                             <div class="box-label">
@@ -352,7 +352,7 @@
                 </div>
                 <div class="col-lg-3 col-12 text-center">
                     <div class="single-banner mt-40">
-                        <a href="javascript:"><img src="assets/images/banner/banner-1.jpg" alt="" class="img-fluid"></a>
+                        <a href="javascript:"><img data-src="assets/images/banner/banner-1.jpg" alt="" class="img-fluid"></a>
                     </div>
                 </div>
             </div>
@@ -369,7 +369,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link @if($key==0) active @else @endif" id="show_{{$key}}-tab"
                                        data-toggle="tab" href="#show_{{$key}}">
-                                        <span><img src="assets/images/category/thumb-{{$key+1}}.png" alt=""
+                                        <span><img data-src="assets/images/category/thumb-{{$key+1}}.png" alt=""
                                                    class="img-fluid"></span>
                                         <span>{{$item['name']}}</span>
                                     </a>
@@ -388,7 +388,7 @@
                                         <div class="item-product">
                                             <div class="product-thumb">
                                                 <a href="{{route('goods.detail',['id'=>$value['id']])}}">
-                                                    <img src="{{$value['discover']}}" alt=""
+                                                    <img data-src="{{$value['discover']}}" alt=""
                                                          class="img-fluid">
                                                 </a>
                                                 <div class="box-label">
@@ -441,17 +441,17 @@
 {{--            <div class="row">--}}
 {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
 {{--                    <div class="single-banner mt-40">--}}
-{{--                        <a href="#"><img src="assets/images/banner/banner-2.jpg" alt="" class="img-fluid"></a>--}}
+{{--                        <a href="#"><img data-src="assets/images/banner/banner-2.jpg" alt="" class="img-fluid"></a>--}}
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
 {{--                    <div class="single-banner mt-40">--}}
-{{--                        <a href="#"><img src="assets/images/banner/banner-3.jpg" alt="" class="img-fluid"></a>--}}
+{{--                        <a href="#"><img data-src="assets/images/banner/banner-3.jpg" alt="" class="img-fluid"></a>--}}
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
 {{--                    <div class="single-banner mt-40">--}}
-{{--                        <a href="#"><img src="assets/images/banner/banner-4.jpg" alt="" class="img-fluid"></a>--}}
+{{--                        <a href="#"><img data-src="assets/images/banner/banner-4.jpg" alt="" class="img-fluid"></a>--}}
 {{--                    </div>--}}
 {{--                </div>--}}
 {{--            </div>--}}
@@ -472,13 +472,13 @@
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
                                             <a href="{{route('goods.detail',['id'=>$newList[$i]['id']])}}">
-                                                <img src="{{$newList[$i]['images'][0]}}" alt=""
+                                                <img data-src="{{$newList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
                                                 @if(!empty($newList[$i]['images'][1]))
-                                                    <img src="{{$newList[$i]['images'][1]}}" alt=""
+                                                    <img data-src="{{$newList[$i]['images'][1]}}" alt=""
                                                          class="img-fluid block-two">
                                                 @else
-                                                    <img src="{{$newList[$i]['images'][0]}}" alt=""
+                                                    <img data-src="{{$newList[$i]['images'][0]}}" alt=""
                                                          class="img-fluid block-two">
                                                 @endif
 
@@ -510,13 +510,13 @@
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
                                             <a href="{{route('goods.detail',['id'=>$newList[$i]['id']])}}">
-                                                <img src="{{$newList[$i]['images'][0]}}" alt=""
+                                                <img data-src="{{$newList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
                                                 @if(!empty($newList[$i]['images'][1]))
-                                                    <img src="{{$newList[$i]['images'][1]}}" alt=""
+                                                    <img data-src="{{$newList[$i]['images'][1]}}" alt=""
                                                          class="img-fluid block-two">
                                                 @else
-                                                    <img src="{{$newList[$i]['images'][0]}}" alt=""
+                                                    <img data-src="{{$newList[$i]['images'][0]}}" alt=""
                                                          class="img-fluid block-two">
                                                 @endif
 
@@ -557,9 +557,9 @@
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
                                             <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}">
-                                                <img src="{{$bestList[$i]['images'][0]}}" alt=""
+                                                <img data-src="{{$bestList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
-                                                <img src="{{$bestList[$i]['images'][1]}}" alt=""
+                                                <img data-src="{{$bestList[$i]['images'][1]}}" alt=""
                                                      class="img-fluid block-two">
                                             </a>
                                         </div>
@@ -589,9 +589,9 @@
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
                                             <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}">
-                                                <img src="{{$bestList[$i]['images'][0]}}" alt=""
+                                                <img data-src="{{$bestList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
-                                                <img src="{{$bestList[$i]['images'][1]}}" alt=""
+                                                <img data-src="{{$bestList[$i]['images'][1]}}" alt=""
                                                      class="img-fluid block-two">
                                             </a>
                                         </div>
@@ -630,9 +630,9 @@
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
                                             <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}">
-                                                <img src="{{$recList[$i]['images'][0]}}" alt=""
+                                                <img data-src="{{$recList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
-                                                <img src="{{$recList[$i]['images'][1]}}" alt=""
+                                                <img data-src="{{$recList[$i]['images'][1]}}" alt=""
                                                      class="img-fluid block-two">
                                             </a>
                                         </div>
@@ -662,9 +662,9 @@
                                     <div class="single-product-list @if($i==2) mb-20 @endif">
                                         <div class="product-list-image">
                                             <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}">
-                                                <img src="{{$recList[$i]['images'][0]}}" alt=""
+                                                <img data-src="{{$recList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
-                                                <img src="{{$recList[$i]['images'][1]}}" alt=""
+                                                <img data-src="{{$recList[$i]['images'][1]}}" alt=""
                                                      class="img-fluid block-two">
                                             </a>
                                         </div>
@@ -701,47 +701,47 @@
     {{--                    <div class="brand-logo">--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/3.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/3.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/2.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/2.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/1.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/1.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/4.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/4.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/5.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/5.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/6.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/6.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/1.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/1.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/3.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/3.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                        <div class="single-brand">--}}
     {{--                            <a href="#">--}}
-    {{--                                <img src="assets/images/brand/4.jpg" alt="" class="img-fluid">--}}
+    {{--                                <img data-src="assets/images/brand/4.jpg" alt="" class="img-fluid">--}}
     {{--                            </a>--}}
     {{--                        </div>--}}
     {{--                    </div>--}}
@@ -751,6 +751,7 @@
     {{--    </div>--}}
     <link rel="stylesheet" type="text/css" href="/assets/css/normalize2.css"/>
     <script src="/assets/js/jquery.animate_from_to-1.0.js"></script>
+    <script src="/assets/js/index.js" type="text/javascript" charset="utf-8"></script>
     <script>
         $('.wishlist-add').click(function () {
             let product = $(this).data('product');

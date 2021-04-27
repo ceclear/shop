@@ -49,7 +49,7 @@
                                             <tr>
                                                 <td class="product-image"><a
                                                         href="{{route('goods.detail',['id'=>$item['id']])}}"><img
-                                                            src="{{$item['discover']}}" width="100px" height="100px"
+                                                            data-src="{{$item['discover']}}" width="100px" height="100px"
                                                             alt=""></a></td>
                                                 <td class="product-name"><a
                                                         href="{{route('goods.detail',['id'=>$item['id']])}}">{{str_limit($item['title'],20)}}</a>

@@ -30,7 +30,7 @@
                             @foreach($detail['images'] as $item)
                                 <div class="product-item">
                                     <a href="{{$item}}"><img
-                                            src="{{$item}}" class="img-fluid"
+                                            data-src="{{$item}}" class="img-fluid"
                                             alt=""/></a>
                                 </div>
                             @endforeach
@@ -44,7 +44,7 @@
                         @if($detail['images'])
                             @foreach($detail['images'] as $item)
                                 <div class="product-item-thumb">
-                                    <img src="{{$item}}" class="img-fluid"
+                                    <img data-src="{{$item}}" class="img-fluid"
                                          alt=""/>
                                 </div>
                             @endforeach
@@ -199,7 +199,7 @@
                                 <!-- Start Single Review -->
                                 <div class="pro_review">
                                     <div class="review_thumb">
-                                        <img src="/assets/images/blog/comment/comment-3.jpg" alt="review images">
+                                        <img data-src="/assets/images/blog/comment/comment-3.jpg" alt="review images">
                                     </div>
                                     <div class="review_details">
                                         <div class="review_info">
@@ -228,7 +228,7 @@
                                 <!-- Start Single Review -->
                                 <div class="pro_review pro-second">
                                     <div class="review_thumb">
-                                        <img src="/assets/images/blog/comment/comment-3.jpg" alt="review images">
+                                        <img data-src="/assets/images/blog/comment/comment-3.jpg" alt="review images">
                                     </div>
                                     <div class="review_details">
                                         <div class="review_info">
@@ -321,7 +321,7 @@
                                         <div class="item-product">
                                             <div class="product-thumb">
                                                 <a href="{{route('goods.detail',['id'=>$item['id']])}}">
-                                                    <img src="{{$item['images'][0]}}" alt="" class="img-fluid">
+                                                    <img data-src="{{$item['images'][0]}}" alt="" class="img-fluid">
                                                 </a>
                                                 <div class="box-label">
                                                     @if($item['is_new']==1)
@@ -389,7 +389,7 @@
                                                      id="tab{{$key}}" role="tabpanel">
                                                     <div class="modal_tab_img">
                                                         <a href="#"><img
-                                                                src="{{$item}}"
+                                                                data-src="{{$item}}"
                                                                 alt="" class="img-fluid" style="height: 70%;width: 70%"></a>
                                                     </div>
                                                 </div>
@@ -405,7 +405,7 @@
                                                         <a class="nav-link @if($key==0) active @else @endif"
                                                            data-toggle="tab" href="#tab{{$key}}" role="tab"
                                                            aria-controls="tab1" aria-selected="false"><img
-                                                                src="{{$item}}"
+                                                                data-src="{{$item}}"
                                                                 alt="" class="img-fluid"
                                                                 style="width: 100px;height: 100px;"></a>
                                                     </li>

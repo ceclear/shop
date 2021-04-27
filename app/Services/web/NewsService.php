@@ -11,7 +11,7 @@ class NewsService extends BaseService
 {
 
 
-    public function lists($where = [], $orderBy = ['id' => 'desc'], $pageSize = 8)
+    public function lists($where = [], $orderBy = ['id' => 'desc'], $pageSize = 10)
     {
         $appends = $withParam = [];
         if ($author = request('author')) {

@@ -69,7 +69,7 @@
                                     <div class="item-product pt-0">
                                         <div class="product-thumb" style="margin-right: 36px">
                                             <a href="{{route('goods.detail',['id'=>$item['id']])}}">
-                                                <img src="{{$item['discover']}}" alt=""
+                                                <img data-src="{{$item['discover']}}" alt=""
                                                      class="img-fluid">
                                             </a>
                                             <div class="box-label">

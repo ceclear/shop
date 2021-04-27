@@ -38,7 +38,7 @@
                 <div class="col-lg-4" style="margin-left: -90px">
                     <div class="footer-single-widget">
                         <div class="footer-logo mb-40" style="margin-bottom: 30px">
-                            <a href="/"><img src="/assets/images/logo/logo.png" alt=""></a>
+                            <a href="/"><img data-src="/assets/images/logo/logo.png" alt=""></a>
                         </div>
                         <div class="widget-body" style="padding-left: 100px">
                             <p>
@@ -175,7 +175,7 @@
 
 <!-- Main JS -->
 <script src="/assets/js/main.js"></script>
-
+<script src="/assets/js/index.js" type="text/javascript" charset="utf-8"></script>
 <script src="/assets/js/common.js"></script>
 @if(config('app.env') =='production')
     <div style="display: none">

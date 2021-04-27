@@ -29,7 +29,7 @@
                                     <div class="single-blog mt-30">
                                         <div class="blog-image mb-30">
                                             <a href="{{route('news.detail',['id'=>$item['id']])}}"><img
-                                                    src="{{$item['image']}}"
+                                                    data-src="{{$item['image']}}"
                                                     alt="" class="img-fluid"></a>
                                         </div>
                                         <div class="blog-content">
@@ -100,7 +100,7 @@
                                         <div class="single-blog-thumb d-flex">
                                             <div class="blog-thumb">
                                                 <a href="{{route('news.detail',['id'=>$item['id']])}}"><img
-                                                        src="{{$item['image']}}" width="100" height="66" alt=""></a>
+                                                        data-src="{{$item['image']}}" width="100" height="66" alt=""></a>
                                             </div>
                                             <div class="blog-info">
                                                 <h5 class="info-title"><a
@@ -158,7 +158,7 @@
                         </div>
                         <div class="banner-area">
                             <div class="single-banner mt-30 mb-20 text-center">
-                                <a href="#"><img src="/assets/images/banner/shop-banner-2.jpg" alt="" class="img-fluid"></a>
+                                <a href="#"><img data-src="/assets/images/banner/shop-banner-2.jpg" alt="" class="img-fluid"></a>
                             </div>
                         </div>
                     </div>

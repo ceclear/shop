@@ -70,7 +70,7 @@
                                     <div class="item-product pt-0">
                                         <div class="product-thumb" style="margin-right: 36px">
                                             <a href="{{route('goods.tao_girl_detail',['id'=>$item['id']])}}">
-                                                <img src="{{$item['avatarUrl']}}" alt=""
+                                                <img data-src="{{$item['avatarUrl']}}" alt=""
                                                      class="img-fluid">
                                             </a>
                                             <div class="box-label">

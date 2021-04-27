@@ -30,7 +30,7 @@ class GoodsController extends Controller
             'id'   => ['symbol' => '!=', 'val' => $id],
             'cid1' => $detail['cid1']
         ];
-        $release = $this->goodsService->getList($where, 6);
+        $release = $this->goodsService->getList($where, 15);
         return view('goods.detail', compact("detail", "release"));
     }
 
@@ -51,7 +51,7 @@ class GoodsController extends Controller
         if ($cid3) {
             $where['cid3'] = $cid3;
         }
-        $result = $this->goodsService->listPage($where, 12);
+        $result = $this->goodsService->listPage($where, 36);
         return view('goods.shop', $result);
     }
 
@@ -104,7 +104,7 @@ class GoodsController extends Controller
 
     public function taoGirl()
     {
-        $result = $this->goodsService->taoGirlListPage([], 12);
+        $result = $this->goodsService->taoGirlListPage([], 52);
         return view('goods.tao', $result);
     }
 

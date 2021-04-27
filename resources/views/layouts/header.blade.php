@@ -59,7 +59,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-6" style="margin-left: -82px">
                     <div class="logo">
-                        <a href="/"><img src="/assets/images/logo/logo.png" alt="" class="img-fluid"></a>
+                        <a href="/"><img data-src="/assets/images/logo/logo.png" alt="" class="img-fluid"></a>
                     </div>
                 </div>
                 <div class="col-lg-9 col-6">
@@ -76,7 +76,7 @@
                         </div>
                         <div class="blockcart" style="padding-left: 73px">
                             <a href="javascript:" class="drop-toggle" style="width: 246px">
-                                <img src="/assets/images/cart/cart.png" alt="" class="img-fluid">
+                                <img data-src="/assets/images/cart/cart.png" alt="" class="img-fluid">
                                 <span class="my-cart" style="padding-left: 10px">购物车</span>
                                 @if(!empty($cart)) <span class="count"
                                                          style="left: 87px"> {{$cart['order_total_num']}} </span>@endif
@@ -89,7 +89,7 @@
                                         @foreach($cart['goods_list'] as $item)
                                             <li class="mini-cart-details">
                                                 <div class="innr-crt-img">
-                                                    <img src="{{$item['discover']}}" height="70px" width="70px" alt="">
+                                                    <img data-src="{{$item['discover']}}" height="70px" width="70px" alt="">
                                                     <span>{{$item['num']}}x</span>
                                                 </div>
                                                 <div class="innr-crt-content">
