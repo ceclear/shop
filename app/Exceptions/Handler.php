@@ -54,6 +54,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        Log::error('服务器内部错误first，异常: 行:' . $exception->getLine() . ',URL:' . $request->getPathInfo() . ' File ' . $exception->getFile() . ',Error ' . $exception->getMessage() . ',IP ' . $request->ip());
         if ($exception instanceof JwtException) return response()->json(['code' => 10000, 'message' => 'Jwt token不存在或出错']);
         if ($exception instanceof NotFoundHttpException) {
             return response()->view('404');

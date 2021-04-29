@@ -24,11 +24,11 @@ class QueryListener
     public function handle(QueryExecuted $event)
     {
         //
-        if (env('APP_ENV', 'production') == 'local') {
+//        if (env('APP_ENV', 'production') == 'local') {
             $sql = str_replace('?', "'%s'", $event->sql);
             $log = vsprintf($sql, $event->bindings);
             $this->put_log('sql', $log);
-        }
+//        }
     }
 
     private function put_log($file = 'app', $content = '')
