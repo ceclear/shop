@@ -27,11 +27,11 @@ class TodayHistory extends Orm
                 $result = $apiRequest->sendRequest(['date' => $value]);
                 if (!$result) {
                     Log::error('历史今天取请求失败');
-                    continue;
+                    return false;
                 }
                 if ($result['error_code'] != 0) {
                     Log::error('历史今天抓取返回错误====' . $result['error_code'] . '===' . $result['reason']);
-                    break;
+                    return false;
                 }
                 $array = $result['result'];
                 $info  = TodayHistory::where('day', $value)->first();
