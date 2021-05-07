@@ -62,7 +62,7 @@ class IndexController extends Controller
 
     public function test()
     {
-//        Mail::to('594652523@qq.com')->send(new Register());
+        Mail::to('594652523@qq.com')->send(new Register());
 //        for ($i=1;$i<=100;$i++){
 //            MemberRedis::getRedisInstance()->lpush('list1',$i);
 //        }

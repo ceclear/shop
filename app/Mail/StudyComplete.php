@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class StudyComplete extends Mailable
 {
@@ -39,6 +40,7 @@ class StudyComplete extends Mailable
             'submit_time' => Carbon::now()->toDateTimeString()
         ];
         $sendData = array_merge($sendData, $this->attend);
+        Log::info('发送数据', $sendData);
         return $this->subject('作业通知')->view('mail.study')->with($sendData);
     }
 }
