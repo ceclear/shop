@@ -12,6 +12,7 @@
         "encore/laravel-admin": "1.*",
         "fideloper/proxy": "^4.4",
         "generationtux/jwt-artisan": "^1.2",
+        "guzzlehttp/guzzle": "^7.3",
         "jxlwqq/wang-editor2": "^1.0",
         "laravel-admin-ext/grid-lightbox": "^1.0",
         "laravel/framework": "^6.20",

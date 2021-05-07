@@ -174,6 +174,17 @@ return [
 //            'persistent' => true, // 开启持久连接
 //            'read_write_timeout' => 60,
         ],
+        //redis队列配置 对应config-》queue的connections参数
+        'redis_queue' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', 'localhost'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => env('REDIS_USER_DB', 15),
+            //用laravels加速，开启持久连接
+//            'persistent' => true, // 开启持久连接
+//            'read_write_timeout' => 60,
+        ],
 
     ],
 

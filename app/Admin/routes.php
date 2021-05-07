@@ -22,4 +22,5 @@ Route::group([
     $router->resource('advert', AdvertController::class);//广告
     $router->resource('goods', GoodsController::class);//广告
     $router->resource('tao-girl', TaoGirlController::class);//广告
+    $router->resource('member', MemberController::class);//广告
 });

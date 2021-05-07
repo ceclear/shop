@@ -3,10 +3,13 @@
 
 namespace App\Services;
 
+use App\Libs\MemberRedis;
+use App\Mail\StudyComplete;
 use App\Models\Subtract;
 use App\Traits\Errors;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 
 class StudyService extends BaseService
@@ -309,6 +312,8 @@ class StudyService extends BaseService
                 $insert[] = ['sub_id' => $subId, 'key_str' => $item['op_str'], 'enter_val' => $item['val'], 'val' => $item['hid_val'], 'created_at' => time()];
             }
             DB::table('subtract_details')->insert($insert);
+            $userInfo = MemberRedis::getRedisInstance()->HGETALL(request()->uid);
+            Mail::to('594652523@qq.com')->send(new StudyComplete($userInfo));
         });
 
         return true;

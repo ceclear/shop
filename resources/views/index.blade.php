@@ -122,7 +122,8 @@
                                                 </div>
                                                 <div class="action-link">
 
-                                                    <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
+                                                    <a class="wishlist-add same-link" href="javascript:"
+                                                       data-product="{{$item['id']}}"
                                                        title="加入收藏"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
@@ -149,7 +150,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" data-product="{{$item['id']}}" href="javascript:"
+                                                        <a class="cart-plus" data-product="{{$item['id']}}"
+                                                           href="javascript:"
                                                            title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
@@ -184,7 +186,8 @@
                                                 </div>
                                                 <div class="action-link">
 
-                                                    <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
+                                                    <a class="wishlist-add same-link" href="javascript:"
+                                                       data-product="{{$item['id']}}"
                                                        title="加入收藏"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
@@ -211,7 +214,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" data-product="{{$item['id']}}" href="javascript:"
+                                                        <a class="cart-plus" data-product="{{$item['id']}}"
+                                                           href="javascript:"
                                                            title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
@@ -246,7 +250,8 @@
                                                 </div>
                                                 <div class="action-link">
 
-                                                    <a class="wishlist-add same-link" href="javascript:" data-product="{{$item['id']}}"
+                                                    <a class="wishlist-add same-link" href="javascript:"
+                                                       data-product="{{$item['id']}}"
                                                        title="加入收藏"><i
                                                             class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>
                                                 </div>
@@ -273,7 +278,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" data-product="{{$item['id']}}" href="javascript:"
+                                                        <a class="cart-plus" data-product="{{$item['id']}}"
+                                                           href="javascript:"
                                                            title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
@@ -352,7 +358,8 @@
                 </div>
                 <div class="col-lg-3 col-12 text-center">
                     <div class="single-banner mt-40">
-                        <a href="javascript:"><img data-src="assets/images/banner/banner-1.jpg" alt="" class="img-fluid"></a>
+                        <a href="javascript:"><img data-src="assets/images/banner/banner-1.jpg" alt=""
+                                                   class="img-fluid"></a>
                     </div>
                 </div>
             </div>
@@ -396,11 +403,11 @@
                                                         <span>New</span>
                                                     </div>
                                                 </div>
-{{--                                                <div class="action-link">--}}
-{{--                                                    <a class="wishlist-add same-link" data-product="{{$value['id']}}"--}}
-{{--                                                       title="Add to wishlist"><i--}}
-{{--                                                            class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
-{{--                                                </div>--}}
+                                                {{--                                                <div class="action-link">--}}
+                                                {{--                                                    <a class="wishlist-add same-link" data-product="{{$value['id']}}"--}}
+                                                {{--                                                       title="Add to wishlist"><i--}}
+                                                {{--                                                            class="zmdi zmdi-favorite-outline zmdi-hc-fw"></i></a>--}}
+                                                {{--                                                </div>--}}
                                             </div>
                                             <div class="product-caption">
                                                 <div class="product-name">
@@ -419,7 +426,8 @@
                                                 </div>
                                                 <div class="cart">
                                                     <div class="add-to-cart">
-                                                        <a class="cart-plus" data-product="{{$item['id']}}" href="javascript:"
+                                                        <a class="cart-plus" data-product="{{$item['id']}}"
+                                                           href="javascript:"
                                                            title="加入购物车"><i
                                                                 class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw"></i></a>
                                                     </div>
@@ -436,27 +444,27 @@
         </div>
     </div>
 
-{{--    <div style="display: none" class="banner-area mt-10">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
-{{--                    <div class="single-banner mt-40">--}}
-{{--                        <a href="#"><img data-src="assets/images/banner/banner-2.jpg" alt="" class="img-fluid"></a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
-{{--                    <div class="single-banner mt-40">--}}
-{{--                        <a href="#"><img data-src="assets/images/banner/banner-3.jpg" alt="" class="img-fluid"></a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
-{{--                    <div class="single-banner mt-40">--}}
-{{--                        <a href="#"><img data-src="assets/images/banner/banner-4.jpg" alt="" class="img-fluid"></a>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    {{--    <div style="display: none" class="banner-area mt-10">--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
+    {{--                    <div class="single-banner mt-40">--}}
+    {{--                        <a href="#"><img data-src="assets/images/banner/banner-2.jpg" alt="" class="img-fluid"></a>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
+    {{--                    <div class="single-banner mt-40">--}}
+    {{--                        <a href="#"><img data-src="assets/images/banner/banner-3.jpg" alt="" class="img-fluid"></a>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--                <div class="col-lg-4 col-md-4 col-12 text-center">--}}
+    {{--                    <div class="single-banner mt-40">--}}
+    {{--                        <a href="#"><img data-src="assets/images/banner/banner-4.jpg" alt="" class="img-fluid"></a>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </div>--}}
     <div class="feature-category-area">
         <div class="container">
             <div class="row">
@@ -632,8 +640,14 @@
                                             <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}">
                                                 <img data-src="{{$recList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
-                                                <img data-src="{{$recList[$i]['images'][1]}}" alt=""
-                                                     class="img-fluid block-two">
+                                                @if(!empty($recList[$i]['images'][1]))
+                                                    <img data-src="{{$recList[$i]['images'][1]}}" alt=""
+                                                         class="img-fluid block-two">
+                                                @else
+                                                    <img data-src="{{$recList[$i]['images'][0]}}" alt=""
+                                                         class="img-fluid block-two">
+                                                @endif
+
                                             </a>
                                         </div>
                                         <div class="product-caption">
@@ -761,7 +775,7 @@
                     'url': "{{route('goods.wish_add')}}",
                     'type': 'post',
                     'dataType': 'json',
-                    'need_alert':1
+                    'need_alert': 1
                 }
             )
         });
