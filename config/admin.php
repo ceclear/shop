@@ -395,6 +395,10 @@ return [
     |
     */
     'extensions' => [
+        'env-manager' => [
+            // If the value is set to false, this extension will be disabled
+            'enable' => true
+        ],
         'grid-lightbox' => [
 
             // Set to `false` if you want to disable this extension
