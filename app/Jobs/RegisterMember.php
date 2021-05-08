@@ -15,16 +15,16 @@ class RegisterMember implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $userId;
+    protected $userInfo;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($userId)
+    public function __construct($userInfo)
     {
-        $this->userId = $userId;
+        $this->userInfo = $userInfo;
         //
     }
 
@@ -33,14 +33,9 @@ class RegisterMember implements ShouldQueue
      */
     public function handle()
     {
-        $aData = [
-            'user_id' => $this->userId,
-        ];
-        Log::info('----AfterRegister队列执行，data：' . json_encode($aData));
-
         //todo
-        Mail::to('594652523@qq.com')->send(new Register());
-        Log::info('--------' . $this->userId . '邮件发送完毕');
+        Mail::to('594652523@qq.com')->send(new Register($this->userInfo));
+        Log::info('--------新注册用户' . $this->userInfo['id'] . '邮件发送完毕');
 
         return true;
     }
