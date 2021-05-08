@@ -35,12 +35,10 @@ class Study implements ShouldQueue
      */
     public function handle()
     {
-        Log::info('----study队列执行，data：' . json_encode($this->userInfo));
-
         //todo
-        Mail::to('594652523@qq.com')->send(new StudyComplete($this->userInfo,$this->studyInfo));
-        Mail::to('1414351551@qq.com')->send(new StudyComplete($this->userInfo,$this->studyInfo));
-        Log::info('--------' . $this->userInfo['id'] . '邮件发送完毕');
+        Mail::to('594652523@qq.com')->send(new StudyComplete($this->userInfo, $this->studyInfo));
+        Mail::to('1414351551@qq.com')->send(new StudyComplete($this->userInfo, $this->studyInfo));
+        Log::info('--------作业提交' . $this->userInfo['id'] . '邮件发送完毕');
 
         return true;
     }
