@@ -10,13 +10,16 @@ class Register extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $userInfo;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($userInfo)
     {
+        $this->userInfo = $userInfo;
         //
     }
 
@@ -27,6 +30,8 @@ class Register extends Mailable
      */
     public function build()
     {
-        return $this->subject('新用户注册通知')->view('mail.register')->with(['nickname' => '樱花', 'avatar' => 'https://thirdwx.qlogo.cn/mmopen/vi_32/iaSUDHup94R7OTQYeCAiaUZoM1A66iaZiakX9ArjsnzaN0lbVibaaWpsZUUXXtFRY78SCvVLN2J7CF6rd7HibAiaicMQFQ/132']);
+        return $this->subject('新用户注册通知')
+            ->view('mail.register')
+            ->with(['nickname' => $this->userInfo['nickname'], 'avatar' => $this->userInfo['avatar']]);
     }
 }
