@@ -37,7 +37,6 @@ class StudyComplete extends Mailable
         $sendData = [
             'user_id'     => $this->userInfo['id'],
             'nickname'    => $this->userInfo['nickname'],
-            'submit_time' => Carbon::now()->toDateTimeString()
         ];
         $sendData = array_merge($sendData, $this->attend);
         Log::info('发送数据', $sendData);

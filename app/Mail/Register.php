@@ -27,6 +27,6 @@ class Register extends Mailable
      */
     public function build()
     {
-        return $this->subject('新用户注册通知')->view('mail.test')->with(['nickname' => '樱花', 'avatar' => 'https://thirdwx.qlogo.cn/mmopen/vi_32/iaSUDHup94R7OTQYeCAiaUZoM1A66iaZiakX9ArjsnzaN0lbVibaaWpsZUUXXtFRY78SCvVLN2J7CF6rd7HibAiaicMQFQ/132']);
+        return $this->subject('新用户注册通知')->view('mail.register')->with(['nickname' => '樱花', 'avatar' => 'https://thirdwx.qlogo.cn/mmopen/vi_32/iaSUDHup94R7OTQYeCAiaUZoM1A66iaZiakX9ArjsnzaN0lbVibaaWpsZUUXXtFRY78SCvVLN2J7CF6rd7HibAiaicMQFQ/132']);
     }
 }

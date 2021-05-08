@@ -38,14 +38,30 @@
 
 <div class="content">
     <p>
-        有用户提交了作业,详情如下:
+        用户"{{$nickname}}"提交了作业,详情如下:
     </p>
     <p>
-        昵称:
-        <code>{{$nickname}}</code>
+        题目总数:
+        <code>{{$total}}</code>
     </p>
     <p>
-        时间:
+        用时:
+        <code>{{$remind}}秒</code>
+    </p>
+    <p>
+        正确数:
+        <code>{{$yes}}</code>
+    </p>
+    <p>
+        错误数:
+        <code>{{$no}}</code>
+    </p>
+    <p>
+        正确率:
+        <code>{{$rate}}%</code>
+    </p>
+    <p>
+        提交时间:
         <code>{{$submit_time}}</code>
     </p>
 

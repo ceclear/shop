@@ -3,13 +3,12 @@
 
 namespace App\Services;
 
+use App\Jobs\Study;
 use App\Libs\MemberRedis;
-use App\Mail\StudyComplete;
 use App\Models\Subtract;
 use App\Traits\Errors;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 
 class StudyService extends BaseService
@@ -313,7 +312,9 @@ class StudyService extends BaseService
             }
             DB::table('subtract_details')->insert($insert);
             $userInfo = MemberRedis::getRedisInstance()->HGETALL(request()->uid);
-            Mail::to('594652523@qq.com')->send(new StudyComplete($userInfo));
+//            $userInfo=['id'=>1,'nickname'=>'test'];
+            $studyInfo = ['total' => request('total'), 'yes' => $yes, 'no' => $no, 'remind' => request('time_second'), 'rate' => request('percent'), 'submit_time' => Carbon::now()->toDateTimeString()];
+            Study::dispatch($userInfo, $studyInfo)->delay(now()->addSeconds(1))->onQueue('aa');
         });
 
         return true;

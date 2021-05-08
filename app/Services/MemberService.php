@@ -3,6 +3,7 @@
 
 namespace App\Services;
 
+use App\Jobs\RegisterMember;
 use App\Libs\CartRedis;
 use App\Libs\MemberRedis;
 use App\Models\Goods;
@@ -68,11 +69,20 @@ class MemberService extends BaseService
         if (!empty($wechat['errcode'])) {
             return false;
         }
-        $rel     = Members::firstOrCreate(['openid' => $wechat['openid']], ['nickname' => $userInfo['nickName'], 'avatar' => $userInfo['avatarUrl'], 'sex' => $userInfo['gender']]);
+//        $rel     = Members::firstOrCreate(['openid' => $wechat['openid']], ['nickname' => $userInfo['nickName'], 'avatar' => $userInfo['avatarUrl'], 'sex' => $userInfo['gender']]);
+        $flag = false;
+        $rel  = Members::where(['openid' => $wechat['openid']])->first();
+        if (!$rel) {
+            $flag = true;
+            $rel  = Members::create(['openid' => $wechat['openid'], 'nickname' => $userInfo['nickName'], 'avatar' => $userInfo['avatarUrl'], 'sex' => $userInfo['gender']]);
+        }
         $expire  = config('constants.jwt_user_expire');
         $payload = ['exp' => time() + $expire, 'sub' => 'all jwt', 'iss' => 'ceclear', 'iat' => time(), 'uid' => $rel['id'], 'aud' => config('app.url')]; // expire in 2 hours
         $token   = $jwtToken->createToken($payload);
         MemberRedis::getRedisInstance()->setLogin($rel, $token->token(), $expire);
+        if ($flag) {
+            RegisterMember::dispatch($rel)->delay(now()->addSeconds(1))->onQueue('aa');
+        }
         return ['token' => $token->token(), 'user_id' => $rel['id']];
     }
 
