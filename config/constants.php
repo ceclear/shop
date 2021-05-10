@@ -15,5 +15,6 @@ return [
     'ju_he_today_history_key' => env('JU_HE_TODAY_HISTORY_APP_KEY', '8162c3119c2a90b0297033397967ec76'),
     'ju_he_similar_key'       => env('JU_HE_SIMILAR_APP_KEY', 'fc447dedf8ee455122358017a64a3250'),
     'show_api_secret'         => env('SHOW_API_SECRET', 'a516401ec63841fbb29b13c91b930ff9'),
-    'show_api_appid'          => env('SHOW_API_APPID', '598335')
+    'show_api_appid'          => env('SHOW_API_APPID', '598335'),
+    'jd_wx_appkey'            => env('JD_WX_KEY')
 ];
