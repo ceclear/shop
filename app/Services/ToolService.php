@@ -5,6 +5,7 @@ namespace App\Services;
 
 use App\Libs\ApiRequest;
 use App\Libs\JuHeRequest;
+use App\Models\Food;
 use App\Models\Similar;
 use App\Models\TodayHistory;
 use App\Models\TodayHistoryDetail;
@@ -141,5 +142,29 @@ class ToolService extends BaseService
             return false;
         }
         return $info;
+    }
+
+    public function foodList()
+    {
+        $keyword       = request('word');
+        $more          = request('more') ?? false;//直接加载第三方
+        $page          = request('page') ?? 1;
+        $model         = new Food();
+        $where['name'] = ['symbol' => 'like', 'val' => '%' . $keyword . '%'];
+        $list          = $model->getListPage($where, [], $page, 20)->toArray();
+        if ($more || empty($list)) {
+            $model->getWxFoodList($keyword);
+            $list = $model->getListPage($where, [], $page, 20)->toArray();
+        }
+        if (!empty($list)) {
+            $list = array_merge($list);
+        }
+        return $list;
+    }
+
+    public function foodDetail()
+    {
+        $id = request('id') ?? 0;
+        return Food::where('id', $id)->first();
     }
 }

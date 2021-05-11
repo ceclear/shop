@@ -73,4 +73,21 @@ class ToolController extends Controller
         return $this->responseJson(0, '', $rel);
     }
 
+    public function foodList()
+    {
+        $rel = $this->toolService->foodList();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->toolService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
+
+    public function foodDetail()
+    {
+        $rel = $this->toolService->foodDetail();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->toolService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
 }

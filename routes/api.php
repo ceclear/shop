@@ -34,6 +34,8 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->get('similar','ToolController@Similar');//近义反义词
     $router->get('today','ToolController@TodayList');//历史今天
     $router->get('today_detail','ToolController@TodayDetail');//历史今天详情
+    $router->get('food_list','ToolController@foodList');//菜谱列表
+    $router->get('food_detail','ToolController@foodDetail');//菜谱列表
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
