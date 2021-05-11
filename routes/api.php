@@ -30,12 +30,12 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->post('study/create_subtract','StudyController@createSubtract')->middleware('jwt');
     $router->get('study/subtract_list','StudyController@lists')->middleware('jwt');
     $router->get('search_mobile','ToolController@searchMobile');
-    $router->get('postage','ToolController@Postage');//快递查询
+    $router->get('postage','ToolController@Postage')->middleware('jwt');;//快递查询
     $router->get('similar','ToolController@Similar');//近义反义词
     $router->get('today','ToolController@TodayList');//历史今天
     $router->get('today_detail','ToolController@TodayDetail');//历史今天详情
-    $router->get('food_list','ToolController@foodList');//菜谱列表
-    $router->get('food_detail','ToolController@foodDetail');//菜谱列表
+    $router->get('food_list','ToolController@foodList')->middleware('jwt');//菜谱列表
+    $router->get('food_detail','ToolController@foodDetail')->middleware('jwt');//菜谱列表
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
