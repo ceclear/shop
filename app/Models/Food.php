@@ -4,6 +4,7 @@ namespace App\Models;
 
 
 use App\Libs\ApiRequest;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class Food extends Orm
@@ -34,13 +35,14 @@ class Food extends Orm
             return [];
         }
         $list = $rel['result']['result']['list'];
+        Cache::set('jd_wx_food', array_column($list, 'name'));
         foreach ($list as $item) {
             $info = self::where('id', $item['id'])->where('classid', $item['classid'])->first();
             if (!$info) {
                 $info = new self();
             }
             $info->classid     = $item['classid'];
-            $info->id       = $item['id'];
+            $info->id          = $item['id'];
             $info->name        = $item['name'];
             $info->peoplenum   = $item['peoplenum'];
             $info->preparetime = $item['preparetime'];

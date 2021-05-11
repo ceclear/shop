@@ -152,7 +152,7 @@ class ToolService extends BaseService
         $model         = new Food();
         $where['name'] = ['symbol' => 'like', 'val' => '%' . $keyword . '%'];
         $list          = $model->getListPage($where, [], $page, 20)->toArray();
-        if ($more || empty($list)) {
+        if (!empty($keyword) && ($more || empty($list))) {
             $model->getWxFoodList($keyword);
             $list = $model->getListPage($where, [], $page, 20)->toArray();
         }
