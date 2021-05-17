@@ -28,7 +28,7 @@ class WechatController extends Controller
             Log::info('校验失败,数据', compact("signature", "timestamp", "nonce", "echoStr"));
             return $this->responseJson(1,'校验失败');
         }
-        return $this->responseJson(0, '', $echoStr);
+        echo $echoStr;die;
     }
 
     private function checkSignature($signature, $timestamp, $nonce)
