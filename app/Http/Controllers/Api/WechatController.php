@@ -33,7 +33,7 @@ class WechatController extends Controller
 
     private function checkSignature($signature, $timestamp, $nonce)
     {
-        $token  = "94fod8kvwiaq2hrpb3jycntml5s6ex";
+        $token  = config('constants.wechat_message_token');
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode($tmpArr);
