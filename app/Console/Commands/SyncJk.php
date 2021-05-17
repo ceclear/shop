@@ -84,6 +84,8 @@ class SyncJk extends Command
                         $data['explain']       = $item['explain'];
                         $data['pic']           = $item['pic'] ?? '';
                         $data['question_type'] = $item['type'];
+                        $data['created_at']    = date('Y-m-d H:i:s');
+                        $data['updated_at']    = date('Y-m-d H:i:s');
                         $arr[]                 = $data;
                         $total++;
                     }

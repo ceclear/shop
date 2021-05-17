@@ -5,6 +5,8 @@ namespace App\Services;
 
 use App\Libs\ApiRequest;
 use App\Libs\JuHeRequest;
+use App\Models\Driver;
+use App\Models\DriverWrong;
 use App\Models\Food;
 use App\Models\Similar;
 use App\Models\TodayHistory;
@@ -166,5 +168,29 @@ class ToolService extends BaseService
     {
         $id = request('id') ?? 0;
         return Food::where('id', $id)->first();
+    }
+
+    public function driverDetail()
+    {
+        $id    = request('id') ?? 0;
+        $order = request('next') == 1 ? 'asc' : 'desc';
+        return Driver::where('id', '>', $id)->orderBy('id', $order)->first();
+    }
+
+    public function addWrongDriver()
+    {
+        $userId = request()->uid;
+        $id     = request('id') ?? 0;
+        if (empty($id)) {
+            $this->setError('','请传入错误题');
+            return false;
+        }
+        $info = DriverWrong::where('driver_id', $id)->where('user_id', $userId)->first();
+        if ($info) {
+            $this->setError('','已经加入错题集了');
+            return false;
+        }
+        DriverWrong::create(['user_id' => $userId, 'driver_id' => $id]);
+        return true;
     }
 }

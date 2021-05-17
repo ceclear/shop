@@ -36,6 +36,8 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->get('today_detail','ToolController@TodayDetail');//历史今天详情
     $router->get('food_list','ToolController@foodList')->middleware('jwt');//菜谱列表
     $router->get('food_detail','ToolController@foodDetail')->middleware('jwt');//菜谱列表
+    $router->get('driver_detail','ToolController@driverDetail');
+    $router->post('add_driver_wrong','ToolController@addWrongDriver');
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
@@ -62,4 +64,8 @@ Route::group(["namespace" => "Api", 'prefix' => 'order', 'middleware' => 'jwt'],
 
 Route::group(["namespace" => "Api", 'prefix' => 'goods'], function ($router) {
     $router->get('detail', 'GoodsController@detail');//详情
+});
+
+Route::group(["namespace" => "Api", 'prefix' => 'wechat'], function ($router) {
+    $router->get('home', 'WechatController@index');//入口
 });
