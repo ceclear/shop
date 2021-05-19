@@ -199,9 +199,9 @@ class ToolService extends BaseService
                         break;
                     }
                 }
-                $info['answer']= $kk;
+                $info['answer_key']= $kk;
             } else {
-                $info['answer']= $info['answer'] == '对' ? 0 : 1;
+                $info['answer_key']= $info['answer'] == '对' ? 0 : 1;
             }
         }
         return compact("info", "count", "current");
