@@ -49,7 +49,6 @@ class SyncCategory extends Command
                 'thing4' => '完成'
             ]
         ]);
-        $app->template_message->send()
         dd(222);
         try {
             $start      = time();
