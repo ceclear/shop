@@ -36,9 +36,9 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->get('today_detail','ToolController@TodayDetail');//历史今天详情
     $router->get('food_list','ToolController@foodList')->middleware('jwt');//菜谱列表
     $router->get('food_detail','ToolController@foodDetail')->middleware('jwt');//菜谱列表
-    $router->get('driver_detail','ToolController@driverDetail')->middleware('jwt');
+    $router->get('driver_detail','ToolController@driverDetail');
     $router->post('add_driver_wrong','ToolController@addWrongDriver')->middleware('jwt');
-    $router->get('driver_count','ToolController@driverCount')->middleware('jwt');
+    $router->get('driver_count','ToolController@driverCount');
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
