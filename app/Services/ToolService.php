@@ -187,8 +187,23 @@ class ToolService extends BaseService
             DataRedis::getRedisInstance()->set('jia_kao_' . $userId, 1);
             $current = 1;
         }
-//        Log::info('request_all',['is_all'=>request('is_all')]);
-
+        if ($info) {
+//            $option    =$info['options'];
+//            $answerArr = json_decode($option);
+            $answerArr=$info['options'];
+            if (!empty($answerArr)) {
+                $kk = 0;
+                foreach ($answerArr as $key => $item) {
+                    if ($info['answer'] == substr($item, 0, 1)) {
+                        $kk = $key;
+                        break;
+                    }
+                }
+                $info['answer']= $kk;
+            } else {
+                $info['answer']= $info['answer'] == '对' ? 0 : 1;
+            }
+        }
         return compact("info", "count", "current");
     }
 
@@ -211,6 +226,6 @@ class ToolService extends BaseService
 
     public function driverCount()
     {
-       return Driver::selectRaw('count(*) as total,type')->groupBy('type')->get();
+        return Driver::selectRaw('count(*) as total,type')->groupBy('type')->get();
     }
 }
