@@ -4,6 +4,7 @@
 namespace App\Services;
 
 use App\Libs\ApiRequest;
+use App\Libs\DataRedis;
 use App\Libs\JuHeRequest;
 use App\Models\Driver;
 use App\Models\DriverWrong;
@@ -13,6 +14,7 @@ use App\Models\TodayHistory;
 use App\Models\TodayHistoryDetail;
 use App\Traits\Errors;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class ToolService extends BaseService
@@ -172,9 +174,22 @@ class ToolService extends BaseService
 
     public function driverDetail()
     {
-        $id    = request('id') ?? 0;
-        $order = request('next') == 1 ? 'asc' : 'desc';
-        return Driver::where('id', '>', $id)->orderBy('id', $order)->first();
+        $userId  = request()->uid;
+        $id      = request('id') ?? 0;
+        $order   = request('next') == 1 ? 'asc' : 'desc';
+        $isFirst = request('is_first');
+//        $info    = Driver::where('id', '>', $id)->orderBy('id', $order)->first();
+        $info  = Driver::orderBy(DB::raw('RAND()'))->first();
+        $count = Driver::count();
+        if ($isFirst == 2) {
+            $current = DataRedis::getRedisInstance()->incr('jia_kao_' . $userId);
+        } else {
+            DataRedis::getRedisInstance()->set('jia_kao_' . $userId, 1);
+            $current = 1;
+        }
+//        Log::info('request_all',['is_all'=>request('is_all')]);
+
+        return compact("info", "count", "current");
     }
 
     public function addWrongDriver()
@@ -182,15 +197,20 @@ class ToolService extends BaseService
         $userId = request()->uid;
         $id     = request('id') ?? 0;
         if (empty($id)) {
-            $this->setError('','请传入错误题');
+            $this->setError('', '请传入错误题');
             return false;
         }
         $info = DriverWrong::where('driver_id', $id)->where('user_id', $userId)->first();
         if ($info) {
-            $this->setError('','已经加入错题集了');
+            $this->setError('', '已经加入错题集了');
             return false;
         }
         DriverWrong::create(['user_id' => $userId, 'driver_id' => $id]);
         return true;
+    }
+
+    public function driverCount()
+    {
+       return Driver::selectRaw('count(*) as total,type')->groupBy('type')->get();
     }
 }

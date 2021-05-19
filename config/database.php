@@ -185,6 +185,16 @@ return [
 //            'persistent' => true, // 开启持久连接
 //            'read_write_timeout' => 60,
         ],
+        'redis_cache' => [
+            'url' => env('REDIS_URL'),
+            'host' => env('REDIS_HOST', 'localhost'),
+            'password' => env('REDIS_PASSWORD', null),
+            'port' => env('REDIS_PORT', 6379),
+            'database' => env('REDIS_USER_DB', 12),
+            //用laravels加速，开启持久连接
+//            'persistent' => true, // 开启持久连接
+//            'read_write_timeout' => 60,
+        ],
 
     ],
 

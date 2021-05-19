@@ -108,4 +108,13 @@ class ToolController extends Controller
         }
         return $this->responseJson(0, '', $rel);
     }
+
+    public function driverCount()
+    {
+        $rel = $this->toolService->driverCount();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->toolService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
 }
