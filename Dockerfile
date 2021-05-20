@@ -9,10 +9,10 @@ COPY  . /www/web/shop
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 COPY error.ini /usr/local/etc/php/conf.d
 RUN composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
-    && php artisan down \
     && composer install \
     && chmod -R 777 storage \
     && cp .env.example .env \
+    && php artisan down \
     && php artisan key:generate \
     && php artisan up
 EXPOSE 9000
