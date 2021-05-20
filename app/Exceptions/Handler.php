@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use GenTux\Jwt\Exceptions\JwtException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Foundation\Http\Exceptions\MaintenanceModeException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -54,6 +55,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof MaintenanceModeException) {
+            if (preg_match("/^api\//", $request->path()) == false) {
+                return parent::render($request, $exception);
+            }
+            return response()->json(['code' => 500, 'message' => '维护中请稍后']);
+        }
         if ($exception instanceof JwtException) return response()->json(['code' => 10000, 'message' => 'Jwt token不存在或出错']);
         if ($exception instanceof NotFoundHttpException) {
             return response()->view('404');
@@ -66,7 +73,7 @@ class Handler extends ExceptionHandler
             return response()->json(['code' => 10000, 'message' => $error]);
         }
         if ($exception instanceof \BadMethodCallException) {
-            if (preg_match("/^api\//", $request->path()) === false) {
+            if (preg_match("/^api\//", $request->path()) == false) {
                 return parent::render($request, $exception);
             }
             return response()->json(['code' => 20000, 'message' => '方法不存在']);
