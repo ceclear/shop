@@ -38,18 +38,18 @@ class SyncCategory extends Command
 
     public function handle()
     {
-        $app = Factory::miniProgram(config('wechat.mini_program.default'));
-        $app->subscribe_message->send([
-            'touser'      => 'oc53p5dwSYOIKYOgduU-7aIOZoAU',
-            'template_id' => 'sNrOvfxKncoCjKZ-KM77XV6y8vrTUgWK98wwOV2L4S4',
-            'data'        => [
-                'thing1' => 'test',
-                'thing2' => '1.12',
-                'thing3' => '作业提交',
-                'thing4' => '完成'
-            ]
-        ]);
-        dd(222);
+//        $app = Factory::miniProgram(config('wechat.mini_program.default'));
+//        $app->subscribe_message->send([
+//            'touser'      => 'oc53p5dwSYOIKYOgduU-7aIOZoAU',
+//            'template_id' => 'sNrOvfxKncoCjKZ-KM77XV6y8vrTUgWK98wwOV2L4S4',
+//            'data'        => [
+//                'thing1' => 'test',
+//                'thing2' => '1.12',
+//                'thing3' => '作业提交',
+//                'thing4' => '完成'
+//            ]
+//        ]);
+//        dd(222);
         try {
             $start      = time();
             $apiRequest = new DingDanXiaApiRequest(env('DDX_API_KEY'));
