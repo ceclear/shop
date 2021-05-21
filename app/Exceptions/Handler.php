@@ -8,6 +8,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Foundation\Http\Exceptions\MaintenanceModeException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
@@ -77,6 +78,12 @@ class Handler extends ExceptionHandler
                 return parent::render($request, $exception);
             }
             return response()->json(['code' => 20000, 'message' => '方法不存在']);
+        }
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            if (preg_match("/^api\//", $request->path()) == false) {
+                return parent::render($request, $exception);
+            }
+            return response()->json(['code' => 20000, 'message' => '路由不存在']);
         }
         Log::error('服务器内部错误，异常: 行:' . $exception->getLine() . ',URL:' . $request->getPathInfo() . ' File ' . $exception->getFile() . ',Error ' . $exception->getMessage() . ',IP ' . $request->ip());
         return parent::render($request, $exception);

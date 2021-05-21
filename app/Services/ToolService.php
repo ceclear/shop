@@ -244,12 +244,17 @@ class ToolService extends BaseService
 //            } else {
 //                $this->info('==============================');
 //            }
-            return $arr;
+            $trueLast           = $canTotal - $needTotal;
+            $lost               = $old - $canTotal;
+            $return['list']     = $arr;
+            $return['trueLast'] = sprintf("%.2f",$trueLast);
+            $return['lost']     = sprintf("%.2f",$lost);;
+            return $return;
         }
 //        $can  = (int)$baseCCT * 0.95;
-        $can  = sprintf("%.2f",$baseCCT * 0.95);
+        $can = sprintf("%.2f", $baseCCT * 0.95);
 //        $need = (int)($can * 6 - $ex) / 10 * 1.05;
-        $need = sprintf("%.2f",(int)($can * 6 - $ex) / 10 * 1.05);
+        $need = sprintf("%.2f", (int)($can * 6 - $ex) / 10 * 1.05);
 //        $this->info("==想提出==" . $baseCCT . '==能提出==' . $can . '==需要充值==' . $need . '==第' . $num . '次操作==');
         $data['old']  = $baseCCT;
         $data['can']  = $can;
@@ -259,7 +264,7 @@ class ToolService extends BaseService
         $canTotal  += $can;
         $needTotal += $need;
         $old       += $baseCCT;
-       return $this->cctFormat($need, $arr, $ex, $num, $canTotal, $needTotal, $old);
+        return $this->cctFormat($need, $arr, $ex, $num, $canTotal, $needTotal, $old);
 
     }
 }
