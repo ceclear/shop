@@ -117,4 +117,13 @@ class ToolController extends Controller
         }
         return $this->responseJson(0, '', $rel);
     }
+
+    public function cctCalculate()
+    {
+        $rel = $this->toolService->cctCalculate();
+        if ($rel === false) {
+            return $this->responseJson(1, $this->toolService->getFirstError());
+        }
+        return $this->responseJson(0, '', $rel);
+    }
 }

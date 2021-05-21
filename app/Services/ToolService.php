@@ -190,7 +190,7 @@ class ToolService extends BaseService
         if ($info) {
 //            $option    =$info['options'];
 //            $answerArr = json_decode($option);
-            $answerArr=$info['options'];
+            $answerArr = $info['options'];
             if (!empty($answerArr)) {
                 $kk = 0;
                 foreach ($answerArr as $key => $item) {
@@ -199,9 +199,9 @@ class ToolService extends BaseService
                         break;
                     }
                 }
-                $info['answer_key']= $kk;
+                $info['answer_key'] = $kk;
             } else {
-                $info['answer_key']= $info['answer'] == '对' ? 0 : 1;
+                $info['answer_key'] = $info['answer'] == '对' ? 0 : 1;
             }
         }
         return compact("info", "count", "current");
@@ -227,5 +227,39 @@ class ToolService extends BaseService
     public function driverCount()
     {
         return Driver::selectRaw('count(*) as total,type')->groupBy('type')->get();
+    }
+
+    public function cctCalculate()
+    {
+        return $this->cctFormat(8574);
+    }
+
+    protected function cctFormat($baseCCT, &$arr = [], $ex = 0, $num = 1, $canTotal = 0, $needTotal = 0, $old = 0)
+    {
+        if ($baseCCT <= 0) {
+//            if ($canTotal > 0 && $needTotal > 0) {
+//                $trueLast = $canTotal - $needTotal;
+//                $lost     = $old - $canTotal;
+//                $this->info('======最终能提出' . $trueLast . '=====被割韭菜==' . $lost . '===');
+//            } else {
+//                $this->info('==============================');
+//            }
+            return $arr;
+        }
+//        $can  = (int)$baseCCT * 0.95;
+        $can  = sprintf("%.2f",$baseCCT * 0.95);
+//        $need = (int)($can * 6 - $ex) / 10 * 1.05;
+        $need = sprintf("%.2f",(int)($can * 6 - $ex) / 10 * 1.05);
+//        $this->info("==想提出==" . $baseCCT . '==能提出==' . $can . '==需要充值==' . $need . '==第' . $num . '次操作==');
+        $data['old']  = $baseCCT;
+        $data['can']  = $can;
+        $data['need'] = $need;
+        $arr[]        = $data;
+        $num++;
+        $canTotal  += $can;
+        $needTotal += $need;
+        $old       += $baseCCT;
+       return $this->cctFormat($need, $arr, $ex, $num, $canTotal, $needTotal, $old);
+
     }
 }

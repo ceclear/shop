@@ -39,6 +39,7 @@ Route::group(["namespace" => "Api"], function ($router) {
     $router->get('driver_detail','ToolController@driverDetail');
     $router->post('add_driver_wrong','ToolController@addWrongDriver')->middleware('jwt');
     $router->get('driver_count','ToolController@driverCount');
+    $router->post('cct_to_do','ToolController@cctCalculate');
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
