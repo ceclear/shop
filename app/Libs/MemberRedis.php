@@ -80,7 +80,11 @@ class MemberRedis
             return false;
         }
         $hashInfo = $this->_redis->hGetAll($userId);
-        if (empty($hashInfo) || $hashInfo['token'] != $token) {
+        if (empty($hashInfo)) {
+            Log::info('登录信息失效,未能获取redis信息,token:' . $token);
+            return false;
+        }
+        if ($hashInfo && $hashInfo['token'] != $token) {
             Log::info('登录token验证失败，user_id：' . $userId . '，参数token：' . $token . '，redis_token：' . $hashInfo['token']);
             return false;
         }
