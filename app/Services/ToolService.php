@@ -231,10 +231,24 @@ class ToolService extends BaseService
 
     public function cctCalculate()
     {
-        return $this->cctFormat(8574);
+        $cct = request('cct') ?? 0;
+        $ex  = request('ex') ?? 0;
+        if (empty($cct)) {
+            $this->setError('', '请填写cct数量');
+            return false;
+        }
+        if (!is_numeric($cct)) {
+            $this->setError('', 'cct数量格式错误');
+            return false;
+        }
+        if (!empty($ex) && !is_numeric($ex)) {
+            $this->setError('', '经验格式错误');
+            return false;
+        }
+        return $this->cctFormat($cct, $ex);
     }
 
-    protected function cctFormat($baseCCT, &$arr = [], $ex = 0, $num = 1, $canTotal = 0, $needTotal = 0, $old = 0)
+    protected function cctFormat($baseCCT, $ex = 0, &$arr = [], $num = 1, $canTotal = 0, $needTotal = 0, $old = 0)
     {
         if ($baseCCT <= 0) {
 //            if ($canTotal > 0 && $needTotal > 0) {
@@ -247,8 +261,8 @@ class ToolService extends BaseService
             $trueLast           = $canTotal - $needTotal;
             $lost               = $old - $canTotal;
             $return['list']     = $arr;
-            $return['trueLast'] = sprintf("%.2f",$trueLast);
-            $return['lost']     = sprintf("%.2f",$lost);;
+            $return['trueLast'] = sprintf("%.2f", $trueLast);
+            $return['lost']     = sprintf("%.2f", $lost);;
             return $return;
         }
 //        $can  = (int)$baseCCT * 0.95;
@@ -264,7 +278,7 @@ class ToolService extends BaseService
         $canTotal  += $can;
         $needTotal += $need;
         $old       += $baseCCT;
-        return $this->cctFormat($need, $arr, $ex, $num, $canTotal, $needTotal, $old);
+        return $this->cctFormat($need, $ex, $arr, $num, $canTotal, $needTotal, $old);
 
     }
 }
