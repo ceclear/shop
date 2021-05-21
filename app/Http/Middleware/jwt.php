@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Libs\MemberRedis;
 use Closure;
 use GenTux\Jwt\GetsJwtToken;
 
@@ -22,6 +23,9 @@ class jwt
             return response()->json(['code' => -1, 'message' => '登录已过期']);
         }
         $request->uid = $payload['uid'];
+        if (!MemberRedis::getRedisInstance()->checkLoginToken($request->uid, $request->token)) {
+            return response()->json(['code' => -1, 'message' => '登录失效']);
+        }
         return $next($request);
     }
 }

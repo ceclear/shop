@@ -68,7 +68,7 @@ class MemberRedis
         $arr['nickname']    = $user['nickname'];
         $arr['token']       = $token;
         $user['login_time'] = date('Y-m-d H:i:s', time());
-        Log::info('user_id===='.$userId . '：login_time：' . $user['login_time']);
+        Log::info('user_id====' . $userId . '：login_time：' . $user['login_time']);
         $this->_redis->hMSet($userId, $arr);
         $this->_redis->expire($userId, $expireTime);
         return true;
@@ -77,10 +77,14 @@ class MemberRedis
     public function checkLoginToken($userId, $token)
     {
         if (!$this->_redis) {
-            return true;
+            return false;
         }
-        $_token = $this->_redis->hMGet($userId, 'token');
-        dd($_token);
+        $hashInfo = $this->_redis->hGetAll($userId);
+        if (empty($hashInfo) || $hashInfo['token'] != $token) {
+            Log::info('登录token验证失败，user_id：' . $userId . '，参数token：' . $token . '，redis_token：' . $hashInfo['token']);
+            return false;
+        }
+        return true;
     }
 
     public function __call($name, $arguments)
