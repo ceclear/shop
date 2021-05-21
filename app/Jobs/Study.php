@@ -40,6 +40,7 @@ class Study implements ShouldQueue
         Mail::to('594652523@qq.com')->send(new StudyComplete($this->userInfo, $this->studyInfo));
 //        Mail::to('1414351551@qq.com')->send(new StudyComplete($this->userInfo, $this->studyInfo));
         //服务通知加一个
+        Log::info('提交作业信息',$this->studyInfo);
         $app     = Factory::miniProgram(config('wechat.mini_program.default'));
         $content = '总数:' . $this->studyInfo['total'] . ',用时:' . $this->studyInfo['remind'] . ',正确数:' . $this->studyInfo['yes'] . ',错误数:' . $this->studyInfo['no'] . ',正确率:' . $this->studyInfo['rate'] . ',提交时间:'
             . $this->studyInfo['submit_time'];
