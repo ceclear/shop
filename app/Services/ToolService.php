@@ -262,7 +262,8 @@ class ToolService extends BaseService
             $lost               = $old - $canTotal;
             $return['list']     = $arr;
             $return['trueLast'] = sprintf("%.2f", $trueLast);
-            $return['lost']     = sprintf("%.2f", $lost);;
+            $return['lost']     = sprintf("%.2f", $lost);
+            $return['num']      = $num;
             return $return;
         }
 //        $can  = (int)$baseCCT * 0.95;
@@ -270,6 +271,9 @@ class ToolService extends BaseService
 //        $need = (int)($can * 6 - $ex) / 10 * 1.05;
         $need = sprintf("%.2f", (int)($can * 6 - $ex) / 10 * 1.05);
 //        $this->info("==想提出==" . $baseCCT . '==能提出==' . $can . '==需要充值==' . $need . '==第' . $num . '次操作==');
+        if ($can <= 0 || $need <= 0 || $baseCCT <= 0) {
+            return $this->cctFormat($need, $ex, $arr, $num, $canTotal, $needTotal, $old);
+        }
         $data['old']  = $baseCCT;
         $data['can']  = $can;
         $data['need'] = $need;
