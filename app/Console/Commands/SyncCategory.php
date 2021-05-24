@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 
 use App\Libs\DingDanXiaApiRequest;
+use EasyWeChat\Factory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -36,7 +37,18 @@ class SyncCategory extends Command
 
     public function handle()
     {
-        $this->test(8574, 200);
+        $app     = Factory::miniProgram(config('wechat.mini_program.default'));
+
+        $app->subscribe_message->send([
+            'touser'      => 'oc53p5dwSYOIKYOgduU-7aIOZoAU',
+            'template_id' => 'sNrOvfxKncoCjKZ-KM77XV6y8vrTUgWK98wwOV2L4S4',
+            'data'        => [
+                'thing1' => "12311",
+                'thing2' => '1.12',
+                'thing3' => '连加连减计算',
+                'thing4' => '测试'
+            ]
+        ]);
         die;
         try {
             $start      = time();

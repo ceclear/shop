@@ -69,5 +69,5 @@ Route::group(["namespace" => "Api", 'prefix' => 'goods'], function ($router) {
 });
 
 Route::group(["namespace" => "Api", 'prefix' => 'wechat'], function ($router) {
-    $router->post('home', 'WechatController@index');//入口
+    $router->get('home', 'WechatController@index');//入口
 });
