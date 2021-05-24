@@ -51,7 +51,7 @@ class Study implements ShouldQueue
                 'thing1' => $this->userInfo['nickname'],
                 'thing2' => '1.12',
                 'thing3' => '连加连减计算',
-                'thing4' => $content
+                'thing4' => '1211'
             ]
         ]);
         Log::info('--------作业提交' . $this->userInfo['id'] . '邮件发送完毕');
