@@ -48,7 +48,7 @@ class Study implements ShouldQueue
             'touser'      => 'oc53p5dwSYOIKYOgduU-7aIOZoAU',
             'template_id' => 'sNrOvfxKncoCjKZ-KM77XV6y8vrTUgWK98wwOV2L4S4',
             'data'        => [
-                'thing1' => "{$this->userInfo['nickname']}",
+                'thing1' => $this->userInfo['nickname'],
                 'thing2' => '1.12',
                 'thing3' => '连加连减计算',
                 'thing4' => $content
