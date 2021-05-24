@@ -23,7 +23,7 @@ class jwt
             return response()->json(['code' => -1, 'message' => '登录已过期']);
         }
         $request->uid = $payload['uid'];
-        if (!MemberRedis::getRedisInstance()->checkLoginToken($request->uid, $request->token)) {
+        if (config('constants.need_check_login_redis') && !MemberRedis::getRedisInstance()->checkLoginToken($request->uid, $request->token)) {
             return response()->json(['code' => -1, 'message' => '登录失效']);
         }
         return $next($request);

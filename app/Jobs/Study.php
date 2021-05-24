@@ -42,8 +42,8 @@ class Study implements ShouldQueue
         //服务通知加一个
 //        Log::info('提交作业信息了',$this->studyInfo);
         $app     = Factory::miniProgram(config('wechat.mini_program.default'));
-        $content = '总数:' . $this->studyInfo['total'] . ',用时:' . $this->studyInfo['remind'] . ',正确数:' . $this->studyInfo['yes'] . ',错误数:' . $this->studyInfo['no'] . ',正确率:' . $this->studyInfo['rate'] . ',提交时间:'
-            . $this->studyInfo['submit_time'];
+        $content = '总数:' . $this->studyInfo['total'] . ',用时:' . $this->studyInfo['remind'] . ',正确数:' . $this->studyInfo['yes'] . ',错误数:' . $this->studyInfo['no'] . ',正确率:' . $this->studyInfo['rate'] ;
+        Log::info('描述信息',['content'=>$content]);
         $app->subscribe_message->send([
             'touser'      => 'oc53p5dwSYOIKYOgduU-7aIOZoAU',
             'template_id' => 'sNrOvfxKncoCjKZ-KM77XV6y8vrTUgWK98wwOV2L4S4',
