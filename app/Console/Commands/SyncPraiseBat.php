@@ -43,7 +43,7 @@ class SyncPraiseBat extends Command
     public function checkVoteTime()
     {
         $url = 'https://api.mdweilai.cn/japi/v2/activity-service/topic/topic/pls?page=1&pageSize=10';
-        $arr = DB::table('user_info')->where('status',1)->get();
+        $arr = DB::table('user_info')->where('status', 1)->get();
         foreach ($arr as $item) {
             $header[] = 'uid:' . $item->uid;
             //        $data = '{}';
@@ -51,12 +51,12 @@ class SyncPraiseBat extends Command
             $rel  = $this->curl_get($url, $header);
             $rel  = json_decode($rel, true);
             $info = $rel['data']['list'][0];
-            Log::info('用户：' . $item->uid . 'vote_info投票倒计时', ['info' => $info['voteTimeSecond']]);
-            $this->info('用户：' . $item->uid.'==投票倒计时' . $info['voteTimeSecond']);
+            Log::info('用户===' . $item->uid . '==投票倒计时' . $info['voteTimeSecond']);
+            $this->info('用户===' . $item->uid . '==投票倒计时' . $info['voteTimeSecond']);
             unset($header);
-            if ($info['voteTimeSecond'] == 0 || (time()-strtotime($item->update_at))>600) {
+            if ($info['voteTimeSecond'] == 0 || (time() - strtotime($item->update_at)) > 600) {
                 $this->praiseVideo($item->sign, $item->timestamp, $item->uid, $item->random);
-                DB::table('user_info')->where('uid',$item->uid)->update(['update_at'=>Carbon::now()->toDateTimeString()]);
+                DB::table('user_info')->where('uid', $item->uid)->update(['update_at' => Carbon::now()->toDateTimeString()]);
                 sleep(25);
             }
 
@@ -78,7 +78,7 @@ class SyncPraiseBat extends Command
         $rel  = $this->http_post($url, $header, $data);
         $rel  = json_decode($rel, true);
         $this->info($rel['message']);
-        Log::info('点赞结果' . $rel['message']);
+        Log::info('投票结果：' . $rel['message']);
 
     }
 

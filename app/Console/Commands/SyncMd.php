@@ -56,8 +56,8 @@ class SyncMd extends Command
             $data = json_decode($data, true);
             $rel  = $this->http_post($url, $header, $data);
             $rel  = json_decode($rel, true);
-            $this->info('视频' . $item->video_id . '==' . $rel['message']);
-            Log::info('视频' . $item->video_id . '==' . $rel['message']);
+            $this->info('视频' . $item->video_id . '=====点赞=======' . $rel['message']);
+            Log::info('视频' . $item->video_id . '=====点赞=======' . $rel['message']);
         }
 //        dd($rel);
     }
