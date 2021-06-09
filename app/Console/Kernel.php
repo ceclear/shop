@@ -19,7 +19,9 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\SyncNews',
         'App\Console\Commands\SyncTodayHistory',
         'App\Console\Commands\SyncFood',
-        'App\Console\Commands\SyncPraise'
+        'App\Console\Commands\SyncPraiseBat',
+        'App\Console\Commands\SyncCom',
+        'App\Console\Commands\SyncMd'
 
     ];
 
@@ -36,7 +38,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('sync:joke')->daily();
         $schedule->command('sync:today:history')->cron('0 */12 * * *');
         $schedule->command('sync-food')->everyMinute();
-        $schedule->command('sync:praise')->everyMinute();
+        $schedule->command('sync:praise:bat')->everyFiveMinutes();
+        $schedule->command('sync:com')->everyFiveMinutes();
+        $schedule->command('sync:md')->everyFiveMinutes();
     }
 
     /**

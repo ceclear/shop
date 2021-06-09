@@ -4,23 +4,24 @@ namespace App\Console\Commands;
 
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class SyncPraise extends Command
+class SyncTask extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'sync:praise';
+    protected $signature = 'sync:task {m?}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '投票';
+    protected $description = '获取验证码方便app登录';
 
     /**
      * Create a new command instance.
@@ -35,51 +36,46 @@ class SyncPraise extends Command
 
     public function handle()
     {
-        $info = $this->checkVoteTime();
-        if ($info['voteTimeSecond'] == 0) {
-            $this->praiseVideo();
+        $this->sendCode();
+    }
+
+    public function sendCode()
+    {
+        if (empty($this->argument('m'))) {
+            $arr = DB::table('user_info')->where('status',1)->get();
+        } else {
+            $mobile = $this->argument('m');
+            $arr    = [['mobile' => $mobile]];
+        }
+        foreach ($arr as $item) {
+            $url  = 'https://api.mdweilai.cn/api/v1/smscode';
+            $data = '{"phone": "' . $item->mobile . '","code_type": "register"}';
+            $data = json_decode($data, true);
+            $rel  = $this->http_post($url, [], $data);
+            $rel  = json_decode($rel, true);
+            $code = $rel['data']['code'];
+            //新加账号执行登录获得uid
+//            self::login($code, $item->mobile);
+            Log::info('mobile==='.$item->mobile.'====code===='.$code);
+            //新加账号不要执行下面修改
+            DB::table('user_info')->where('mobile',$item->mobile)->update(['code'=>$code]);
+            sleep(10);
         }
 
-
     }
 
-    public function checkVoteTime()
+    public function login($code, $mobile)
     {
-        $url      = 'https://api.mdweilai.cn/japi/v2/activity-service/topic/topic/pls?page=1&pageSize=10';
-        $header[] = 'sign:b956b42a12b7b10a0511990423f77822';
-        $header[] = 'uid:6598';
-        $header[] = 'timestamp:1623137234239';
-        $header[] = 'random:57757562';
+        $url = 'https://api.mdweilai.cn/api/v1/login';
 
-//        $data = '{}';
-//        $data = json_decode($data, true);
-        $rel  = $this->curl_get($url, $header);
-        $rel  = json_decode($rel, true);
-        $info = $rel['data']['list'][0];
-        Log::info('vote_info投票倒计时', ['info' => $info['voteTimeSecond']]);
-        $this->info('投票倒计时' . $info['voteTimeSecond']);
-        return $info;
-    }
-
-    public function praiseVideo()
-    {
-        $url      = 'https://api.mdweilai.cn/api/v1/topic/thumbsup';
-        $header[] = 'sign:c708fa9d2ea0137368466d59624fd0f3';
-        $header[] = 'uid:6598';
-        $header[] = 'timestamp:1623139357949';
-        $header[] = 'random:1447415302';
-
-//        $sign = self::makeSign(['uid' => 6598, 'timestamp' => 1623138382381, 'random' => 1444735196]);
-//        dd($sign);
-//        $userIds = MeiDian::where('user_id', '!=', 0)->limit(1)->orderBy(DB::raw('RAND()'))->get(['user_id'])->toArray();
-//        foreach ($userIds as $item) {
-        $data = '{"videoId": 44924,	"timeSpace": 3600,"topicId": 10}';
+        $data = '{"phone": "' . $mobile . '","code": "' . $code . '","code_type": "register"}';
         $data = json_decode($data, true);
-        $rel  = $this->http_post($url, $header, $data);
+        $rel  = $this->http_post($url, [], $data);
         $rel  = json_decode($rel, true);
-        $this->info($rel['message']);
-        Log::info('点赞结果' . $rel['message']);
-//        }
+        $info = $rel['data'];
+        Log::info('手机号' . $mobile . '登录信息', $data);
+        DB::table('user_info')->where('mobile',$mobile)->update(['uid'=>$info['id']]);
+        return $info;
     }
 
 
@@ -100,20 +96,8 @@ class SyncPraise extends Command
         return $sResult;
     }
 
-    public static function makeSign($data)
-    {
-        ksort($data);
-        $str = '';
-        foreach ($data as $k => $v) {
 
-            $str .= '&' . $k . '=' . $v;
-        }
-        $str  = trim($str, '&');
-        $sign = strtoupper(md5($str));
-        return $sign;
-    }
-
-    function curl_get($url, $header)
+    function curl_get($url, $header = [])
     {
 
 

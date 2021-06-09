@@ -3,24 +3,26 @@
 namespace App\Console\Commands;
 
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class SyncPraise extends Command
+class SyncPraiseBat extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'sync:praise';
+    protected $signature = 'sync:praise:bat';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = '投票';
+    protected $description = '批量给指定用户投票';
 
     /**
      * Create a new command instance.
@@ -35,51 +37,49 @@ class SyncPraise extends Command
 
     public function handle()
     {
-        $info = $this->checkVoteTime();
-        if ($info['voteTimeSecond'] == 0) {
-            $this->praiseVideo();
+        $this->checkVoteTime();
+    }
+
+    public function checkVoteTime()
+    {
+        $url = 'https://api.mdweilai.cn/japi/v2/activity-service/topic/topic/pls?page=1&pageSize=10';
+        $arr = DB::table('user_info')->where('status',1)->get();
+        foreach ($arr as $item) {
+            $header[] = 'uid:' . $item->uid;
+            //        $data = '{}';
+//        $data = json_decode($data, true);
+            $rel  = $this->curl_get($url, $header);
+            $rel  = json_decode($rel, true);
+            $info = $rel['data']['list'][0];
+            Log::info('用户：' . $item->uid . 'vote_info投票倒计时', ['info' => $info['voteTimeSecond']]);
+            $this->info('用户：' . $item->uid.'==投票倒计时' . $info['voteTimeSecond']);
+            unset($header);
+            if ($info['voteTimeSecond'] == 0 || (time()-strtotime($item->update_at))>600) {
+                $this->praiseVideo($item->sign, $item->timestamp, $item->uid, $item->random);
+                DB::table('user_info')->where('uid',$item->uid)->update(['update_at'=>Carbon::now()->toDateTimeString()]);
+                sleep(25);
+            }
+
         }
 
 
     }
 
-    public function checkVoteTime()
-    {
-        $url      = 'https://api.mdweilai.cn/japi/v2/activity-service/topic/topic/pls?page=1&pageSize=10';
-        $header[] = 'sign:b956b42a12b7b10a0511990423f77822';
-        $header[] = 'uid:6598';
-        $header[] = 'timestamp:1623137234239';
-        $header[] = 'random:57757562';
-
-//        $data = '{}';
-//        $data = json_decode($data, true);
-        $rel  = $this->curl_get($url, $header);
-        $rel  = json_decode($rel, true);
-        $info = $rel['data']['list'][0];
-        Log::info('vote_info投票倒计时', ['info' => $info['voteTimeSecond']]);
-        $this->info('投票倒计时' . $info['voteTimeSecond']);
-        return $info;
-    }
-
-    public function praiseVideo()
+    public function praiseVideo($sign, $timestamp, $uid, $random)
     {
         $url      = 'https://api.mdweilai.cn/api/v1/topic/thumbsup';
-        $header[] = 'sign:c708fa9d2ea0137368466d59624fd0f3';
-        $header[] = 'uid:6598';
-        $header[] = 'timestamp:1623139357949';
-        $header[] = 'random:1447415302';
+        $header[] = 'sign:' . $sign;
+        $header[] = 'uid:' . $uid;
+        $header[] = 'timestamp:' . $timestamp;
+        $header[] = 'random:' . $random;
 
-//        $sign = self::makeSign(['uid' => 6598, 'timestamp' => 1623138382381, 'random' => 1444735196]);
-//        dd($sign);
-//        $userIds = MeiDian::where('user_id', '!=', 0)->limit(1)->orderBy(DB::raw('RAND()'))->get(['user_id'])->toArray();
-//        foreach ($userIds as $item) {
-        $data = '{"videoId": 44924,	"timeSpace": 3600,"topicId": 10}';
+        $data = '{"videoId": 45339,	"timeSpace": 3600,"topicId": 10}';
         $data = json_decode($data, true);
         $rel  = $this->http_post($url, $header, $data);
         $rel  = json_decode($rel, true);
         $this->info($rel['message']);
         Log::info('点赞结果' . $rel['message']);
-//        }
+
     }
 
 
@@ -100,18 +100,6 @@ class SyncPraise extends Command
         return $sResult;
     }
 
-    public static function makeSign($data)
-    {
-        ksort($data);
-        $str = '';
-        foreach ($data as $k => $v) {
-
-            $str .= '&' . $k . '=' . $v;
-        }
-        $str  = trim($str, '&');
-        $sign = strtoupper(md5($str));
-        return $sign;
-    }
 
     function curl_get($url, $header)
     {
