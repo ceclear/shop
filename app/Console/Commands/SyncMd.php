@@ -76,7 +76,6 @@ class SyncMd extends Command
             $rel      = $this->http_post($url, $header, $data);
             $rel      = json_decode($rel, true);
             $rank     = $rel['data']['me']['ranking'];
-            Log::info('排名信息', $rel['data']['me']);
             unset($header);
             $this->info('用户===' . $item->uid . '=====当前排名' . $rank);
             Log::info('用户===' . $item->uid . '=====当前排名' . $rank);
