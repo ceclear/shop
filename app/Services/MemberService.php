@@ -37,7 +37,7 @@ class MemberService extends BaseService
         $expire  = config('constants.jwt_user_expire');
         $payload = ['exp' => time() + $expire, 'sub' => 'all jwt', 'iss' => 'ceclear', 'iat' => time(), 'uid' => $info['id'], 'aud' => config('app.url')]; // expire in 2 hours
         $token   = $jwtToken->createToken($payload);
-        MemberRedis::getRedisInstance()->setLogin($info, $token->token(), $expire);
+//        MemberRedis::getRedisInstance()->setLogin($info, $token->token(), $expire);
         return $token;
     }
 
