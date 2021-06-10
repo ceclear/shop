@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use App\Libs\MemberRedis;
 use Closure;
 use GenTux\Jwt\GetsJwtToken;
-use Illuminate\Support\Facades\Log;
 
 class jwt
 {
@@ -24,14 +23,9 @@ class jwt
             return response()->json(['code' => -1, 'message' => '登录已过期']);
         }
         $request->uid = $payload['uid'];
-        try {
-            if (config('constants.need_check_login_redis') && !MemberRedis::getRedisInstance()->checkLoginToken($request->uid, $request->token)) {
-                return response()->json(['code' => -1, 'message' => '登录失效']);
-            }
-        }catch (\Exception $exception){
-            Log::info('验证出错'.$exception->getMessage());
+        if (config('constants.need_check_login_redis') && !MemberRedis::getRedisInstance()->checkLoginToken($request->uid, $request->token)) {
+            return response()->json(['code' => -1, 'message' => '登录失效']);
         }
-
         return $next($request);
     }
 }

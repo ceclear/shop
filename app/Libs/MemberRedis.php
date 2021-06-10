@@ -24,11 +24,11 @@ class MemberRedis
     {
         $database = $config['database'];
         if (isset($config['persistent']) && $config['persistent']) {
-            $func = 'pconnects';
+            $func = 'pconnect';
             //注意 $persistent_id 此处，持久连接设置标识
             $persistent_id = 'pconnect_' . $database;
         } else {
-            $func          = 'connects';
+            $func          = 'connect';
             $persistent_id = null;
         }
         $this->_redis = new \Redis;
