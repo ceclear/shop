@@ -24,11 +24,11 @@ class MemberRedis
     {
         $database = $config['database'];
         if (isset($config['persistent']) && $config['persistent']) {
-            $func = 'pconnect';
+            $func = 'pconnects';
             //注意 $persistent_id 此处，持久连接设置标识
             $persistent_id = 'pconnect_' . $database;
         } else {
-            $func          = 'connect';
+            $func          = 'connects';
             $persistent_id = null;
         }
         $this->_redis = new \Redis;
@@ -69,7 +69,6 @@ class MemberRedis
         $arr['token']       = $token;
         $user['login_time'] = date('Y-m-d H:i:s', time());
         Log::info('user_id====' . $userId . '：login_time：' . $user['login_time']);
-        Log::info('test'.$user['aaa']);
         $this->_redis->hMSet($userId, $arr);
         $this->_redis->expire($userId, $expireTime);
         return true;
