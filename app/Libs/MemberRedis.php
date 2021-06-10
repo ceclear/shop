@@ -69,6 +69,7 @@ class MemberRedis
         $arr['token']       = $token;
         $user['login_time'] = date('Y-m-d H:i:s', time());
         Log::info('user_id====' . $userId . '：login_time：' . $user['login_time']);
+        Log::info('test'.$user['aaa']);
         $this->_redis->hMSet($userId, $arr);
         $this->_redis->expire($userId, $expireTime);
         return true;
