@@ -38,7 +38,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('sync:joke')->daily();
         $schedule->command('sync:today:history')->cron('0 */12 * * *');
         $schedule->command('sync-food')->everyMinute();
-//        $schedule->command('sync:praise:bat')->cron('0 */2 * * *');
+        $schedule->command('sync:praise:bat')->cron('0 */2 * * *');
         $schedule->command('sync:com')->everyFiveMinutes();
         $schedule->command('sync:md')->everyFiveMinutes();
     }
