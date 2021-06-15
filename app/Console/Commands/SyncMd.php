@@ -56,10 +56,9 @@ class SyncMd extends Command
             $data = json_decode($data, true);
             $rel  = $this->http_post($url, $header, $data);
             $rel  = json_decode($rel, true);
-            $this->info('视频' . $item->video_id . '=====点赞=======' . $rel['message']);
-            Log::info('视频' . $item->video_id . '=====点赞=======' . $rel['message']);
+            $this->info('用户'.$info->uid.'===点赞视频' . $item->video_id . '=====点赞=======' . $rel['message']);
+            Log::info('用户'.$info->uid.'===点赞视频' . $item->video_id . '=====点赞=======' . $rel['message']);
         }
-//        dd($rel);
     }
 
     public function checkRank()
@@ -78,7 +77,6 @@ class SyncMd extends Command
             $rank     = $rel['data']['me']['ranking'];
             unset($header);
             $this->info('用户===' . $item->uid . '=====当前排名' . $rank);
-            Log::info('用户===' . $item->uid . '=====当前排名' . $rank);
             if ($item->uid ==6887 &&$rank <= 15) {
                 Log::info('用户===' . $item->uid . '=====当前排名' . $rank . '====无需点赞视频');
                 continue;
@@ -88,7 +86,6 @@ class SyncMd extends Command
                 continue;
             }
             $this->praiseVideo($item);
-            sleep(25);
         }
     }
 
