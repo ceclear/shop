@@ -79,7 +79,11 @@ class SyncMd extends Command
             unset($header);
             $this->info('用户===' . $item->uid . '=====当前排名' . $rank);
             Log::info('用户===' . $item->uid . '=====当前排名' . $rank);
-            if ($rank <= 15) {
+            if ($item->uid ==6887 &&$rank <= 15) {
+                Log::info('用户===' . $item->uid . '=====当前排名' . $rank . '====无需点赞视频');
+                continue;
+            }
+            if ($item->uid ==6598 &&$rank <= 16) {
                 Log::info('用户===' . $item->uid . '=====当前排名' . $rank . '====无需点赞视频');
                 continue;
             }
