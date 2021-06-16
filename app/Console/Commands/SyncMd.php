@@ -64,7 +64,7 @@ class SyncMd extends Command
     public function checkRank()
     {
         $url = 'https://api.mdweilai.cn/api/v1/video/ranking';
-        $arr = DB::table('praise_info')->get()->toArray();
+        $arr = DB::table('praise_info')->where('status',0)->get()->toArray();
         foreach ($arr as $item) {
             $header[] = 'sign:' . $item->rank_sign;
             $header[] = 'uid:' . $item->uid;
