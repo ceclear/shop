@@ -85,6 +85,10 @@ class SyncMd extends Command
                 Log::info('用户===' . $item->uid . '=====当前排名' . $rank . '====无需点赞视频');
                 continue;
             }
+            if ($item->uid ==7049 &&$rank <= 17) {
+                Log::info('用户===' . $item->uid . '=====当前排名' . $rank . '====无需点赞视频');
+                continue;
+            }
             $this->praiseVideo($item);
         }
     }
