@@ -29,7 +29,7 @@ class QueryListener
 //        $this->put_log('sql', $log);
 //        }
 
-        if (config('app.env') == 'local' && config('app.debug')) {
+        if (config('app.env') == 'local') {
             $sql = str_replace("?", "'%s'", $event->sql);
             $log = empty($event->bindings)?$sql:vsprintf($sql, $event->bindings);
             Log::channel('sql_daily')->info($log);
