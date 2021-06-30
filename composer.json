@@ -21,7 +21,8 @@
         "laravel/tinker": "^2.5",
         "overtrue/laravel-wechat": "^5.1",
         "predis/predis": " ^1.1",
-        "spipu/html2pdf": "^5.2"
+        "spipu/html2pdf": "^5.2",
+        "wuwx/laravel-admin-loading-overlay": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.16.4",
