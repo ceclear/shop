@@ -9,4 +9,9 @@ class Subtract extends Orm
     {
         return $this->hasMany(SubtractDetail::class, 'sub_id');
     }
+
+    public function member()
+    {
+        return $this->belongsTo(Members::class,'user_id','id');
+    }
 }

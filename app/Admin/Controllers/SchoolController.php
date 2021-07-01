@@ -39,8 +39,11 @@ class SchoolController extends AdminController
     {
         $grid = new Grid(new Subtract());
         $grid->disableRowSelector();
-
+        $grid->model()->orderBy('id','desc');
         $grid->number('序号');
+        $grid->column('member.nickname','提交人');
+//        $grid->column('member.avatar','头像')->lightbox(['width' => 50, 'height' => 50]);
+        $grid->column('member.openid','openid');
         $grid->column('created_at', '提交时间')->display(function ($v) {
             return $v;
         });
@@ -77,9 +80,23 @@ class SchoolController extends AdminController
             $filter->disableIdFilter();
             $filter->column(1 / 2, function ($filter) {
                 $filter->use(new TimestampBetween('Subtract.created_at', '提交时间'))->datetime();
+                $filter->group('rate','正确率', function ($group) {
+                    $group->gt('大于');
+                    $group->lt('小于');
+                    $group->nlt('不小于');
+                    $group->ngt('不大于');
+                    $group->equal('等于');
+                });
             });
             $filter->column(1 / 2, function ($filter) {
-
+                $filter->like('member.nickname','提交人');
+                $filter->group('remind','用时(秒)', function ($group) {
+                    $group->gt('大于');
+                    $group->lt('小于');
+                    $group->nlt('不小于');
+                    $group->ngt('不大于');
+                    $group->equal('等于');
+                });
             });
 
         });
