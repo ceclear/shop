@@ -36,9 +36,9 @@ class QueryListener
         is_dir(storage_path('logs/sql')) or mkdir(storage_path('logs/sql'), 0777, true); // 文件夹不存在则创建
         $content  = '[' . date('Y-m-d H:i:s') . "]" . $content;
         $fileName = $file . '-' . $data . '.log';
-        if (file_exists(storage_path('logs/sql/' . $fileName))) {
-            chmod(storage_path('logs/sql/' . $fileName), 0777);
-        }
+//        if (file_exists(storage_path('logs/sql/' . $fileName))) {
+//            chmod(storage_path('logs/sql/' . $fileName), 0777);
+//        }
         @file_put_contents(storage_path('logs/sql/' . $fileName), $content . "\n" . $cut_line . "\n\n", FILE_APPEND);
     }
 }
