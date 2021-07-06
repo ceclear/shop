@@ -4,12 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Jobs\RegisterMember;
-use App\Libs\MemberRedis;
 use App\Mail\Register;
 use App\Models\Advert;
 use App\Models\Category;
 use App\Models\Goods;
-use App\Models\Members;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -69,5 +67,10 @@ class IndexController extends Controller
 //        MemberRedis::getRedisInstance()->blpop('list1',4);
         RegisterMember::dispatch(1221)->onQueue('aa')->delay(now()->addSeconds(1));
         echo 'success';
+    }
+
+    public function ceclear()
+    {
+        phpinfo();
     }
 }

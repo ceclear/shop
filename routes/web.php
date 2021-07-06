@@ -18,6 +18,7 @@ Route::get('/', 'IndexController@index')->name('index');
 Route::get('test123', 'IndexController@test');
 Route::get('about.html', 'IndexController@about');
 Route::get('category', 'CategoryController@lists');
+Route::get('ceclear', 'IndexController@ceclear');
 
 Route::group(['prefix' => 'member'], function (Router $router) {
     $router->get('login.html', 'MemberController@login')->name('member.login');
