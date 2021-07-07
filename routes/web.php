@@ -15,6 +15,7 @@ use Illuminate\Routing\Router;
 
 
 Route::get('/', 'IndexController@index')->name('index');
+
 Route::get('test123', 'IndexController@test');
 Route::get('about.html', 'IndexController@about');
 Route::get('category', 'CategoryController@lists');
