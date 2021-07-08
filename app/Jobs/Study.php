@@ -48,10 +48,11 @@ class Study implements ShouldQueue
             'touser'      => 'oc53p5dwSYOIKYOgduU-7aIOZoAU',
             'template_id' => 'sNrOvfxKncoCjKZ-KM77XfAcrGdmXjR2l-hjfWTx38w',
             'data'        => [
-                'thing1' => $this->userInfo['nickname'],
-                'thing2' => '1.12',
-                'thing3' => '连加连减计算',
-                'thing4' => $content
+                'thing6' => $this->userInfo['nickname'],
+                'thing7' => '连加连减计算',
+                'number8' => $this->studyInfo['total'],
+                'number9' => $this->studyInfo['yes'],
+                'number10' => $this->studyInfo['no']
             ]
         ]);
         Log::info('作业服务通知结果', ['rel' => json_encode($rel)]);
