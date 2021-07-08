@@ -53,7 +53,8 @@ class Study implements ShouldQueue
                 'number8' => $this->studyInfo['total'],
                 'number9' => $this->studyInfo['yes'],
                 'number10' => $this->studyInfo['no']
-            ]
+            ],
+            'page'=>'pages/lesson/index'
         ]);
         Log::info('作业服务通知结果', ['rel' => json_encode($rel)]);
 

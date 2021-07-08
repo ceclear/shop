@@ -37,4 +37,10 @@ class IndexController extends Controller
         ];
         return $this->responseJson(0, '', $data);
     }
+
+    public function wxTemplate()
+    {
+        $template = ['sNrOvfxKncoCjKZ-KM77XfAcrGdmXjR2l-hjfWTx38w'];
+        return $this->responseJson(0, '', $template);
+    }
 }

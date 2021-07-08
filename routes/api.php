@@ -19,7 +19,7 @@
 Route::group(["namespace" => "Api", 'prefix' => 'user'], function ($router) {
     $router->post('login', 'LoginController@login')->name('api.login');//网页ajax登录
     $router->post('register', 'LoginController@register')->name('api.register');//网页ajax注册
-
+    $router->get('wx_message_template','IndexController@wxTemplate');//模板消息列表
 });
 
 Route::group(["namespace" => "Api"], function ($router) {
