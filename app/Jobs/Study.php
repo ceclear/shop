@@ -46,7 +46,7 @@ class Study implements ShouldQueue
         Log::info('描述信息', ['content' => $content]);
         $rel = $app->subscribe_message->send([
             'touser'      => 'oc53p5dwSYOIKYOgduU-7aIOZoAU',
-            'template_id' => 'sNrOvfxKncoCjKZ-KM77XV6y8vrTUgWK98wwOV2L4S4',
+            'template_id' => 'sNrOvfxKncoCjKZ-KM77XfAcrGdmXjR2l-hjfWTx38w',
             'data'        => [
                 'thing1' => $this->userInfo['nickname'],
                 'thing2' => '1.12',
