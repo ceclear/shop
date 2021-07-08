@@ -66,6 +66,7 @@ class MemberRedis
         $arr['avatar']      = $user['avatar'];
         $arr['email']       = $user['email'];
         $arr['nickname']    = $user['nickname'];
+        $arr['openid']      = $user['openid'];
         $arr['token']       = $token;
         $user['login_time'] = date('Y-m-d H:i:s', time());
         Log::info('user_id====' . $userId . '：login_time：' . $user['login_time']);

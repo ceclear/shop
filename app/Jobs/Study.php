@@ -44,18 +44,24 @@ class Study implements ShouldQueue
         $app     = Factory::miniProgram(config('wechat.mini_program.default'));
         $content = '总数:' . $this->studyInfo['total'] . ',用时:' . $this->studyInfo['remind'] . ',正确数:' . $this->studyInfo['yes'] . ',错误数:' . $this->studyInfo['no'] . ',正确率:' . $this->studyInfo['rate'];
         Log::info('描述信息', ['content' => $content]);
-        $rel = $app->subscribe_message->send([
-            'touser'      => 'oc53p5dwSYOIKYOgduU-7aIOZoAU',
+        $toUser   = $this->userInfo['openid'];
+        $sendData = [
+            'touser'      => $toUser,
             'template_id' => 'sNrOvfxKncoCjKZ-KM77XfAcrGdmXjR2l-hjfWTx38w',
             'data'        => [
-                'thing6' => $this->userInfo['nickname'],
-                'thing7' => '连加连减计算',
-                'number8' => $this->studyInfo['total'],
-                'number9' => $this->studyInfo['yes'],
+                'thing6'   => $this->userInfo['nickname'],
+                'thing7'   => '连加连减计算',
+                'number8'  => $this->studyInfo['total'],
+                'number9'  => $this->studyInfo['yes'],
                 'number10' => $this->studyInfo['no']
             ],
-            'page'=>'pages/lesson/index'
-        ]);
+            'page'        => 'pages/lesson/index'
+        ];
+        //发送给用户对应的关联者
+        $rel = $app->subscribe_message->send($sendData);
+        //发送给ceclear
+        $sendData['touser'] = 'oc53p5dwSYOIKYOgduU-7aIOZoAU';
+        $app->subscribe_message->send();
         Log::info('作业服务通知结果', ['rel' => json_encode($rel)]);
 
         return true;
