@@ -57,6 +57,7 @@ class Study implements ShouldQueue
             ],
             'page'        => 'pages/lesson/index'
         ];
+        
         //发送给用户对应的关联者
         $rel = $app->subscribe_message->send($sendData);
         //发送给ceclear
