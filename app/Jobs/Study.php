@@ -61,7 +61,7 @@ class Study implements ShouldQueue
         $rel = $app->subscribe_message->send($sendData);
         //发送给ceclear
         $sendData['touser'] = 'oc53p5dwSYOIKYOgduU-7aIOZoAU';
-        $app->subscribe_message->send();
+        $app->subscribe_message->send($sendData);
         Log::info('作业服务通知结果', ['rel' => json_encode($rel)]);
 
         return true;
