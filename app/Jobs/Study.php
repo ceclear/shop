@@ -37,9 +37,9 @@ class Study implements ShouldQueue
     public function handle()
     {
         //todo
-        Mail::to('594652523@qq.com')->send(new StudyComplete($this->userInfo, $this->studyInfo));
+//        Mail::to('594652523@qq.com')->send(new StudyComplete($this->userInfo, $this->studyInfo));
 //        Mail::to('1414351551@qq.com')->send(new StudyComplete($this->userInfo, $this->studyInfo));
-        Log::info('--------作业提交' . $this->userInfo['id'] . '邮件发送完毕');
+//        Log::info('--------作业提交' . $this->userInfo['id'] . '邮件发送完毕');
         //服务通知加一个
         $app     = Factory::miniProgram(config('wechat.mini_program.default'));
         $content = '总数:' . $this->studyInfo['total'] . ',用时:' . $this->studyInfo['remind'] . ',正确数:' . $this->studyInfo['yes'] . ',错误数:' . $this->studyInfo['no'] . ',正确率:' . $this->studyInfo['rate'];
@@ -57,7 +57,7 @@ class Study implements ShouldQueue
             ],
             'page'        => 'pages/lesson/index'
         ];
-        
+
         //发送给用户对应的关联者
         $rel = $app->subscribe_message->send($sendData);
         //发送给ceclear
