@@ -37,13 +37,7 @@ class SyncPraiseBat extends Command
 
     public function handle()
     {
-        do{
-            $this->checkVoteTime();
-            $rand = rand(4*3600,5*3600);
-            Log::info('检测完成，下次执行间隔'.$rand.'秒');
-            sleep($rand);
-        }while(1==1);
-
+        $this->checkVoteTime();
     }
 
     public function checkVoteTime()
