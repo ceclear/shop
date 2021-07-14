@@ -9,6 +9,7 @@ use App\Models\TaoGirl;
 use App\Models\Wish;
 use App\Services\BaseService;
 use App\Traits\Errors;
+use Illuminate\Support\Facades\Cache;
 
 class GoodsService extends BaseService
 {
@@ -23,7 +24,9 @@ class GoodsService extends BaseService
     public function detail($id)
     {
         $field  = ['id', 'sku', 'title', 'cid1', 'cid2', 'cid3', 'cid1_name', 'cid2_name', 'cid3_name', 'images', 'discount', 'discount_price', 'stock', 'star', 'description', 'is_hot', 'is_recommend', 'is_new', 'status', 'discover', 'price', 'brand_code', 'sale'];
-        $detail = Goods::where('id', $id)->select($field)->first();
+        $detail = Cache::remember('goods_id'.$id,3600,function () use ($id,$field){
+            return Goods::where('id', $id)->select($field)->first();
+        });
         if (!$detail) {
             abort(404);
         }
