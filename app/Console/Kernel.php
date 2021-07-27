@@ -33,6 +33,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->command('sync:tao')->hourly();
         $schedule->command('sync-jd')->cron('0 */2 * * *');
         $schedule->command('sync:news')->cron('0 */2 * * *');
         $schedule->command('sync:joke')->daily();

@@ -56,6 +56,7 @@ class SyncTao extends Command
                 $category = $rel['showapi_res_body']['allTypeList'];
                 Cache::set($key, $category);
             }
+            return ;
             $apiRequest->setRequestName('易源淘女郎api');
 
             foreach ($category as $value) {
