@@ -25,6 +25,26 @@ class TaoGirl extends Orm
 
     public static function getCategory()
     {
+        return [
+            "欧美",
+            "韩版",
+            "日系",
+            "英伦",
+            "OL风",
+            "学院",
+            "淑女",
+            "性感",
+            "复古",
+            "街头",
+            "休闲",
+            "民族",
+            "甜美",
+            "运动",
+            "可爱",
+            "大码",
+            "中老年",
+            "其他"
+        ];
         $appId     = config('constants.show_api_appid');
         $appSecret = config('constants.show_api_secret');
         $apiRequest = new ApiRequest();
