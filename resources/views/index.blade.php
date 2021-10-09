@@ -567,8 +567,13 @@
                                             <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}">
                                                 <img data-src="{{$bestList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
-                                                <img data-src="{{$bestList[$i]['images'][1]}}" alt=""
-                                                     class="img-fluid block-two">
+                                                @if(!empty($bestList[$i]['images'][1]))
+                                                    <img data-src="{{$bestList[$i]['images'][1]}}" alt=""
+                                                         class="img-fluid block-two">
+                                                @else
+                                                    <img data-src="{{$bestList[$i]['images'][0]}}" alt=""
+                                                         class="img-fluid block-two">
+                                                @endif
                                             </a>
                                         </div>
                                         <div class="product-caption">
@@ -599,8 +604,13 @@
                                             <a href="{{route('goods.detail',['id'=>$bestList[$i]['id']])}}">
                                                 <img data-src="{{$bestList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
-                                                <img data-src="{{$bestList[$i]['images'][1]}}" alt=""
-                                                     class="img-fluid block-two">
+                                                @if(!empty($bestList[$i]['images'][1]))
+                                                    <img data-src="{{$bestList[$i]['images'][1]}}" alt=""
+                                                         class="img-fluid block-two">
+                                                @else
+                                                    <img data-src="{{$bestList[$i]['images'][0]}}" alt=""
+                                                         class="img-fluid block-two">
+                                                @endif
                                             </a>
                                         </div>
                                         <div class="product-caption">
@@ -678,8 +688,13 @@
                                             <a href="{{route('goods.detail',['id'=>$recList[$i]['id']])}}">
                                                 <img data-src="{{$recList[$i]['images'][0]}}" alt=""
                                                      class="img-fluid block-one">
-                                                <img data-src="{{$recList[$i]['images'][1]}}" alt=""
-                                                     class="img-fluid block-two">
+                                                @if(!empty($recList[$i]['images'][1]))
+                                                    <img data-src="{{$recList[$i]['images'][1]}}" alt=""
+                                                         class="img-fluid block-two">
+                                                @else
+                                                    <img data-src="{{$recList[$i]['images'][0]}}" alt=""
+                                                         class="img-fluid block-two">
+                                                @endif
                                             </a>
                                         </div>
                                         <div class="product-caption">
