@@ -12,7 +12,7 @@
                     <div class="slider_area slider-one mt-30">
                         <!-- Single Slider Start -->
                         <div class="single_slider">
-                            <img data-src="/assets/images/slider/slider-1.jpg" alt="" class="img-fluid">
+                            <img data-src="https://97fish-private.oss-cn-zhangjiakou.aliyuncs.com/admin_images/slider-1.jpg" alt="" class="img-fluid">
                             <div class="slider_content color_one">
                                 <h5>The Hottest <br> Trend</h5>
                                 <h2>Laptop <br> Tablets Outlet</h2>
@@ -25,7 +25,7 @@
                         <!-- Single Slider End -->
                         <!-- Single Slider Start -->
                         <div class="single_slider">
-                            <img data-src="/assets/images/slider/slider-2.jpg" alt="" class="img-fluid">
+                            <img data-src="https://97fish-private.oss-cn-zhangjiakou.aliyuncs.com/admin_images/slider-2.jpg" alt="" class="img-fluid">
                             <div class="slider_content color_two">
                                 <h5>The Hottest <br> Trend</h5>
                                 <h2>Cellphone <br> Smartphone Not 2</h2>
