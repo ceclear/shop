@@ -157,7 +157,7 @@ class AdvertController extends Controller
         $form->select('pos_id', '位置')->options(
             AdPosition::all()->pluck('name', 'id')
         )->required();
-        $form->image('img_url', '图片')->required();
+        $form->image('img_url', '图片')->required()->uniqueName();
         $form->url('url', '跳转链接')->required();
         $form->number('sort', '排序')->default(1)->min(1);
         $form->color('bg_color', '背景色')->placeholder('可不填')->attribute(['autocomplete' => 'off']);
