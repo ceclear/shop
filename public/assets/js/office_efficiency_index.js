@@ -83,7 +83,7 @@ function loadChannelHandleDetail(data) {
 }
 
 $(function () {
-    $.get('admin/chart', function (res) {
+    $.get('/admin/chart', function (res) {
         $(".no-data").remove();
         //加载门店历史受理详情
         loadChannelHandleDetail(res);
