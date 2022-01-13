@@ -38,7 +38,7 @@
                 <div class="col-lg-4" style="margin-left: -90px">
                     <div class="footer-single-widget">
                         <div class="footer-logo mb-40" style="margin-bottom: 30px;margin-left: 46px">
-                            <a href="/"><img data-src="http://fish-resource.97fish.cn/admin_images/ziti_a%20%283%29.png" alt=""></a>
+                            <a href="/"><img data-src="https://fish-resource.97fish.cn/admin_images/ziti_a%20%283%29.png" alt=""></a>
                         </div>
                         <div class="widget-body" style="padding-left: 100px">
                             <p>

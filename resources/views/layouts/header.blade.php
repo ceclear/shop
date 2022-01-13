@@ -59,7 +59,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-6" style="margin-left: -82px">
                     <div class="logo">
-                        <a href="/"><img data-src="http://fish-resource.97fish.cn/admin_images/logo.png" alt="" class="img-fluid"></a>
+                        <a href="/"><img data-src="https://fish-resource.97fish.cn/admin_images/logo.png" alt="" class="img-fluid"></a>
                     </div>
                 </div>
                 <div class="col-lg-9 col-6">
