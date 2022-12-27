@@ -20,7 +20,7 @@ Route::group([
     $router->resource('article-list', ArticleController::class);//文章列表
     $router->resource('ad-position', AdPositionController::class);//广告位置
     $router->resource('advert', AdvertController::class);//广告
-    $router->resource('goods', GoodsController::class);//广告
-    $router->resource('tao-girl', TaoGirlController::class);//广告
-    $router->resource('member', MemberController::class);//广告
+    $router->resource('goods', GoodsController::class);//商品
+    $router->resource('tao-girl', TaoGirlController::class);//淘宝girl
+    $router->resource('member', MemberController::class);//会员
 });
