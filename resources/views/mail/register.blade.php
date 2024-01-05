@@ -45,11 +45,11 @@
     </p>
     <p>
         昵称:
-        <code>{{$nickname}}</code>
+        <code>{{$userInfo['nickname']}}</code>
     </p>
     <p>
         头像:
-        <img src="{{$avatar}}" width="80px" height="80px">
+        <img src="{{$userInfo['avatar']}}" width="80px" height="80px">
     </p>
 
 
