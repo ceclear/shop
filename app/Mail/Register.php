@@ -41,7 +41,7 @@ class Register extends Mailable
             ->attach($fileName)//添加windows上压缩包做附件
             ->view('mail.register');
 //            ->with(['nickname' => $this->userInfo['nickname'], 'avatar' => $this->userInfo['avatar']]); //当前类定义的任何公共属性将自动传递给视图
-
+        //更新打包方式
         return true;
     }
 
