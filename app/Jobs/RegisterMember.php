@@ -35,7 +35,7 @@ class RegisterMember implements ShouldQueue
     {
         //todo
         Mail::to('594652523@qq.com')->send(new Register($this->userInfo));
-        Log::info('--------新注册用户' . $this->userInfo['id'] . '邮件发送完毕');
+        Log::info('--------新注册用户----' . $this->userInfo['id'] . '邮件发送完毕');
 
         return true;
     }
